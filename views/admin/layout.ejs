@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - VetRetire Admin</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body data-theme="light">
+    <% if (typeof admin !== 'undefined' && admin) { %>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <div class="admin-logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>VetRetire Admin</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="/admin/dashboard" class="<%= title.includes('Dashboard') ? 'active' : '' %>">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/locations" class="<%= title.includes('Location') ? 'active' : '' %>">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <span>Locations</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/users" class="<%= title.includes('Users') ? 'active' : '' %>">
+                            <i class="fas fa-users"></i>
+                            <span>Admin Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/export/csv">
+                            <i class="fas fa-download"></i>
+                            <span>Export Data</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>View Site</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="admin-info">
+                    <i class="fas fa-user-circle"></i>
+                    <span><%= admin.username %></span>
+                </div>
+                <form action="/admin/logout" method="POST" style="display: inline;">
+                    <button type="submit" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </button>
+                </form>
+            </div>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <h1><%= title %></h1>
+                <div class="header-actions">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                        <i class="fas fa-sun light-icon"></i>
+                        <i class="fas fa-moon dark-icon"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <% if (typeof success !== 'undefined' && success) { %>
+                    <div class="alert alert-success">
+                        <i class="fas fa-check-circle"></i>
+                        <%= success %>
+                    </div>
+                <% } %>
+
+                <% if (typeof error !== 'undefined' && error) { %>
+                    <div class="alert alert-error">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <%= error %>
+                    </div>
+                <% } %>
+
+                <%- body %>
+            </div>
+        </main>
+    </div>
+    <% } else { %>
+        <div class="login-layout">
+            <%- body %>
+        </div>
+    <% } %>
+
+    <script src="/js/theme.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>

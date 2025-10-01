@@ -1,0 +1,140 @@
+<div class="dashboard-grid">
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <div class="stat-content">
+                <h3><%= stats.total_locations %></h3>
+                <p>Total Locations</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-flag"></i>
+            </div>
+            <div class="stat-content">
+                <h3><%= stats.states_count %></h3>
+                <p>States Covered</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="stat-content">
+                <h3><%= stats.avg_cost_of_living || 'N/A' %></h3>
+                <p>Avg Cost of Living</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+            <div class="stat-content">
+                <h3><%= stats.avg_healthcare_score || 'N/A' %></h3>
+                <p>Avg Healthcare Score</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-grid">
+        <div class="dashboard-section">
+            <div class="section-header">
+                <h2>Quick Actions</h2>
+            </div>
+            <div class="action-cards">
+                <a href="/admin/locations/add" class="action-card">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Add New Location</span>
+                </a>
+                <a href="/admin/locations" class="action-card">
+                    <i class="fas fa-edit"></i>
+                    <span>Manage Locations</span>
+                </a>
+                <a href="/admin/export/csv" class="action-card">
+                    <i class="fas fa-download"></i>
+                    <span>Export Data</span>
+                </a>
+                <a href="#" onclick="document.getElementById('csvImport').click()" class="action-card">
+                    <i class="fas fa-upload"></i>
+                    <span>Import CSV</span>
+                </a>
+            </div>
+
+            <!-- Hidden file input for CSV import -->
+            <form action="/admin/import/csv" method="POST" enctype="multipart/form-data" style="display: none;">
+                <input type="file" id="csvImport" name="csvFile" accept=".csv" onchange="this.form.submit()">
+            </form>
+        </div>
+
+        <div class="dashboard-section">
+            <div class="section-header">
+                <h2>Recent Locations</h2>
+                <a href="/admin/locations" class="view-all-link">View All</a>
+            </div>
+            <div class="locations-list">
+                <% if (recentLocations && recentLocations.length > 0) { %>
+                    <% recentLocations.forEach(location => { %>
+                        <div class="location-item">
+                            <div class="location-info">
+                                <h4><%= location.name %></h4>
+                                <p><%= location.state %> • <%= location.region %></p>
+                            </div>
+                            <div class="location-actions">
+                                <a href="/admin/locations/edit/<%= location.id %>" class="btn-small btn-primary">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </div>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <div class="empty-state">
+                        <i class="fas fa-map"></i>
+                        <p>No locations found. <a href="/admin/locations/add">Add your first location</a></p>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-section full-width">
+        <div class="section-header">
+            <h2>System Information</h2>
+        </div>
+        <div class="info-grid">
+            <div class="info-item">
+                <i class="fas fa-database"></i>
+                <div>
+                    <h4>Database</h4>
+                    <p>SQLite - Connected</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-server"></i>
+                <div>
+                    <h4>Server</h4>
+                    <p>Node.js + Express</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-user-shield"></i>
+                <div>
+                    <h4>Admin User</h4>
+                    <p><%= admin.username %></p>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <h4>Last Login</h4>
+                    <p><%= new Date().toLocaleDateString() %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
