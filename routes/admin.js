@@ -10,8 +10,9 @@ const Location = require('../models/Location');
 const auth = require('../middleware/auth');
 
 // Configure multer for file uploads
+// Use /tmp directory for Vercel serverless compatibility
 const upload = multer({
-  dest: 'uploads/',
+  dest: '/tmp/uploads/',
   fileFilter: (req, file, cb) => {
     if (file.mimetype === 'text/csv' || file.originalname.endsWith('.csv')) {
       cb(null, true);
