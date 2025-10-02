@@ -47,6 +47,17 @@ app.use(async (req, res, next) => {
   next();
 });
 
+// API endpoint for locations data
+app.get('/api/locations', (req, res) => {
+  try {
+    const data = database.getData();
+    res.json(data);
+  } catch (error) {
+    console.error('Error fetching locations:', error);
+    res.status(500).json({ error: 'Failed to fetch locations' });
+  }
+});
+
 // Routes
 app.get('/', (req, res) => {
   res.render('index', { title: 'Veteran Retirement Finder' });

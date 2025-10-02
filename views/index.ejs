@@ -1,57 +1,560 @@
 <%- include('layout', { body:
-`<div class="hero-section">
-    <div class="hero-content">
-        <h1 class="hero-title">Find Your Perfect Retirement Destination</h1>
-        <p class="hero-subtitle">Discover the ideal place to call home based on your preferences for climate, taxes, lifestyle, and more.</p>
-        <div class="hero-features">
-            <div class="feature">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Location Analysis</span>
+`<div class="filter-bar" id="filterBar">
+    <div class="filter-container">
+        <div class="filters-left">
+            <div class="filter-item">
+                <label>Climate</label>
+                <select id="climateFilter" class="filter-select">
+                    <option value="">All Climates</option>
+                    <option value="Humid subtropical">Humid Subtropical</option>
+                    <option value="Mediterranean">Mediterranean</option>
+                    <option value="Continental">Continental</option>
+                    <option value="Desert">Desert</option>
+                    <option value="Tropical">Tropical</option>
+                </select>
             </div>
-            <div class="feature">
-                <i class="fas fa-dollar-sign"></i>
-                <span>Tax Considerations</span>
+
+            <div class="filter-item">
+                <label>Cost of Living</label>
+                <select id="costFilter" class="filter-select">
+                    <option value="">Any</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
             </div>
-            <div class="feature">
-                <i class="fas fa-thermometer-half"></i>
-                <span>Climate Matching</span>
+
+            <div class="filter-item">
+                <label>Income Tax</label>
+                <select id="taxFilter" class="filter-select">
+                    <option value="">Any</option>
+                    <option value="0">No Income Tax</option>
+                    <option value="1">Has Income Tax</option>
+                </select>
             </div>
-            <div class="feature">
-                <i class="fas fa-heart"></i>
-                <span>Lifestyle Factors</span>
+
+            <div class="filter-item">
+                <label>Firearms</label>
+                <select id="firearmsFilter" class="filter-select">
+                    <option value="">Any</option>
+                    <option value="Constitutional carry">Constitutional Carry</option>
+                    <option value="Permitless carry">Permitless Carry</option>
+                    <option value="Shall issue">Shall Issue</option>
+                    <option value="May issue">May Issue</option>
+                </select>
+            </div>
+
+            <div class="filter-item">
+                <label>Marijuana</label>
+                <select id="marijuanaFilter" class="filter-select">
+                    <option value="">Any</option>
+                    <option value="Legal">Recreational Legal</option>
+                    <option value="Medical">Medical Only</option>
+                    <option value="Illegal">Illegal</option>
+                </select>
+            </div>
+
+            <div class="filter-item checkbox-filter">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="vetBenefitsFilter">
+                    <span>Veteran Benefits</span>
+                </label>
             </div>
         </div>
-        <a href="/search" class="cta-button">
-            <span>Start Your Search</span>
-            <i class="fas fa-arrow-right"></i>
-        </a>
-    </div>
-    <div class="hero-image">
-        <div class="hero-illustration">
-            <i class="fas fa-home"></i>
-        </div>
+
+        <button class="clear-filters" id="clearFilters">
+            <i class="fas fa-redo"></i>
+            Clear All
+        </button>
     </div>
 </div>
 
-<div class="benefits-section">
-    <div class="container">
-        <h2>Why Choose VetRetire?</h2>
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Veteran-Focused</h3>
-                <p>Designed specifically for veterans with factors that matter most to your retirement.</p>
-            </div>
-            <div class="benefit-card">
-                <i class="fas fa-chart-line"></i>
-                <h3>Data-Driven</h3>
-                <p>Comprehensive analysis of cost of living, taxes, healthcare, and quality of life metrics.</p>
-            </div>
-            <div class="benefit-card">
-                <i class="fas fa-users"></i>
-                <h3>Community</h3>
-                <p>Find areas with strong veteran communities and support networks.</p>
-            </div>
+<div class="hero-header">
+    <h1>Find Your Perfect Retirement City</h1>
+    <p>Browse cities and use filters above to find your ideal location</p>
+</div>
+
+<div class="cities-container" id="citiesContainer">
+    <div class="cities-grid" id="citiesGrid">
+        <!-- City cards will be dynamically loaded here -->
+        <div class="loading">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading cities...</p>
         </div>
     </div>
-</div>` }) %>
+
+    <div class="no-results" id="noResults" style="display: none;">
+        <i class="fas fa-search"></i>
+        <h3>No cities match your filters</h3>
+        <p>Try adjusting your search criteria</p>
+    </div>
+</div>
+
+<style>
+/* Filter Bar Styles */
+.filter-bar {
+    position: sticky;
+    top: 64px;
+    background-color: var(--card-bg);
+    border-bottom: 2px solid var(--border-color);
+    box-shadow: 0 2px 8px var(--shadow);
+    z-index: 50;
+    padding: var(--spacing-lg) 0;
+}
+
+.filter-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.filters-left {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.filter-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.filter-item label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.filter-select {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-secondary);
+    color: var(--text-color);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: var(--transition);
+    min-width: 150px;
+}
+
+.filter-select:hover {
+    border-color: var(--primary-color);
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.checkbox-filter {
+    display: flex;
+    align-items: flex-end;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.875rem;
+}
+
+.checkbox-label:hover {
+    border-color: var(--primary-color);
+    background-color: var(--bg-color);
+}
+
+.checkbox-label input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.clear-filters {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-color);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.clear-filters:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* Hero Header */
+.hero-header {
+    text-align: center;
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-header p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+}
+
+/* Cities Container */
+.cities-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+.cities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+/* City Card (Baseball Card Style) */
+.city-card {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.city-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px var(--shadow);
+    border-color: var(--primary-color);
+}
+
+.city-card-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    padding: var(--spacing-xl);
+    color: white;
+    position: relative;
+}
+
+.city-card-header h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-xs);
+}
+
+.city-card-header .state {
+    font-size: 0.875rem;
+    opacity: 0.9;
+}
+
+.governor-badge {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.city-card-body {
+    padding: var(--spacing-lg);
+}
+
+.city-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.badge.highlight {
+    background-color: var(--success-color);
+    color: white;
+    border-color: var(--success-color);
+}
+
+.badge i {
+    font-size: 0.875rem;
+}
+
+.city-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.stat-item .label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.stat-item .value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.learn-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    width: 100%;
+    padding: var(--spacing-md);
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.learn-more:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+/* Loading State */
+.loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--spacing-2xl);
+    color: var(--text-secondary);
+}
+
+.loading i {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-color);
+}
+
+/* No Results */
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--spacing-2xl);
+    color: var(--text-secondary);
+}
+
+.no-results i {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-secondary);
+}
+
+.no-results h3 {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .filter-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filters-left {
+        width: 100%;
+    }
+
+    .clear-filters {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .filter-bar {
+        top: 60px;
+    }
+
+    .hero-header h1 {
+        font-size: 2rem;
+    }
+
+    .cities-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-item {
+        flex: 1;
+        min-width: 140px;
+    }
+}
+</style>
+
+<script>
+let allCities = [];
+
+// Fetch cities data
+async function loadCities() {
+    try {
+        const response = await fetch('/api/locations');
+        const data = await response.json();
+        allCities = data.locations || [];
+        renderCities(allCities);
+    } catch (error) {
+        console.error('Error loading cities:', error);
+        document.getElementById('citiesGrid').innerHTML = '<div class="loading"><p>Error loading cities</p></div>';
+    }
+}
+
+// Render city cards
+function renderCities(cities) {
+    const grid = document.getElementById('citiesGrid');
+    const noResults = document.getElementById('noResults');
+
+    if (cities.length === 0) {
+        grid.innerHTML = '';
+        noResults.style.display = 'block';
+        return;
+    }
+
+    noResults.style.display = 'none';
+
+    grid.innerHTML = cities.map(city => \`
+        <div class="city-card">
+            <div class="city-card-header">
+                <span class="governor-badge">\${city.governor?.party || 'Unknown'}</span>
+                <h3>\${city.city}</h3>
+                <div class="state">\${city.state}</div>
+            </div>
+            <div class="city-card-body">
+                <div class="city-badges">
+                    \${city.taxes?.incomeTax === 0 ? '<span class="badge highlight"><i class="fas fa-dollar-sign"></i> No Income Tax</span>' : ''}
+                    \${city.climate?.type ? \`<span class="badge"><i class="fas fa-thermometer-half"></i> \${city.climate.type}</span>\` : ''}
+                    \${city.firearms?.laws ? \`<span class="badge"><i class="fas fa-shield-alt"></i> \${city.firearms.laws}</span>\` : ''}
+                    \${city.marijuana?.status ? \`<span class="badge"><i class="fas fa-leaf"></i> \${city.marijuana.status}</span>\` : ''}
+                </div>
+
+                <div class="city-stats">
+                    <div class="stat-item">
+                        <span class="label">Sales Tax</span>
+                        <span class="value">\${city.taxes?.salesTax || 0}%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="label">Cost of Living</span>
+                        <span class="value">\${city.economy?.costOfLiving || 'N/A'}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="label">Gas Price</span>
+                        <span class="value">$\${city.economy?.avgGasPrice || 'N/A'}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="label">Rainfall</span>
+                        <span class="value">\${city.climate?.avgRainfallInches || 0}"</span>
+                    </div>
+                </div>
+
+                \${city.veteranBenefits ? \`
+                    <div class="badge highlight" style="margin-bottom: var(--spacing-md); width: 100%;">
+                        <i class="fas fa-star"></i>
+                        <span>Veteran Benefits Available</span>
+                    </div>
+                \` : ''}
+
+                <button class="learn-more">
+                    <span>Learn More</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    \`).join('');
+}
+
+// Filter cities
+function filterCities() {
+    const climate = document.getElementById('climateFilter').value;
+    const cost = document.getElementById('costFilter').value;
+    const tax = document.getElementById('taxFilter').value;
+    const firearms = document.getElementById('firearmsFilter').value;
+    const marijuana = document.getElementById('marijuanaFilter').value;
+    const vetBenefits = document.getElementById('vetBenefitsFilter').checked;
+
+    const filtered = allCities.filter(city => {
+        if (climate && city.climate?.type !== climate) return false;
+        if (cost && city.economy?.costOfLiving !== cost) return false;
+        if (tax && city.taxes?.incomeTax.toString() !== tax) return false;
+        if (firearms && city.firearms?.laws !== firearms) return false;
+        if (marijuana && city.marijuana?.status !== marijuana) return false;
+        if (vetBenefits && !city.veteranBenefits) return false;
+
+        return true;
+    });
+
+    renderCities(filtered);
+}
+
+// Clear filters
+function clearFilters() {
+    document.getElementById('climateFilter').value = '';
+    document.getElementById('costFilter').value = '';
+    document.getElementById('taxFilter').value = '';
+    document.getElementById('firearmsFilter').value = '';
+    document.getElementById('marijuanaFilter').value = '';
+    document.getElementById('vetBenefitsFilter').checked = false;
+    renderCities(allCities);
+}
+
+// Event listeners
+document.getElementById('climateFilter').addEventListener('change', filterCities);
+document.getElementById('costFilter').addEventListener('change', filterCities);
+document.getElementById('taxFilter').addEventListener('change', filterCities);
+document.getElementById('firearmsFilter').addEventListener('change', filterCities);
+document.getElementById('marijuanaFilter').addEventListener('change', filterCities);
+document.getElementById('vetBenefitsFilter').addEventListener('change', filterCities);
+document.getElementById('clearFilters').addEventListener('click', clearFilters);
+
+// Load cities on page load
+loadCities();
+</script>` }) %>

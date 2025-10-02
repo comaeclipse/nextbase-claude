@@ -29,6 +29,216 @@
         "avgGasPrice": 2.85,
         "costOfLiving": "Medium"
       }
+    },
+    {
+      "state": "Texas",
+      "city": "Austin",
+      "governor": {
+        "party": "Republican"
+      },
+      "taxes": {
+        "salesTax": 8.25,
+        "incomeTax": 0
+      },
+      "marijuana": {
+        "status": "Illegal"
+      },
+      "firearms": {
+        "laws": "Constitutional carry",
+        "permitRequired": false
+      },
+      "veteranBenefits": {
+        "description": "Property tax exemptions, Hazlewood Act for education"
+      },
+      "climate": {
+        "type": "Humid subtropical",
+        "avgSnowfallInches": 0.1,
+        "avgRainfallInches": 34
+      },
+      "economy": {
+        "avgGasPrice": 2.75,
+        "costOfLiving": "High"
+      }
+    },
+    {
+      "state": "Tennessee",
+      "city": "Nashville",
+      "governor": {
+        "party": "Republican"
+      },
+      "taxes": {
+        "salesTax": 9.25,
+        "incomeTax": 0
+      },
+      "marijuana": {
+        "status": "Illegal"
+      },
+      "firearms": {
+        "laws": "Constitutional carry",
+        "permitRequired": false
+      },
+      "veteranBenefits": {
+        "description": "Property tax relief, disabled veteran benefits"
+      },
+      "climate": {
+        "type": "Humid subtropical",
+        "avgSnowfallInches": 5,
+        "avgRainfallInches": 48
+      },
+      "economy": {
+        "avgGasPrice": 2.80,
+        "costOfLiving": "Medium"
+      }
+    },
+    {
+      "state": "Nevada",
+      "city": "Las Vegas",
+      "governor": {
+        "party": "Republican"
+      },
+      "taxes": {
+        "salesTax": 8.38,
+        "incomeTax": 0
+      },
+      "marijuana": {
+        "status": "Legal"
+      },
+      "firearms": {
+        "laws": "Shall issue",
+        "permitRequired": true
+      },
+      "veteranBenefits": {
+        "description": "Property tax exemptions for disabled vets"
+      },
+      "climate": {
+        "type": "Desert",
+        "avgSnowfallInches": 0,
+        "avgRainfallInches": 4
+      },
+      "economy": {
+        "avgGasPrice": 3.25,
+        "costOfLiving": "Medium"
+      }
+    },
+    {
+      "state": "Arizona",
+      "city": "Phoenix",
+      "governor": {
+        "party": "Democrat"
+      },
+      "taxes": {
+        "salesTax": 8.6,
+        "incomeTax": 2.5
+      },
+      "marijuana": {
+        "status": "Legal"
+      },
+      "firearms": {
+        "laws": "Constitutional carry",
+        "permitRequired": false
+      },
+      "veteranBenefits": {
+        "description": "Property tax exemptions, veteran services"
+      },
+      "climate": {
+        "type": "Desert",
+        "avgSnowfallInches": 0,
+        "avgRainfallInches": 8
+      },
+      "economy": {
+        "avgGasPrice": 3.10,
+        "costOfLiving": "Medium"
+      }
+    },
+    {
+      "state": "North Carolina",
+      "city": "Raleigh",
+      "governor": {
+        "party": "Democrat"
+      },
+      "taxes": {
+        "salesTax": 7.25,
+        "incomeTax": 4.75
+      },
+      "marijuana": {
+        "status": "Illegal"
+      },
+      "firearms": {
+        "laws": "Shall issue",
+        "permitRequired": true
+      },
+      "veteranBenefits": {
+        "description": "Property tax exclusions for disabled vets"
+      },
+      "climate": {
+        "type": "Humid subtropical",
+        "avgSnowfallInches": 6,
+        "avgRainfallInches": 43
+      },
+      "economy": {
+        "avgGasPrice": 2.95,
+        "costOfLiving": "Medium"
+      }
+    },
+    {
+      "state": "Colorado",
+      "city": "Denver",
+      "governor": {
+        "party": "Democrat"
+      },
+      "taxes": {
+        "salesTax": 8.81,
+        "incomeTax": 4.4
+      },
+      "marijuana": {
+        "status": "Legal"
+      },
+      "firearms": {
+        "laws": "Shall issue",
+        "permitRequired": true
+      },
+      "veteranBenefits": {
+        "description": "Property tax exemptions for disabled vets"
+      },
+      "climate": {
+        "type": "Continental",
+        "avgSnowfallInches": 57,
+        "avgRainfallInches": 15
+      },
+      "economy": {
+        "avgGasPrice": 3.20,
+        "costOfLiving": "High"
+      }
+    },
+    {
+      "state": "South Carolina",
+      "city": "Charleston",
+      "governor": {
+        "party": "Republican"
+      },
+      "taxes": {
+        "salesTax": 9.0,
+        "incomeTax": 6.5
+      },
+      "marijuana": {
+        "status": "Illegal"
+      },
+      "firearms": {
+        "laws": "Shall issue",
+        "permitRequired": true
+      },
+      "veteranBenefits": {
+        "description": "Property tax exemptions, VA hospital access"
+      },
+      "climate": {
+        "type": "Humid subtropical",
+        "avgSnowfallInches": 1,
+        "avgRainfallInches": 51
+      },
+      "economy": {
+        "avgGasPrice": 2.88,
+        "costOfLiving": "Medium"
+      }
     }
   ]
 }
