@@ -62,10 +62,20 @@
             </div>
         </div>
 
-        <button class="clear-filters" id="clearFilters">
-            <i class="fas fa-redo"></i>
-            Clear All
-        </button>
+        <div class="filter-actions">
+            <div class="view-toggle" id="viewToggle">
+                <button class="view-btn active" data-view="grid">
+                    <i class="fas fa-th"></i>
+                </button>
+                <button class="view-btn" data-view="table">
+                    <i class="fas fa-table"></i>
+                </button>
+            </div>
+            <button class="clear-filters" id="clearFilters">
+                <i class="fas fa-redo"></i>
+                Clear All
+            </button>
+        </div>
     </div>
 </div>
 
@@ -81,6 +91,28 @@
             <i class="fas fa-spinner fa-spin"></i>
             <p>Loading cities...</p>
         </div>
+    </div>
+
+    <div class="cities-table-wrapper" id="citiesTableWrapper" style="display: none;">
+        <table class="cities-table" id="citiesTable">
+            <thead>
+                <tr>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Governor</th>
+                    <th>Sales Tax</th>
+                    <th>Income Tax</th>
+                    <th>Cost of Living</th>
+                    <th>Climate</th>
+                    <th>Firearms</th>
+                    <th>Marijuana</th>
+                    <th>Gas Price</th>
+                    <th>Rainfall</th>
+                    <th>Vet Benefits</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
     </div>
 
     <div class="no-results" id="noResults" style="display: none;">
@@ -180,6 +212,40 @@
 
 .checkbox-label input[type="checkbox"] {
     cursor: pointer;
+}
+
+.filter-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.view-toggle {
+    display: flex;
+    gap: 0;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.view-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.view-btn:hover {
+    background-color: var(--bg-color);
+}
+
+.view-btn.active {
+    background-color: var(--primary-color);
+    color: white;
 }
 
 .clear-filters {
@@ -396,6 +462,69 @@
     margin-bottom: var(--spacing-sm);
 }
 
+/* Table View Styles */
+.cities-table-wrapper {
+    overflow-x: auto;
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-xl);
+}
+
+.cities-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.cities-table th {
+    background-color: var(--bg-secondary);
+    color: var(--text-color);
+    font-weight: 600;
+    text-align: left;
+    padding: var(--spacing-md);
+    border-bottom: 2px solid var(--border-color);
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.cities-table td {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.cities-table tbody tr {
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.cities-table tbody tr:hover {
+    background-color: var(--bg-secondary);
+}
+
+.cities-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-badge {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.table-badge.highlight {
+    background-color: var(--success-color);
+    color: white;
+    border-color: var(--success-color);
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .filter-container {
@@ -405,6 +534,19 @@
 
     .filters-left {
         width: 100%;
+    }
+
+    .filter-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .view-toggle {
+        width: 100%;
+    }
+
+    .view-btn {
+        flex: 1;
     }
 
     .clear-filters {
@@ -435,6 +577,7 @@
 
 <script>
 let allCities = [];
+let currentView = 'grid';
 
 // Fetch cities data
 async function loadCities() {
@@ -449,18 +592,9 @@ async function loadCities() {
     }
 }
 
-// Render city cards
-function renderCities(cities) {
+// Render city cards (grid view)
+function renderCitiesGrid(cities) {
     const grid = document.getElementById('citiesGrid');
-    const noResults = document.getElementById('noResults');
-
-    if (cities.length === 0) {
-        grid.innerHTML = '';
-        noResults.style.display = 'block';
-        return;
-    }
-
-    noResults.style.display = 'none';
 
     grid.innerHTML = cities.map(city => \`
         <div class="city-card">
@@ -512,6 +646,50 @@ function renderCities(cities) {
     \`).join('');
 }
 
+// Render table view
+function renderCitiesTable(cities) {
+    const tbody = document.querySelector('#citiesTable tbody');
+
+    tbody.innerHTML = cities.map(city => \`
+        <tr>
+            <td><strong>\${city.city}</strong></td>
+            <td>\${city.state}</td>
+            <td><span class="table-badge">\${city.governor?.party || 'Unknown'}</span></td>
+            <td>\${city.taxes?.salesTax || 0}%</td>
+            <td>\${city.taxes?.incomeTax === 0 ? '<span class="table-badge highlight">No Tax</span>' : (city.taxes?.incomeTax || 0) + '%'}</td>
+            <td>\${city.economy?.costOfLiving || 'N/A'}</td>
+            <td>\${city.climate?.type || 'N/A'}</td>
+            <td>\${city.firearms?.laws || 'N/A'}</td>
+            <td>\${city.marijuana?.status || 'N/A'}</td>
+            <td>$\${city.economy?.avgGasPrice || 'N/A'}</td>
+            <td>\${city.climate?.avgRainfallInches || 0}"</td>
+            <td>\${city.veteranBenefits ? '<span class="table-badge highlight">Yes</span>' : 'No'}</td>
+        </tr>
+    \`).join('');
+}
+
+// Render cities based on current view
+function renderCities(cities) {
+    const grid = document.getElementById('citiesGrid');
+    const tableWrapper = document.getElementById('citiesTableWrapper');
+    const noResults = document.getElementById('noResults');
+
+    if (cities.length === 0) {
+        grid.innerHTML = '';
+        tableWrapper.querySelector('tbody').innerHTML = '';
+        noResults.style.display = 'block';
+        return;
+    }
+
+    noResults.style.display = 'none';
+
+    if (currentView === 'grid') {
+        renderCitiesGrid(cities);
+    } else {
+        renderCitiesTable(cities);
+    }
+}
+
 // Filter cities
 function filterCities() {
     const climate = document.getElementById('climateFilter').value;
@@ -546,6 +724,52 @@ function clearFilters() {
     renderCities(allCities);
 }
 
+// Toggle view
+function toggleView(view) {
+    currentView = view;
+    const grid = document.getElementById('citiesGrid');
+    const tableWrapper = document.getElementById('citiesTableWrapper');
+    const viewBtns = document.querySelectorAll('.view-btn');
+
+    // Update active button
+    viewBtns.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.view === view);
+    });
+
+    // Toggle visibility
+    if (view === 'grid') {
+        grid.style.display = 'grid';
+        tableWrapper.style.display = 'none';
+    } else {
+        grid.style.display = 'none';
+        tableWrapper.style.display = 'block';
+    }
+
+    // Re-render with current data
+    const currentData = getCurrentFilteredCities();
+    renderCities(currentData);
+}
+
+// Get currently filtered cities
+function getCurrentFilteredCities() {
+    const climate = document.getElementById('climateFilter').value;
+    const cost = document.getElementById('costFilter').value;
+    const tax = document.getElementById('taxFilter').value;
+    const firearms = document.getElementById('firearmsFilter').value;
+    const marijuana = document.getElementById('marijuanaFilter').value;
+    const vetBenefits = document.getElementById('vetBenefitsFilter').checked;
+
+    return allCities.filter(city => {
+        if (climate && city.climate?.type !== climate) return false;
+        if (cost && city.economy?.costOfLiving !== cost) return false;
+        if (tax && city.taxes?.incomeTax.toString() !== tax) return false;
+        if (firearms && city.firearms?.laws !== firearms) return false;
+        if (marijuana && city.marijuana?.status !== marijuana) return false;
+        if (vetBenefits && !city.veteranBenefits) return false;
+        return true;
+    });
+}
+
 // Event listeners
 document.getElementById('climateFilter').addEventListener('change', filterCities);
 document.getElementById('costFilter').addEventListener('change', filterCities);
@@ -554,6 +778,11 @@ document.getElementById('firearmsFilter').addEventListener('change', filterCitie
 document.getElementById('marijuanaFilter').addEventListener('change', filterCities);
 document.getElementById('vetBenefitsFilter').addEventListener('change', filterCities);
 document.getElementById('clearFilters').addEventListener('click', clearFilters);
+
+// View toggle event listeners
+document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.addEventListener('click', () => toggleView(btn.dataset.view));
+});
 
 // Load cities on page load
 loadCities();
