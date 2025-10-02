@@ -1,7 +1,5 @@
 const express = require('express');
-const session = require('express-session');
 const expressLayouts = require('express-ejs-layouts');
-const methodOverride = require('method-override');
 const path = require('path');
 
 const app = express();
@@ -9,7 +7,6 @@ const app = express();
 // Initialize database
 const database = require('../database/init');
 const Location = require('../models/Location');
-const adminRoutes = require('../routes/admin');
 
 // Middleware
 app.set('view engine', 'ejs');
@@ -19,18 +16,6 @@ app.set('layout', false); // Disable default layout for all routes
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride('_method'));
-
-// Session configuration for serverless
-app.use(session({
-  secret: process.env.SESSION_SECRET || 'veteran-retirement-finder-secret-key-change-in-production',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    secure: process.env.NODE_ENV === 'production',
-    maxAge: 24 * 60 * 60 * 1000 // 24 hours
-  }
-}));
 
 // Initialize database connection (runs on each request in serverless)
 let dbInitialized = false;
@@ -98,9 +83,6 @@ app.post('/results', async (req, res) => {
     });
   }
 });
-
-// Admin routes
-app.use('/admin', adminRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

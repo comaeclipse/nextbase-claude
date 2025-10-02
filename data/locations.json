@@ -1,6 +1,189 @@
 {
   "locations": [
     {
+      "state": "Texas",
+      "city": "Houston",
+      "governor": {
+        "party": "Republican"
+      },
+      "taxes": {
+        "salesTax": 8.25,
+        "incomeTax": 0
+      },
+      "marijuana": {
+        "status": "Medical"
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid subtropical",
+        "avgSnowfallInches": 15,
+        "avgRainfallInches": 47,
+        "sunnyDays": 204
+      },
+      "economy": {
+        "avgGasPrice": 2.74,
+        "costOfLiving": "Low/Medium"
+      },
+      "veteranBenefits": {
+        "description": "Partial property tax reduction"
+      }
+    },
+    {
+      "state": "Alabama",
+      "city": "Huntsville",
+      "governor": {
+        "party": "Republican"
+      },
+      "taxes": {
+        "salesTax": 9,
+        "incomeTax": 5
+      },
+      "marijuana": {
+        "status": "Decriminalized"
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid subtropical",
+        "avgSnowfallInches": 5,
+        "avgRainfallInches": 54,
+        "sunnyDays": 199
+      },
+      "economy": {
+        "avgGasPrice": 2.74,
+        "costOfLiving": "Low"
+      }
+    },
+    {
+      "state": "Alabama",
+      "city": "Mobile",
+      "governor": {
+        "party": "Republican"
+      },
+      "taxes": {
+        "salesTax": 10,
+        "incomeTax": 5
+      },
+      "marijuana": {
+        "status": "Decriminalized"
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid subtropical",
+        "avgSnowfallInches": 0.4,
+        "avgRainfallInches": 66,
+        "sunnyDays": 220
+      },
+      "economy": {
+        "avgGasPrice": 2.75,
+        "costOfLiving": "Low"
+      }
+    },
+    {
+      "state": "Tennessee",
+      "city": "Nashville",
+      "governor": {
+        "party": "Republican"
+      },
+      "taxes": {
+        "salesTax": 9.75,
+        "incomeTax": 0
+      },
+      "marijuana": {
+        "status": "Illegal"
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid subtropical",
+        "avgSnowfallInches": 8,
+        "avgRainfallInches": 48,
+        "sunnyDays": 208
+      },
+      "economy": {
+        "avgGasPrice": 2.78,
+        "costOfLiving": "Low"
+      }
+    },
+    {
+      "state": "Wisconsin",
+      "city": "Milwaukee",
+      "governor": {
+        "party": "Democrat"
+      },
+      "taxes": {
+        "salesTax": 5.7,
+        "incomeTax": 5.3
+      },
+      "marijuana": {
+        "status": "Medical"
+      },
+      "firearms": {
+        "giffordScore": "C",
+        "gunFriendliness": "Moderate",
+        "laws": "Shall Issue",
+        "permitRequired": true
+      },
+      "climate": {
+        "type": "Humid continental",
+        "avgSnowfallInches": 48,
+        "avgRainfallInches": 35,
+        "sunnyDays": 190
+      },
+      "economy": {
+        "avgGasPrice": 2.82,
+        "costOfLiving": "Medium"
+      }
+    },
+    {
+      "state": "Kentucky",
+      "city": "Louisville",
+      "governor": {
+        "party": "Republican"
+      },
+      "taxes": {
+        "salesTax": 6,
+        "incomeTax": 3.5
+      },
+      "marijuana": {
+        "status": "Medical"
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid subtropical",
+        "avgSnowfallInches": 17,
+        "avgRainfallInches": 48,
+        "sunnyDays": 195
+      },
+      "economy": {
+        "avgGasPrice": 2.83,
+        "costOfLiving": "Low"
+      }
+    },
+    {
       "state": "Florida",
       "city": "Pensacola",
       "governor": {
@@ -14,25 +197,58 @@
         "status": "Medical"
       },
       "firearms": {
-        "laws": "Permitless carry",
-        "permitRequired": false
-      },
-      "veteranBenefits": {
-        "disabilityDeduction": "$5,000 deduction for vets with 10%+ disability"
+        "giffordScore": "C-",
+        "gunFriendliness": "Moderate",
+        "laws": "Shall Issue",
+        "permitRequired": true
       },
       "climate": {
         "type": "Humid subtropical",
         "avgSnowfallInches": 0,
-        "avgRainfallInches": 65
+        "avgRainfallInches": 65,
+        "sunnyDays": 228
       },
       "economy": {
         "avgGasPrice": 2.85,
-        "costOfLiving": "Medium"
+        "costOfLiving": "Low"
+      },
+      "veteranBenefits": {
+        "description": "$5k deduction for >10% disability"
+      }
+    },
+    {
+      "state": "South Dakota",
+      "city": "Sioux Falls",
+      "governor": {
+        "party": "Republican"
+      },
+      "taxes": {
+        "salesTax": 4.2,
+        "incomeTax": 0
+      },
+      "marijuana": {
+        "status": "Medical"
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid continental",
+        "avgSnowfallInches": 45,
+        "avgRainfallInches": 28,
+        "sunnyDays": 211
+      },
+      "economy": {
+        "avgGasPrice": 2.91,
+        "costOfLiving": "Low"
       }
     },
     {
       "state": "Texas",
-      "city": "Austin",
+      "city": "El Paso",
       "governor": {
         "party": "Republican"
       },
@@ -41,203 +257,176 @@
         "incomeTax": 0
       },
       "marijuana": {
-        "status": "Illegal"
+        "status": "Medical"
       },
       "firearms": {
-        "laws": "Constitutional carry",
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
         "permitRequired": false
       },
-      "veteranBenefits": {
-        "description": "Property tax exemptions, Hazlewood Act for education"
-      },
       "climate": {
-        "type": "Humid subtropical",
-        "avgSnowfallInches": 0.1,
-        "avgRainfallInches": 34
+        "type": "Semi-arid, desert",
+        "avgSnowfallInches": 3.5,
+        "avgRainfallInches": 9,
+        "sunnyDays": 293
       },
       "economy": {
-        "avgGasPrice": 2.75,
+        "avgGasPrice": 2.96,
+        "costOfLiving": "Medium"
+      }
+    },
+    {
+      "state": "New Hampshire",
+      "city": "Manchester",
+      "governor": {
+        "party": "Republican"
+      },
+      "taxes": {
+        "salesTax": 0,
+        "incomeTax": 0
+      },
+      "marijuana": {
+        "status": "Decriminalized"
+      },
+      "firearms": {
+        "giffordScore": "C-",
+        "gunFriendliness": "Moderate",
+        "laws": "Shall Issue",
+        "permitRequired": true
+      },
+      "climate": {
+        "type": "Humid continental",
+        "avgSnowfallInches": 60,
+        "avgRainfallInches": 42,
+        "sunnyDays": 199
+      },
+      "economy": {
+        "avgGasPrice": 3.02,
         "costOfLiving": "High"
       }
     },
     {
-      "state": "Tennessee",
-      "city": "Nashville",
+      "state": "Wyoming",
+      "city": "Cheyenne",
       "governor": {
         "party": "Republican"
       },
       "taxes": {
-        "salesTax": 9.25,
+        "salesTax": 5.6,
         "incomeTax": 0
       },
       "marijuana": {
-        "status": "Illegal"
+        "status": "Medical"
       },
       "firearms": {
-        "laws": "Constitutional carry",
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
         "permitRequired": false
       },
-      "veteranBenefits": {
-        "description": "Property tax relief, disabled veteran benefits"
-      },
       "climate": {
-        "type": "Humid subtropical",
-        "avgSnowfallInches": 5,
-        "avgRainfallInches": 48
+        "type": "Cold continental / alpine",
+        "avgSnowfallInches": 65,
+        "avgRainfallInches": 15,
+        "sunnyDays": 233
       },
       "economy": {
-        "avgGasPrice": 2.80,
+        "avgGasPrice": 3.09,
+        "costOfLiving": "Low/Medium"
+      }
+    },
+    {
+      "state": "Maine",
+      "city": "Portland",
+      "governor": {
+        "party": "Democrat"
+      },
+      "taxes": {
+        "salesTax": 5.5,
+        "incomeTax": 7.15
+      },
+      "marijuana": {
+        "status": "Recreational"
+      },
+      "firearms": {
+        "giffordScore": "C+",
+        "gunFriendliness": "Moderate",
+        "laws": "Shall Issue",
+        "permitRequired": true
+      },
+      "climate": {
+        "type": "Humid continental",
+        "avgSnowfallInches": 61,
+        "avgRainfallInches": 47,
+        "sunnyDays": 200
+      },
+      "economy": {
+        "avgGasPrice": 3.09,
         "costOfLiving": "Medium"
       }
     },
     {
-      "state": "Nevada",
-      "city": "Las Vegas",
+      "state": "Alaska",
+      "city": "Anchorage",
       "governor": {
         "party": "Republican"
       },
       "taxes": {
-        "salesTax": 8.38,
+        "salesTax": 1.82,
         "incomeTax": 0
       },
       "marijuana": {
-        "status": "Legal"
+        "status": "Recreational"
       },
       "firearms": {
-        "laws": "Shall issue",
-        "permitRequired": true
-      },
-      "veteranBenefits": {
-        "description": "Property tax exemptions for disabled vets"
-      },
-      "climate": {
-        "type": "Desert",
-        "avgSnowfallInches": 0,
-        "avgRainfallInches": 4
-      },
-      "economy": {
-        "avgGasPrice": 3.25,
-        "costOfLiving": "Medium"
-      }
-    },
-    {
-      "state": "Arizona",
-      "city": "Phoenix",
-      "governor": {
-        "party": "Democrat"
-      },
-      "taxes": {
-        "salesTax": 8.6,
-        "incomeTax": 2.5
-      },
-      "marijuana": {
-        "status": "Legal"
-      },
-      "firearms": {
-        "laws": "Constitutional carry",
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
         "permitRequired": false
-      },
-      "veteranBenefits": {
-        "description": "Property tax exemptions, veteran services"
-      },
-      "climate": {
-        "type": "Desert",
-        "avgSnowfallInches": 0,
-        "avgRainfallInches": 8
-      },
-      "economy": {
-        "avgGasPrice": 3.10,
-        "costOfLiving": "Medium"
-      }
-    },
-    {
-      "state": "North Carolina",
-      "city": "Raleigh",
-      "governor": {
-        "party": "Democrat"
-      },
-      "taxes": {
-        "salesTax": 7.25,
-        "incomeTax": 4.75
-      },
-      "marijuana": {
-        "status": "Illegal"
-      },
-      "firearms": {
-        "laws": "Shall issue",
-        "permitRequired": true
-      },
-      "veteranBenefits": {
-        "description": "Property tax exclusions for disabled vets"
       },
       "climate": {
         "type": "Humid subtropical",
-        "avgSnowfallInches": 6,
-        "avgRainfallInches": 43
+        "avgSnowfallInches": 79,
+        "avgRainfallInches": 16,
+        "sunnyDays": 126
       },
       "economy": {
-        "avgGasPrice": 2.95,
-        "costOfLiving": "Medium"
-      }
-    },
-    {
-      "state": "Colorado",
-      "city": "Denver",
-      "governor": {
-        "party": "Democrat"
-      },
-      "taxes": {
-        "salesTax": 8.81,
-        "incomeTax": 4.4
-      },
-      "marijuana": {
-        "status": "Legal"
-      },
-      "firearms": {
-        "laws": "Shall issue",
-        "permitRequired": true
-      },
-      "veteranBenefits": {
-        "description": "Property tax exemptions for disabled vets"
-      },
-      "climate": {
-        "type": "Continental",
-        "avgSnowfallInches": 57,
-        "avgRainfallInches": 15
-      },
-      "economy": {
-        "avgGasPrice": 3.20,
+        "avgGasPrice": 3.8,
         "costOfLiving": "High"
+      },
+      "veteranBenefits": {
+        "description": "Disability rating 50%/more = $150k exemption"
       }
     },
     {
-      "state": "South Carolina",
-      "city": "Charleston",
+      "state": "Hawaii",
+      "city": "Honolulu",
       "governor": {
-        "party": "Republican"
+        "party": "Democrat"
       },
       "taxes": {
-        "salesTax": 9.0,
-        "incomeTax": 6.5
+        "salesTax": 4.5,
+        "incomeTax": 7.6
       },
       "marijuana": {
-        "status": "Illegal"
+        "status": "Decriminalized"
       },
       "firearms": {
-        "laws": "Shall issue",
+        "giffordScore": "A-",
+        "gunFriendliness": "Restrictive (Less 2A Friendly)",
+        "laws": "May Issue",
         "permitRequired": true
       },
-      "veteranBenefits": {
-        "description": "Property tax exemptions, VA hospital access"
-      },
       "climate": {
-        "type": "Humid subtropical",
-        "avgSnowfallInches": 1,
-        "avgRainfallInches": 51
+        "type": "Hot semi-arid",
+        "avgSnowfallInches": 0,
+        "avgRainfallInches": 16,
+        "sunnyDays": 271
       },
       "economy": {
-        "avgGasPrice": 2.88,
-        "costOfLiving": "Medium"
+        "avgGasPrice": 4.42,
+        "costOfLiving": "Very High"
       }
     }
   ]

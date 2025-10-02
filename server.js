@@ -1,7 +1,5 @@
 const express = require('express');
-const session = require('express-session');
 const expressLayouts = require('express-ejs-layouts');
-const methodOverride = require('method-override');
 const path = require('path');
 
 const app = express();
@@ -10,7 +8,6 @@ const PORT = process.env.PORT || 3010;
 // Initialize database
 const database = require('./database/init');
 const Location = require('./models/Location');
-const adminRoutes = require('./routes/admin');
 
 // Middleware
 app.set('view engine', 'ejs');
@@ -20,18 +17,6 @@ app.set('layout', false); // Disable default layout for all routes
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride('_method'));
-
-// Session configuration
-app.use(session({
-  secret: 'veteran-retirement-finder-secret-key-change-in-production',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    secure: false, // Set to true in production with HTTPS
-    maxAge: 24 * 60 * 60 * 1000 // 24 hours
-  }
-}));
 
 // Initialize database connection
 database.connect().catch(err => {
@@ -80,9 +65,6 @@ app.post('/results', async (req, res) => {
   }
 });
 
-// Admin routes
-app.use('/admin', adminRoutes);
-
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error('Unhandled error:', err);
@@ -109,6 +91,4 @@ process.on('SIGTERM', async () => {
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`Admin panel available at http://localhost:${PORT}/admin/login`);
-  console.log('Default admin credentials: admin / admin123');
 });
