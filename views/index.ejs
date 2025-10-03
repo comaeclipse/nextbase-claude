@@ -99,6 +99,7 @@
                 <tr>
                     <th>City</th>
                     <th>State</th>
+                    <th>Population</th>
                     <th>Governor</th>
                     <th>Sales Tax</th>
                     <th>Income Tax</th>
@@ -106,8 +107,10 @@
                     <th>Climate</th>
                     <th>Firearms</th>
                     <th>Marijuana</th>
+                    <th>LGBTQ Rank</th>
                     <th>Gas Price</th>
                     <th>Rainfall</th>
+                    <th>Snowfall</th>
                     <th>Vet Benefits</th>
                 </tr>
             </thead>
@@ -654,6 +657,7 @@ function renderCitiesTable(cities) {
         <tr>
             <td><strong>\${city.city}</strong></td>
             <td>\${city.state}</td>
+            <td>\${city.population ? city.population.toLocaleString() : 'N/A'}</td>
             <td><span class="table-badge">\${city.governor?.party || 'Unknown'}</span></td>
             <td>\${city.taxes?.salesTax || 0}%</td>
             <td>\${city.taxes?.incomeTax === 0 ? '<span class="table-badge highlight">No Tax</span>' : (city.taxes?.incomeTax || 0) + '%'}</td>
@@ -661,8 +665,10 @@ function renderCitiesTable(cities) {
             <td>\${city.climate?.type || 'N/A'}</td>
             <td>\${city.firearms?.laws || 'N/A'}</td>
             <td>\${city.marijuana?.status || 'N/A'}</td>
+            <td>\${city.lgbtq?.rank ? '#' + city.lgbtq.rank : 'N/A'}</td>
             <td>$\${city.economy?.avgGasPrice || 'N/A'}</td>
             <td>\${city.climate?.avgRainfallInches || 0}"</td>
+            <td>\${city.climate?.avgSnowfallInches || 0}"</td>
             <td>\${city.veteranBenefits ? '<span class="table-badge highlight">Yes</span>' : 'No'}</td>
         </tr>
     \`).join('');

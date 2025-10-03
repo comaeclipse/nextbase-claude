@@ -1,8 +1,43 @@
 {
   "locations": [
     {
+      "state": "Arkansas",
+      "city": "Little Rock",
+      "population": 545000,
+      "governor": {
+        "party": "Republican"
+      },
+      "taxes": {
+        "salesTax": 9.5,
+        "incomeTax": 3.9
+      },
+      "marijuana": {
+        "status": "Illegal"
+      },
+      "lgbtq": {
+        "rank": 138
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid subtropical",
+        "avgSnowfallInches": 4.1,
+        "avgRainfallInches": 50,
+        "sunnyDays": 219
+      },
+      "economy": {
+        "avgGasPrice": 2.7,
+        "costOfLiving": "94"
+      }
+    },
+    {
       "state": "Texas",
       "city": "Houston",
+      "population": 7122240,
       "governor": {
         "party": "Republican"
       },
@@ -12,6 +47,9 @@
       },
       "marijuana": {
         "status": "Medical"
+      },
+      "lgbtq": {
+        "rank": 103
       },
       "firearms": {
         "giffordScore": "F",
@@ -27,7 +65,7 @@
       },
       "economy": {
         "avgGasPrice": 2.74,
-        "costOfLiving": "Low/Medium"
+        "costOfLiving": "94"
       },
       "veteranBenefits": {
         "description": "Partial property tax reduction"
@@ -36,6 +74,7 @@
     {
       "state": "Alabama",
       "city": "Huntsville",
+      "population": 504712,
       "governor": {
         "party": "Republican"
       },
@@ -45,6 +84,9 @@
       },
       "marijuana": {
         "status": "Decriminalized"
+      },
+      "lgbtq": {
+        "rank": 160
       },
       "firearms": {
         "giffordScore": "F",
@@ -60,12 +102,13 @@
       },
       "economy": {
         "avgGasPrice": 2.74,
-        "costOfLiving": "Low"
+        "costOfLiving": "91"
       }
     },
     {
       "state": "Alabama",
       "city": "Mobile",
+      "population": 411640,
       "governor": {
         "party": "Republican"
       },
@@ -75,6 +118,9 @@
       },
       "marijuana": {
         "status": "Decriminalized"
+      },
+      "lgbtq": {
+        "rank": 180
       },
       "firearms": {
         "giffordScore": "F",
@@ -90,12 +136,13 @@
       },
       "economy": {
         "avgGasPrice": 2.75,
-        "costOfLiving": "Low"
+        "costOfLiving": "93"
       }
     },
     {
       "state": "Tennessee",
       "city": "Nashville",
+      "population": 2072283,
       "governor": {
         "party": "Republican"
       },
@@ -105,6 +152,9 @@
       },
       "marijuana": {
         "status": "Illegal"
+      },
+      "lgbtq": {
+        "rank": 73
       },
       "firearms": {
         "giffordScore": "F",
@@ -120,12 +170,13 @@
       },
       "economy": {
         "avgGasPrice": 2.78,
-        "costOfLiving": "Low"
+        "costOfLiving": "98"
       }
     },
     {
       "state": "Wisconsin",
       "city": "Milwaukee",
+      "population": 1574731,
       "governor": {
         "party": "Democrat"
       },
@@ -135,6 +186,9 @@
       },
       "marijuana": {
         "status": "Medical"
+      },
+      "lgbtq": {
+        "rank": 43
       },
       "firearms": {
         "giffordScore": "C",
@@ -150,12 +204,13 @@
       },
       "economy": {
         "avgGasPrice": 2.82,
-        "costOfLiving": "Medium"
+        "costOfLiving": "101"
       }
     },
     {
       "state": "Kentucky",
       "city": "Louisville",
+      "population": 1365557,
       "governor": {
         "party": "Republican"
       },
@@ -165,6 +220,9 @@
       },
       "marijuana": {
         "status": "Medical"
+      },
+      "lgbtq": {
+        "rank": 72
       },
       "firearms": {
         "giffordScore": "F",
@@ -180,12 +238,13 @@
       },
       "economy": {
         "avgGasPrice": 2.83,
-        "costOfLiving": "Low"
+        "costOfLiving": "93"
       }
     },
     {
       "state": "Florida",
       "city": "Pensacola",
+      "population": 509905,
       "governor": {
         "party": "Republican"
       },
@@ -195,6 +254,9 @@
       },
       "marijuana": {
         "status": "Medical"
+      },
+      "lgbtq": {
+        "rank": null
       },
       "firearms": {
         "giffordScore": "C-",
@@ -210,15 +272,50 @@
       },
       "economy": {
         "avgGasPrice": 2.85,
-        "costOfLiving": "Low"
+        "costOfLiving": "96"
       },
       "veteranBenefits": {
         "description": "$5k deduction for >10% disability"
       }
     },
     {
+      "state": "Iowa",
+      "city": "Des Moines",
+      "population": 579000,
+      "governor": {
+        "party": "Republican"
+      },
+      "taxes": {
+        "salesTax": 7,
+        "incomeTax": 5
+      },
+      "marijuana": {
+        "status": "Medical"
+      },
+      "lgbtq": {
+        "rank": 126
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid continental",
+        "avgSnowfallInches": 36.5,
+        "avgRainfallInches": 36,
+        "sunnyDays": 202
+      },
+      "economy": {
+        "avgGasPrice": 2.89,
+        "costOfLiving": "85"
+      }
+    },
+    {
       "state": "South Dakota",
       "city": "Sioux Falls",
+      "population": 308266,
       "governor": {
         "party": "Republican"
       },
@@ -228,6 +325,9 @@
       },
       "marijuana": {
         "status": "Medical"
+      },
+      "lgbtq": {
+        "rank": 153
       },
       "firearms": {
         "giffordScore": "F",
@@ -243,12 +343,47 @@
       },
       "economy": {
         "avgGasPrice": 2.91,
-        "costOfLiving": "Low"
+        "costOfLiving": "91"
+      }
+    },
+    {
+      "state": "Georgia",
+      "city": "Atlanta",
+      "population": 6307261,
+      "governor": {
+        "party": "Republican"
+      },
+      "taxes": {
+        "salesTax": 8.9,
+        "incomeTax": 5.39
+      },
+      "marijuana": {
+        "status": "Decriminalized"
+      },
+      "lgbtq": {
+        "rank": 10
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid subtropical",
+        "avgSnowfallInches": 2,
+        "avgRainfallInches": 50,
+        "sunnyDays": 217
+      },
+      "economy": {
+        "avgGasPrice": 2.92,
+        "costOfLiving": "96"
       }
     },
     {
       "state": "Texas",
       "city": "El Paso",
+      "population": 678760,
       "governor": {
         "party": "Republican"
       },
@@ -259,6 +394,9 @@
       "marijuana": {
         "status": "Medical"
       },
+      "lgbtq": {
+        "rank": 146
+      },
       "firearms": {
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
@@ -266,19 +404,20 @@
         "permitRequired": false
       },
       "climate": {
-        "type": "Semi-arid, desert",
+        "type": "Semi-arid desert",
         "avgSnowfallInches": 3.5,
         "avgRainfallInches": 9,
         "sunnyDays": 293
       },
       "economy": {
         "avgGasPrice": 2.96,
-        "costOfLiving": "Medium"
+        "costOfLiving": "88"
       }
     },
     {
       "state": "New Hampshire",
       "city": "Manchester",
+      "population": 422937,
       "governor": {
         "party": "Republican"
       },
@@ -288,6 +427,9 @@
       },
       "marijuana": {
         "status": "Decriminalized"
+      },
+      "lgbtq": {
+        "rank": null
       },
       "firearms": {
         "giffordScore": "C-",
@@ -303,12 +445,13 @@
       },
       "economy": {
         "avgGasPrice": 3.02,
-        "costOfLiving": "High"
+        "costOfLiving": "112"
       }
     },
     {
       "state": "Wyoming",
       "city": "Cheyenne",
+      "population": 65704,
       "governor": {
         "party": "Republican"
       },
@@ -318,6 +461,9 @@
       },
       "marijuana": {
         "status": "Medical"
+      },
+      "lgbtq": {
+        "rank": null
       },
       "firearms": {
         "giffordScore": "F",
@@ -333,12 +479,13 @@
       },
       "economy": {
         "avgGasPrice": 3.09,
-        "costOfLiving": "Low/Medium"
+        "costOfLiving": "99"
       }
     },
     {
       "state": "Maine",
       "city": "Portland",
+      "population": 556893,
       "governor": {
         "party": "Democrat"
       },
@@ -348,6 +495,9 @@
       },
       "marijuana": {
         "status": "Recreational"
+      },
+      "lgbtq": {
+        "rank": null
       },
       "firearms": {
         "giffordScore": "C+",
@@ -363,12 +513,115 @@
       },
       "economy": {
         "avgGasPrice": 3.09,
-        "costOfLiving": "Medium"
+        "costOfLiving": "113"
+      }
+    },
+    {
+      "state": "Arizona",
+      "city": "Tuscon",
+      "population": 1043433,
+      "governor": {
+        "party": "Democrat"
+      },
+      "taxes": {
+        "salesTax": 8.7,
+        "incomeTax": 2.5
+      },
+      "marijuana": {
+        "status": "Recreational"
+      },
+      "lgbtq": {
+        "rank": null
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Hot desert",
+        "avgSnowfallInches": 0,
+        "avgRainfallInches": 11,
+        "sunnyDays": 284
+      },
+      "economy": {
+        "avgGasPrice": 3.23,
+        "costOfLiving": "103"
+      }
+    },
+    {
+      "state": "Utah",
+      "city": "Salt Lake City",
+      "population": 1257936,
+      "governor": {
+        "party": "Republican"
+      },
+      "taxes": {
+        "salesTax": 8.45,
+        "incomeTax": 4.55
+      },
+      "marijuana": {
+        "status": "Medical"
+      },
+      "lgbtq": {
+        "rank": 20
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid continental",
+        "avgSnowfallInches": 56,
+        "avgRainfallInches": 11,
+        "sunnyDays": 255
+      },
+      "economy": {
+        "avgGasPrice": 3.35,
+        "costOfLiving": "108"
+      }
+    },
+    {
+      "state": "Arizona",
+      "city": "Phoenix",
+      "population": 4948203,
+      "governor": {
+        "party": "Democrat"
+      },
+      "taxes": {
+        "salesTax": 9.1,
+        "incomeTax": 2.5
+      },
+      "marijuana": {
+        "status": "Recreational"
+      },
+      "lgbtq": {
+        "rank": 102
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Hot desert",
+        "avgSnowfallInches": 0,
+        "avgRainfallInches": 7,
+        "sunnyDays": 296
+      },
+      "economy": {
+        "avgGasPrice": 3.8,
+        "costOfLiving": "107"
       }
     },
     {
       "state": "Alaska",
       "city": "Anchorage",
+      "population": 398807,
       "governor": {
         "party": "Republican"
       },
@@ -378,6 +631,9 @@
       },
       "marijuana": {
         "status": "Recreational"
+      },
+      "lgbtq": {
+        "rank": 71
       },
       "firearms": {
         "giffordScore": "F",
@@ -393,15 +649,50 @@
       },
       "economy": {
         "avgGasPrice": 3.8,
-        "costOfLiving": "High"
+        "costOfLiving": "123"
       },
       "veteranBenefits": {
         "description": "Disability rating 50%/more = $150k exemption"
       }
     },
     {
+      "state": "Nevada",
+      "city": "Las Vegas",
+      "population": 2400000,
+      "governor": {
+        "party": "Republican"
+      },
+      "taxes": {
+        "salesTax": 8.38,
+        "incomeTax": 0
+      },
+      "marijuana": {
+        "status": "Recreational"
+      },
+      "lgbtq": {
+        "rank": 17
+      },
+      "firearms": {
+        "giffordScore": "B-",
+        "gunFriendliness": "Fair (Some Restrictions)",
+        "laws": "Shall Issue",
+        "permitRequired": true
+      },
+      "climate": {
+        "type": "Arid desert",
+        "avgSnowfallInches": 0,
+        "avgRainfallInches": 5,
+        "sunnyDays": 292
+      },
+      "economy": {
+        "avgGasPrice": 3.94,
+        "costOfLiving": "102"
+      }
+    },
+    {
       "state": "Hawaii",
       "city": "Honolulu",
+      "population": 998747,
       "governor": {
         "party": "Democrat"
       },
@@ -411,6 +702,9 @@
       },
       "marijuana": {
         "status": "Decriminalized"
+      },
+      "lgbtq": {
+        "rank": 93
       },
       "firearms": {
         "giffordScore": "A-",
@@ -426,7 +720,7 @@
       },
       "economy": {
         "avgGasPrice": 4.42,
-        "costOfLiving": "Very High"
+        "costOfLiving": "186"
       }
     }
   ]
