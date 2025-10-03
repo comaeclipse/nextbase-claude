@@ -97,21 +97,21 @@
         <table class="cities-table" id="citiesTable">
             <thead>
                 <tr>
-                    <th>City</th>
-                    <th>State</th>
-                    <th>Population</th>
-                    <th>Governor</th>
-                    <th>Sales Tax</th>
-                    <th>Income Tax</th>
-                    <th>Cost of Living</th>
-                    <th>Climate</th>
-                    <th>Firearms</th>
-                    <th>Marijuana</th>
-                    <th>LGBTQ Rank</th>
-                    <th>Gas Price</th>
-                    <th>Rainfall</th>
-                    <th>Snowfall</th>
-                    <th>Vet Benefits</th>
+                    <th data-column="city">City</th>
+                    <th data-column="state">State</th>
+                    <th data-column="population">Population</th>
+                    <th data-column="governor">Governor</th>
+                    <th data-column="salesTax">Sales Tax</th>
+                    <th data-column="incomeTax">Income Tax</th>
+                    <th data-column="costOfLiving">Cost of Living</th>
+                    <th data-column="climate">Climate</th>
+                    <th data-column="firearms">Firearms</th>
+                    <th data-column="marijuana">Marijuana</th>
+                    <th data-column="lgbtq">LGBTQ Rank</th>
+                    <th data-column="gasPrice">Gas Price</th>
+                    <th data-column="rainfall">Rainfall</th>
+                    <th data-column="snowfall">Snowfall</th>
+                    <th data-column="vetBenefits">Vet Benefits</th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -490,6 +490,12 @@
     position: sticky;
     top: 0;
     z-index: 10;
+    cursor: pointer;
+    user-select: none;
+}
+
+.cities-table th:hover {
+    background-color: var(--bg-color);
 }
 
 .cities-table td {
@@ -581,6 +587,8 @@
 <script>
 let allCities = [];
 let currentView = 'grid';
+let sortColumn = null;
+let sortDirection = 'asc';
 
 // Fetch cities data
 async function loadCities() {
@@ -649,6 +657,88 @@ function renderCitiesGrid(cities) {
     \`).join('');
 }
 
+// Sort cities by column
+function sortCities(cities, column) {
+    const sorted = [...cities].sort((a, b) => {
+        let valA, valB;
+
+        switch(column) {
+            case 'city':
+                valA = a.city || '';
+                valB = b.city || '';
+                break;
+            case 'state':
+                valA = a.state || '';
+                valB = b.state || '';
+                break;
+            case 'population':
+                valA = a.population || 0;
+                valB = b.population || 0;
+                break;
+            case 'governor':
+                valA = a.governor?.party || '';
+                valB = b.governor?.party || '';
+                break;
+            case 'salesTax':
+                valA = a.taxes?.salesTax || 0;
+                valB = b.taxes?.salesTax || 0;
+                break;
+            case 'incomeTax':
+                valA = a.taxes?.incomeTax || 0;
+                valB = b.taxes?.incomeTax || 0;
+                break;
+            case 'costOfLiving':
+                valA = parseFloat(a.economy?.costOfLiving) || 0;
+                valB = parseFloat(b.economy?.costOfLiving) || 0;
+                break;
+            case 'climate':
+                valA = a.climate?.type || '';
+                valB = b.climate?.type || '';
+                break;
+            case 'firearms':
+                valA = a.firearms?.laws || '';
+                valB = b.firearms?.laws || '';
+                break;
+            case 'marijuana':
+                valA = a.marijuana?.status || '';
+                valB = b.marijuana?.status || '';
+                break;
+            case 'lgbtq':
+                valA = a.lgbtq?.rank || 999;
+                valB = b.lgbtq?.rank || 999;
+                break;
+            case 'gasPrice':
+                valA = a.economy?.avgGasPrice || 0;
+                valB = b.economy?.avgGasPrice || 0;
+                break;
+            case 'rainfall':
+                valA = a.climate?.avgRainfallInches || 0;
+                valB = b.climate?.avgRainfallInches || 0;
+                break;
+            case 'snowfall':
+                valA = a.climate?.avgSnowfallInches || 0;
+                valB = b.climate?.avgSnowfallInches || 0;
+                break;
+            case 'vetBenefits':
+                valA = a.veteranBenefits ? 1 : 0;
+                valB = b.veteranBenefits ? 1 : 0;
+                break;
+            default:
+                return 0;
+        }
+
+        if (typeof valA === 'string') {
+            valA = valA.toLowerCase();
+            valB = valB.toLowerCase();
+            return sortDirection === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+        } else {
+            return sortDirection === 'asc' ? valA - valB : valB - valA;
+        }
+    });
+
+    return sorted;
+}
+
 // Render table view
 function renderCitiesTable(cities) {
     const tbody = document.querySelector('#citiesTable tbody');
@@ -689,11 +779,33 @@ function renderCities(cities) {
 
     noResults.style.display = 'none';
 
-    if (currentView === 'grid') {
-        renderCitiesGrid(cities);
-    } else {
-        renderCitiesTable(cities);
+    // Apply sorting if we're in table view and have a sort column
+    let displayCities = cities;
+    if (currentView === 'table' && sortColumn) {
+        displayCities = sortCities(cities, sortColumn);
     }
+
+    if (currentView === 'grid') {
+        renderCitiesGrid(displayCities);
+    } else {
+        renderCitiesTable(displayCities);
+    }
+}
+
+// Handle table header clicks for sorting
+function handleTableSort(column) {
+    if (sortColumn === column) {
+        // Toggle direction if clicking same column
+        sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+        // New column, default to ascending
+        sortColumn = column;
+        sortDirection = 'asc';
+    }
+
+    // Re-render with current filtered data
+    const currentData = getCurrentFilteredCities();
+    renderCities(currentData);
 }
 
 // Filter cities
@@ -746,6 +858,9 @@ function toggleView(view) {
     if (view === 'grid') {
         grid.style.display = 'grid';
         tableWrapper.style.display = 'none';
+        // Reset sorting when switching to grid view
+        sortColumn = null;
+        sortDirection = 'asc';
     } else {
         grid.style.display = 'none';
         tableWrapper.style.display = 'block';
@@ -788,6 +903,13 @@ document.getElementById('clearFilters').addEventListener('click', clearFilters);
 // View toggle event listeners
 document.querySelectorAll('.view-btn').forEach(btn => {
     btn.addEventListener('click', () => toggleView(btn.dataset.view));
+});
+
+// Table header click listeners for sorting
+document.querySelectorAll('#citiesTable th[data-column]').forEach(header => {
+    header.addEventListener('click', () => {
+        handleTableSort(header.dataset.column);
+    });
 });
 
 // Load cities on page load
