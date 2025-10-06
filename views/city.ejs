@@ -199,12 +199,12 @@
                     <span class="detail-label">VA Clinic</span>
                     <span class="detail-value">${location.vaFacilities ? '<span class="highlight-badge">Available</span>' : 'Not Available'}</span>
                 </div>
-                ${location.veteranBenefits?.description ? \`
+                ${location.veteranBenefits?.description ? `
                 <div class="detail-item full-width">
                     <span class="detail-label">Additional Benefits</span>
-                    <span class="detail-value">\${location.veteranBenefits.description}</span>
+                    <span class="detail-value">${location.veteranBenefits.description}</span>
                 </div>
-                \` : ''}
+                ` : ''}
             </div>
         </section>
         ` : ''}
