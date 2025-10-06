@@ -1074,10 +1074,10 @@ function updateFilterText() {
         // Single filter selected - show specific description
         const filter = selectedBubbles[0].dataset.filter;
         const description = filterDescriptions[filter] || 'matching your preferences';
-        text = `Showing ${cityCount} ${cityCount === 1 ? 'city' : 'cities'} ${description}`;
+        text = 'Showing ' + cityCount + ' ' + (cityCount === 1 ? 'city' : 'cities') + ' ' + description;
     } else {
         // Multiple filters selected - show generic message
-        text = `Showing ${cityCount} ${cityCount === 1 ? 'city' : 'cities'} matching your preferences`;
+        text = 'Showing ' + cityCount + ' ' + (cityCount === 1 ? 'city' : 'cities') + ' matching your preferences';
     }
 
     filterTextEl.textContent = text;
