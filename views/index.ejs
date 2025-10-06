@@ -95,6 +95,8 @@
     </div>
 </div>
 
+<div class="filter-results-text" id="filterResultsText" style="display: none;"></div>
+
 <div class="cities-container" id="citiesContainer">
     <div class="cities-grid" id="citiesGrid">
         <!-- City cards will be dynamically loaded here -->
@@ -367,6 +369,17 @@
     background-color: var(--primary-color);
     border-color: var(--primary-color);
     color: white;
+}
+
+/* Filter Results Text */
+.filter-results-text {
+    text-align: center;
+    padding: var(--spacing-lg) var(--spacing-lg) 0;
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
 }
 
 /* Cities Container */
@@ -1031,6 +1044,46 @@ function getCurrentFilteredCities() {
     });
 }
 
+// Update filter results text
+function updateFilterText() {
+    const filterTextEl = document.getElementById('filterResultsText');
+    const selectedBubbles = document.querySelectorAll('.bubble-choice.selected');
+    const currentCities = getCurrentFilteredCities();
+    const cityCount = currentCities.length;
+
+    // If no bubbles are selected, hide the text
+    if (selectedBubbles.length === 0) {
+        filterTextEl.style.display = 'none';
+        return;
+    }
+
+    // Get filter descriptions
+    const filterDescriptions = {
+        'cheap-gas': 'where gas prices are less than the average of $3.13',
+        'low-tax': 'with no state income tax',
+        'mild-winters': 'with Mediterranean climate',
+        'ocean': 'near the ocean',
+        'snow': 'with 30+ inches of snowfall annually',
+        'warm': 'with tropical climate',
+        'mountains': 'in mountain states'
+    };
+
+    let text = '';
+
+    if (selectedBubbles.length === 1) {
+        // Single filter selected - show specific description
+        const filter = selectedBubbles[0].dataset.filter;
+        const description = filterDescriptions[filter] || 'matching your preferences';
+        text = `Showing ${cityCount} ${cityCount === 1 ? 'city' : 'cities'} ${description}`;
+    } else {
+        // Multiple filters selected - show generic message
+        text = `Showing ${cityCount} ${cityCount === 1 ? 'city' : 'cities'} matching your preferences`;
+    }
+
+    filterTextEl.textContent = text;
+    filterTextEl.style.display = 'block';
+}
+
 // Event listeners
 document.getElementById('climateFilter').addEventListener('change', filterCities);
 document.getElementById('costFilter').addEventListener('change', filterCities);
@@ -1073,6 +1126,7 @@ function applyBubbleFilters() {
     // If no bubbles selected, show all cities (respecting other filters)
     if (selectedBubbles.length === 0) {
         filterCities();
+        updateFilterText();
         return;
     }
 
@@ -1129,5 +1183,6 @@ function applyBubbleFilters() {
     });
 
     renderCities(filtered);
+    updateFilterText();
 }
 </script>` }) %>
