@@ -338,12 +338,12 @@
 }
 
 .bubble-choice {
-    padding: var(--spacing-md) var(--spacing-xl);
+    padding: var(--spacing-sm) var(--spacing-lg);
     background-color: var(--bg-secondary);
     border: 2px solid var(--border-color);
     border-radius: 50px;
     color: var(--text-color);
-    font-size: 1rem;
+    font-size: 0.875rem;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -1057,69 +1057,74 @@ loadCities();
 // Bubble choice filtering
 document.querySelectorAll('.bubble-choice').forEach(bubble => {
     bubble.addEventListener('click', () => {
-        const filter = bubble.dataset.filter;
+        // Toggle selected class on clicked bubble
+        bubble.classList.toggle('selected');
 
-        // Remove selected class from all bubbles
-        document.querySelectorAll('.bubble-choice').forEach(b => b.classList.remove('selected'));
-
-        // Add selected class to clicked bubble
-        bubble.classList.add('selected');
-
-        // Apply filter based on the bubble clicked
-        switch(filter) {
-            case 'mild-winters':
-                document.getElementById('climateFilter').value = 'Mediterranean';
-                break;
-            case 'ocean':
-                // Filter for coastal states - we'll need to implement custom logic
-                filterByOcean();
-                return; // Skip the normal filter call
-            case 'snow':
-                // Filter for areas with good snowfall
-                filterBySnow();
-                return; // Skip the normal filter call
-            case 'warm':
-                document.getElementById('climateFilter').value = 'Tropical';
-                break;
-            case 'low-tax':
-                document.getElementById('taxFilter').value = '0';
-                break;
-            case 'mountains':
-                // Filter for mountain areas - custom logic
-                filterByMountains();
-                return; // Skip the normal filter call
-        }
-
-        // Trigger filter update
-        filterCities();
+        // Apply filters based on all selected bubbles
+        applyBubbleFilters();
     });
 });
 
-// Custom filter for ocean proximity
-function filterByOcean() {
+// Apply filters based on selected bubbles
+function applyBubbleFilters() {
+    const selectedBubbles = document.querySelectorAll('.bubble-choice.selected');
+
+    // If no bubbles selected, show all cities (respecting other filters)
+    if (selectedBubbles.length === 0) {
+        filterCities();
+        return;
+    }
+
+    // Get all selected filter types
+    const selectedFilters = Array.from(selectedBubbles).map(b => b.dataset.filter);
+
+    // Filter cities based on selected bubbles (OR logic - city matches if it satisfies ANY bubble)
     const coastalStates = ['California', 'Florida', 'Washington', 'Oregon', 'Maine', 'North Carolina',
                           'South Carolina', 'Georgia', 'Virginia', 'Maryland', 'Delaware', 'New Jersey',
                           'New York', 'Connecticut', 'Rhode Island', 'Massachusetts', 'New Hampshire',
                           'Texas', 'Louisiana', 'Mississippi', 'Alabama', 'Alaska', 'Hawaii'];
 
-    const filtered = allCities.filter(city => coastalStates.includes(city.state));
-    renderCities(filtered);
-}
-
-// Custom filter for snow adventures
-function filterBySnow() {
-    const filtered = allCities.filter(city => {
-        return city.climate?.avgSnowfallInches > 30;
-    });
-    renderCities(filtered);
-}
-
-// Custom filter for mountains
-function filterByMountains() {
     const mountainStates = ['Colorado', 'Montana', 'Wyoming', 'Idaho', 'Utah', 'New Mexico',
                            'Arizona', 'Nevada', 'Washington', 'Oregon', 'California', 'Alaska'];
 
-    const filtered = allCities.filter(city => mountainStates.includes(city.state));
+    // Start with existing filter criteria
+    const climate = document.getElementById('climateFilter').value;
+    const cost = document.getElementById('costFilter').value;
+    const tax = document.getElementById('taxFilter').value;
+    const firearms = document.getElementById('firearmsFilter').value;
+    const marijuana = document.getElementById('marijuanaFilter').value;
+    const vetBenefits = document.getElementById('vetBenefitsFilter').checked;
+
+    const filtered = allCities.filter(city => {
+        // First apply regular filters
+        if (climate && city.climate?.type !== climate) return false;
+        if (cost && city.economy?.costOfLiving !== cost) return false;
+        if (tax && city.taxes?.incomeTax.toString() !== tax) return false;
+        if (firearms && city.firearms?.laws !== firearms) return false;
+        if (marijuana && city.marijuana?.status !== marijuana) return false;
+        if (vetBenefits && !city.veteranBenefits) return false;
+
+        // Then check if city matches ANY of the selected bubble filters
+        return selectedFilters.some(filter => {
+            switch(filter) {
+                case 'mild-winters':
+                    return city.climate?.type === 'Mediterranean';
+                case 'ocean':
+                    return coastalStates.includes(city.state);
+                case 'snow':
+                    return city.climate?.avgSnowfallInches > 30;
+                case 'warm':
+                    return city.climate?.type === 'Tropical';
+                case 'low-tax':
+                    return city.taxes?.incomeTax === 0;
+                case 'mountains':
+                    return mountainStates.includes(city.state);
+                default:
+                    return false;
+            }
+        });
+    });
+
     renderCities(filtered);
 }
 </script>` }) %>
