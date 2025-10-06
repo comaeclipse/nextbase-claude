@@ -434,9 +434,9 @@
       },
       "firearms": {
         "giffordScore": "C-",
-        "gunFriendliness": "Moderate",
+        "gunFriendliness": "Good (Permitless/Shall Issue)",
         "laws": "Shall Issue",
-        "permitRequired": true
+        "permitRequired": false
       },
       "climate": {
         "type": "Humid subtropical",
@@ -829,9 +829,9 @@
       },
       "firearms": {
         "giffordScore": "C-",
-        "gunFriendliness": "Moderate",
+        "gunFriendliness": "Good (Permitless/Shall Issue)",
         "laws": "Shall Issue",
-        "permitRequired": true
+        "permitRequired": false
       },
       "climate": {
         "type": "Humid continental",
@@ -1392,9 +1392,9 @@
       },
       "firearms": {
         "giffordScore": "C-",
-        "gunFriendliness": "Moderate",
+        "gunFriendliness": "Good (Permitless/Shall Issue)",
         "laws": "Shall Issue",
-        "permitRequired": true
+        "permitRequired": false
       },
       "climate": {
         "type": "Hot-summer humid continental",

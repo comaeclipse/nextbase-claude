@@ -433,11 +433,13 @@
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
+    text-decoration: none;
 }
 
 .learn-more:hover {
     background-color: var(--primary-hover);
     transform: translateY(-1px);
+    color: white;
 }
 
 /* Loading State */
@@ -616,7 +618,10 @@ async function loadCities() {
 function renderCitiesGrid(cities) {
     const grid = document.getElementById('citiesGrid');
 
-    grid.innerHTML = cities.map(city => \`
+    grid.innerHTML = cities.map(city => {
+        const cityUrl = \`/\${city.state.toLowerCase()}/\${city.city.toLowerCase().replace(/\s+/g, '')}\`;
+
+        return \`
         <div class="city-card">
             <div class="city-card-header">
                 <span class="governor-badge">\${city.governor?.party || 'Unknown'}</span>
@@ -657,13 +662,14 @@ function renderCitiesGrid(cities) {
                     </div>
                 \` : ''}
 
-                <button class="learn-more">
+                <a href="\${cityUrl}" class="learn-more">
                     <span>Learn More</span>
                     <i class="fas fa-arrow-right"></i>
-                </button>
+                </a>
             </div>
         </div>
-    \`).join('');
+        \`;
+    }).join('');
 }
 
 // Sort cities by column
@@ -789,6 +795,8 @@ function renderCitiesTable(cities) {
     const tbody = document.querySelector('#citiesTable tbody');
 
     tbody.innerHTML = cities.map(city => {
+        const cityUrl = \`/\${city.state.toLowerCase()}/\${city.city.toLowerCase().replace(/\s+/g, '')}\`;
+
         // State party badge with color
         let statePartyBadge = 'N/A';
         if (city.stateParty === 'R') {
@@ -798,7 +806,7 @@ function renderCitiesTable(cities) {
         }
 
         return \`
-        <tr>
+        <tr onclick="window.location.href='\${cityUrl}'" style="cursor: pointer;">
             <td><strong>\${city.city}</strong></td>
             <td>\${city.state}</td>
             <td>\${city.county || 'N/A'}</td>

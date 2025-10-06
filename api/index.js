@@ -84,6 +84,32 @@ app.post('/results', async (req, res) => {
   }
 });
 
+// City detail page route
+app.get('/:state/:city', (req, res) => {
+  try {
+    const { state, city } = req.params;
+    const data = database.getData();
+
+    // Find the location matching the state and city (case-insensitive)
+    const location = data.locations.find(loc =>
+      loc.state.toLowerCase() === state.toLowerCase() &&
+      loc.city.toLowerCase().replace(/\s+/g, '') === city.toLowerCase().replace(/\s+/g, '')
+    );
+
+    if (!location) {
+      return res.status(404).send('City not found');
+    }
+
+    res.render('city', {
+      title: `${location.city}, ${location.state}`,
+      location
+    });
+  } catch (error) {
+    console.error('Error fetching city details:', error);
+    res.status(500).send('Error loading city details');
+  }
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error('Unhandled error:', err);
