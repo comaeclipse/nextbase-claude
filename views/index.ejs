@@ -81,7 +81,17 @@
 
 <div class="hero-header">
     <h1>Find Your Perfect Retirement City</h1>
-    <p>Browse cities and use filters above to find your ideal location</p>
+    <div class="hero-card">
+        <div class="hero-prompt">I want to live...</div>
+        <div class="bubble-choices">
+            <button class="bubble-choice" data-filter="mild-winters">somewhere with mild winters</button>
+            <button class="bubble-choice" data-filter="ocean">near the ocean</button>
+            <button class="bubble-choice" data-filter="snow">snow adventures</button>
+            <button class="bubble-choice" data-filter="warm">year-round warmth</button>
+            <button class="bubble-choice" data-filter="low-tax">in a low-tax state</button>
+            <button class="bubble-choice" data-filter="mountains">in the mountains</button>
+        </div>
+    </div>
 </div>
 
 <div class="cities-container" id="citiesContainer">
@@ -299,6 +309,63 @@
 .hero-header p {
     font-size: 1.125rem;
     color: var(--text-secondary);
+}
+
+/* Hero Card */
+.hero-card {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+    margin-top: var(--spacing-xl);
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.hero-prompt {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.bubble-choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    justify-content: center;
+    align-items: center;
+}
+
+.bubble-choice {
+    padding: var(--spacing-md) var(--spacing-xl);
+    background-color: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: 50px;
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.bubble-choice:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.bubble-choice:active {
+    transform: translateY(0);
+}
+
+.bubble-choice.selected {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
 }
 
 /* Cities Container */
@@ -986,4 +1053,73 @@ document.querySelectorAll('#citiesTable th[data-column]').forEach(header => {
 
 // Load cities on page load
 loadCities();
+
+// Bubble choice filtering
+document.querySelectorAll('.bubble-choice').forEach(bubble => {
+    bubble.addEventListener('click', () => {
+        const filter = bubble.dataset.filter;
+
+        // Remove selected class from all bubbles
+        document.querySelectorAll('.bubble-choice').forEach(b => b.classList.remove('selected'));
+
+        // Add selected class to clicked bubble
+        bubble.classList.add('selected');
+
+        // Apply filter based on the bubble clicked
+        switch(filter) {
+            case 'mild-winters':
+                document.getElementById('climateFilter').value = 'Mediterranean';
+                break;
+            case 'ocean':
+                // Filter for coastal states - we'll need to implement custom logic
+                filterByOcean();
+                return; // Skip the normal filter call
+            case 'snow':
+                // Filter for areas with good snowfall
+                filterBySnow();
+                return; // Skip the normal filter call
+            case 'warm':
+                document.getElementById('climateFilter').value = 'Tropical';
+                break;
+            case 'low-tax':
+                document.getElementById('taxFilter').value = '0';
+                break;
+            case 'mountains':
+                // Filter for mountain areas - custom logic
+                filterByMountains();
+                return; // Skip the normal filter call
+        }
+
+        // Trigger filter update
+        filterCities();
+    });
+});
+
+// Custom filter for ocean proximity
+function filterByOcean() {
+    const coastalStates = ['California', 'Florida', 'Washington', 'Oregon', 'Maine', 'North Carolina',
+                          'South Carolina', 'Georgia', 'Virginia', 'Maryland', 'Delaware', 'New Jersey',
+                          'New York', 'Connecticut', 'Rhode Island', 'Massachusetts', 'New Hampshire',
+                          'Texas', 'Louisiana', 'Mississippi', 'Alabama', 'Alaska', 'Hawaii'];
+
+    const filtered = allCities.filter(city => coastalStates.includes(city.state));
+    renderCities(filtered);
+}
+
+// Custom filter for snow adventures
+function filterBySnow() {
+    const filtered = allCities.filter(city => {
+        return city.climate?.avgSnowfallInches > 30;
+    });
+    renderCities(filtered);
+}
+
+// Custom filter for mountains
+function filterByMountains() {
+    const mountainStates = ['Colorado', 'Montana', 'Wyoming', 'Idaho', 'Utah', 'New Mexico',
+                           'Arizona', 'Nevada', 'Washington', 'Oregon', 'California', 'Alaska'];
+
+    const filtered = allCities.filter(city => mountainStates.includes(city.state));
+    renderCities(filtered);
+}
 </script>` }) %>
