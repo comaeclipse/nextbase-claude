@@ -90,6 +90,7 @@
             <button class="bubble-choice" data-filter="warm">year-round warmth</button>
             <button class="bubble-choice" data-filter="low-tax">in a low-tax state</button>
             <button class="bubble-choice" data-filter="mountains">in the mountains</button>
+            <button class="bubble-choice" data-filter="cheap-gas">affordable fuel</button>
         </div>
     </div>
 </div>
@@ -1119,6 +1120,8 @@ function applyBubbleFilters() {
                     return city.taxes?.incomeTax === 0;
                 case 'mountains':
                     return mountainStates.includes(city.state);
+                case 'cheap-gas':
+                    return city.economy?.avgGasPrice < 3.13;
                 default:
                     return false;
             }
