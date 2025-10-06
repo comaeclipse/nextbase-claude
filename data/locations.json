@@ -1,629 +1,31 @@
 {
   "locations": [
     {
-      "state": "Arkansas",
-      "city": "Little Rock",
-      "population": 545000,
-      "governor": {
-        "party": "Republican"
-      },
-      "taxes": {
-        "salesTax": 9.5,
-        "incomeTax": 3.9
-      },
-      "marijuana": {
-        "status": "Illegal"
-      },
-      "lgbtq": {
-        "rank": 138
-      },
-      "firearms": {
-        "giffordScore": "F",
-        "gunFriendliness": "Excellent (Very 2A Friendly)",
-        "laws": "Constitutional Carry",
-        "permitRequired": false
-      },
-      "climate": {
-        "type": "Humid subtropical",
-        "avgSnowfallInches": 4.1,
-        "avgRainfallInches": 50,
-        "sunnyDays": 219
-      },
-      "economy": {
-        "avgGasPrice": 2.7,
-        "costOfLiving": "94"
-      }
-    },
-    {
-      "state": "Texas",
-      "city": "Houston",
-      "population": 7122240,
-      "governor": {
-        "party": "Republican"
-      },
-      "taxes": {
-        "salesTax": 8.25,
-        "incomeTax": 0
-      },
-      "marijuana": {
-        "status": "Medical"
-      },
-      "lgbtq": {
-        "rank": 103
-      },
-      "firearms": {
-        "giffordScore": "F",
-        "gunFriendliness": "Excellent (Very 2A Friendly)",
-        "laws": "Constitutional Carry",
-        "permitRequired": false
-      },
-      "climate": {
-        "type": "Humid subtropical",
-        "avgSnowfallInches": 15,
-        "avgRainfallInches": 47,
-        "sunnyDays": 204
-      },
-      "economy": {
-        "avgGasPrice": 2.74,
-        "costOfLiving": "94"
-      },
-      "veteranBenefits": {
-        "description": "Partial property tax reduction"
-      }
-    },
-    {
-      "state": "Alabama",
-      "city": "Huntsville",
-      "population": 504712,
-      "governor": {
-        "party": "Republican"
-      },
-      "taxes": {
-        "salesTax": 9,
-        "incomeTax": 5
-      },
-      "marijuana": {
-        "status": "Decriminalized"
-      },
-      "lgbtq": {
-        "rank": 160
-      },
-      "firearms": {
-        "giffordScore": "F",
-        "gunFriendliness": "Excellent (Very 2A Friendly)",
-        "laws": "Constitutional Carry",
-        "permitRequired": false
-      },
-      "climate": {
-        "type": "Humid subtropical",
-        "avgSnowfallInches": 5,
-        "avgRainfallInches": 54,
-        "sunnyDays": 199
-      },
-      "economy": {
-        "avgGasPrice": 2.74,
-        "costOfLiving": "91"
-      }
-    },
-    {
-      "state": "Alabama",
-      "city": "Mobile",
-      "population": 411640,
-      "governor": {
-        "party": "Republican"
-      },
-      "taxes": {
-        "salesTax": 10,
-        "incomeTax": 5
-      },
-      "marijuana": {
-        "status": "Decriminalized"
-      },
-      "lgbtq": {
-        "rank": 180
-      },
-      "firearms": {
-        "giffordScore": "F",
-        "gunFriendliness": "Excellent (Very 2A Friendly)",
-        "laws": "Constitutional Carry",
-        "permitRequired": false
-      },
-      "climate": {
-        "type": "Humid subtropical",
-        "avgSnowfallInches": 0.4,
-        "avgRainfallInches": 66,
-        "sunnyDays": 220
-      },
-      "economy": {
-        "avgGasPrice": 2.75,
-        "costOfLiving": "93"
-      }
-    },
-    {
-      "state": "Tennessee",
-      "city": "Nashville",
-      "population": 2072283,
-      "governor": {
-        "party": "Republican"
-      },
-      "taxes": {
-        "salesTax": 9.75,
-        "incomeTax": 0
-      },
-      "marijuana": {
-        "status": "Illegal"
-      },
-      "lgbtq": {
-        "rank": 73
-      },
-      "firearms": {
-        "giffordScore": "F",
-        "gunFriendliness": "Excellent (Very 2A Friendly)",
-        "laws": "Constitutional Carry",
-        "permitRequired": false
-      },
-      "climate": {
-        "type": "Humid subtropical",
-        "avgSnowfallInches": 8,
-        "avgRainfallInches": 48,
-        "sunnyDays": 208
-      },
-      "economy": {
-        "avgGasPrice": 2.78,
-        "costOfLiving": "98"
-      }
-    },
-    {
-      "state": "Wisconsin",
-      "city": "Milwaukee",
-      "population": 1574731,
-      "governor": {
-        "party": "Democrat"
-      },
-      "taxes": {
-        "salesTax": 5.7,
-        "incomeTax": 5.3
-      },
-      "marijuana": {
-        "status": "Medical"
-      },
-      "lgbtq": {
-        "rank": 43
-      },
-      "firearms": {
-        "giffordScore": "C",
-        "gunFriendliness": "Moderate",
-        "laws": "Shall Issue",
-        "permitRequired": true
-      },
-      "climate": {
-        "type": "Humid continental",
-        "avgSnowfallInches": 48,
-        "avgRainfallInches": 35,
-        "sunnyDays": 190
-      },
-      "economy": {
-        "avgGasPrice": 2.82,
-        "costOfLiving": "101"
-      }
-    },
-    {
-      "state": "Kentucky",
-      "city": "Louisville",
-      "population": 1365557,
-      "governor": {
-        "party": "Republican"
-      },
-      "taxes": {
-        "salesTax": 6,
-        "incomeTax": 3.5
-      },
-      "marijuana": {
-        "status": "Medical"
-      },
-      "lgbtq": {
-        "rank": 72
-      },
-      "firearms": {
-        "giffordScore": "F",
-        "gunFriendliness": "Excellent (Very 2A Friendly)",
-        "laws": "Constitutional Carry",
-        "permitRequired": false
-      },
-      "climate": {
-        "type": "Humid subtropical",
-        "avgSnowfallInches": 17,
-        "avgRainfallInches": 48,
-        "sunnyDays": 195
-      },
-      "economy": {
-        "avgGasPrice": 2.83,
-        "costOfLiving": "93"
-      }
-    },
-    {
-      "state": "Florida",
-      "city": "Pensacola",
-      "population": 509905,
-      "governor": {
-        "party": "Republican"
-      },
-      "taxes": {
-        "salesTax": 7.5,
-        "incomeTax": 0
-      },
-      "marijuana": {
-        "status": "Medical"
-      },
-      "lgbtq": {
-        "rank": null
-      },
-      "firearms": {
-        "giffordScore": "C-",
-        "gunFriendliness": "Moderate",
-        "laws": "Shall Issue",
-        "permitRequired": true
-      },
-      "climate": {
-        "type": "Humid subtropical",
-        "avgSnowfallInches": 0,
-        "avgRainfallInches": 65,
-        "sunnyDays": 228
-      },
-      "economy": {
-        "avgGasPrice": 2.85,
-        "costOfLiving": "96"
-      },
-      "veteranBenefits": {
-        "description": "$5k deduction for >10% disability"
-      }
-    },
-    {
-      "state": "Iowa",
-      "city": "Des Moines",
-      "population": 579000,
-      "governor": {
-        "party": "Republican"
-      },
-      "taxes": {
-        "salesTax": 7,
-        "incomeTax": 5
-      },
-      "marijuana": {
-        "status": "Medical"
-      },
-      "lgbtq": {
-        "rank": 126
-      },
-      "firearms": {
-        "giffordScore": "F",
-        "gunFriendliness": "Excellent (Very 2A Friendly)",
-        "laws": "Constitutional Carry",
-        "permitRequired": false
-      },
-      "climate": {
-        "type": "Humid continental",
-        "avgSnowfallInches": 36.5,
-        "avgRainfallInches": 36,
-        "sunnyDays": 202
-      },
-      "economy": {
-        "avgGasPrice": 2.89,
-        "costOfLiving": "85"
-      }
-    },
-    {
-      "state": "South Dakota",
-      "city": "Sioux Falls",
-      "population": 308266,
-      "governor": {
-        "party": "Republican"
-      },
-      "taxes": {
-        "salesTax": 4.2,
-        "incomeTax": 0
-      },
-      "marijuana": {
-        "status": "Medical"
-      },
-      "lgbtq": {
-        "rank": 153
-      },
-      "firearms": {
-        "giffordScore": "F",
-        "gunFriendliness": "Excellent (Very 2A Friendly)",
-        "laws": "Constitutional Carry",
-        "permitRequired": false
-      },
-      "climate": {
-        "type": "Humid continental",
-        "avgSnowfallInches": 45,
-        "avgRainfallInches": 28,
-        "sunnyDays": 211
-      },
-      "economy": {
-        "avgGasPrice": 2.91,
-        "costOfLiving": "91"
-      }
-    },
-    {
-      "state": "Georgia",
-      "city": "Atlanta",
-      "population": 6307261,
-      "governor": {
-        "party": "Republican"
-      },
-      "taxes": {
-        "salesTax": 8.9,
-        "incomeTax": 5.39
-      },
-      "marijuana": {
-        "status": "Decriminalized"
-      },
-      "lgbtq": {
-        "rank": 10
-      },
-      "firearms": {
-        "giffordScore": "F",
-        "gunFriendliness": "Excellent (Very 2A Friendly)",
-        "laws": "Constitutional Carry",
-        "permitRequired": false
-      },
-      "climate": {
-        "type": "Humid subtropical",
-        "avgSnowfallInches": 2,
-        "avgRainfallInches": 50,
-        "sunnyDays": 217
-      },
-      "economy": {
-        "avgGasPrice": 2.92,
-        "costOfLiving": "96"
-      }
-    },
-    {
-      "state": "Texas",
-      "city": "El Paso",
-      "population": 678760,
-      "governor": {
-        "party": "Republican"
-      },
-      "taxes": {
-        "salesTax": 8.25,
-        "incomeTax": 0
-      },
-      "marijuana": {
-        "status": "Medical"
-      },
-      "lgbtq": {
-        "rank": 146
-      },
-      "firearms": {
-        "giffordScore": "F",
-        "gunFriendliness": "Excellent (Very 2A Friendly)",
-        "laws": "Constitutional Carry",
-        "permitRequired": false
-      },
-      "climate": {
-        "type": "Semi-arid desert",
-        "avgSnowfallInches": 3.5,
-        "avgRainfallInches": 9,
-        "sunnyDays": 293
-      },
-      "economy": {
-        "avgGasPrice": 2.96,
-        "costOfLiving": "88"
-      }
-    },
-    {
-      "state": "New Hampshire",
-      "city": "Manchester",
-      "population": 422937,
-      "governor": {
-        "party": "Republican"
-      },
-      "taxes": {
-        "salesTax": 0,
-        "incomeTax": 0
-      },
-      "marijuana": {
-        "status": "Decriminalized"
-      },
-      "lgbtq": {
-        "rank": null
-      },
-      "firearms": {
-        "giffordScore": "C-",
-        "gunFriendliness": "Moderate",
-        "laws": "Shall Issue",
-        "permitRequired": true
-      },
-      "climate": {
-        "type": "Humid continental",
-        "avgSnowfallInches": 60,
-        "avgRainfallInches": 42,
-        "sunnyDays": 199
-      },
-      "economy": {
-        "avgGasPrice": 3.02,
-        "costOfLiving": "112"
-      }
-    },
-    {
-      "state": "Wyoming",
-      "city": "Cheyenne",
-      "population": 65704,
-      "governor": {
-        "party": "Republican"
-      },
-      "taxes": {
-        "salesTax": 5.6,
-        "incomeTax": 0
-      },
-      "marijuana": {
-        "status": "Medical"
-      },
-      "lgbtq": {
-        "rank": null
-      },
-      "firearms": {
-        "giffordScore": "F",
-        "gunFriendliness": "Excellent (Very 2A Friendly)",
-        "laws": "Constitutional Carry",
-        "permitRequired": false
-      },
-      "climate": {
-        "type": "Cold continental / alpine",
-        "avgSnowfallInches": 65,
-        "avgRainfallInches": 15,
-        "sunnyDays": 233
-      },
-      "economy": {
-        "avgGasPrice": 3.09,
-        "costOfLiving": "99"
-      }
-    },
-    {
-      "state": "Maine",
-      "city": "Portland",
-      "population": 556893,
-      "governor": {
-        "party": "Democrat"
-      },
-      "taxes": {
-        "salesTax": 5.5,
-        "incomeTax": 7.15
-      },
-      "marijuana": {
-        "status": "Recreational"
-      },
-      "lgbtq": {
-        "rank": null
-      },
-      "firearms": {
-        "giffordScore": "C+",
-        "gunFriendliness": "Moderate",
-        "laws": "Shall Issue",
-        "permitRequired": true
-      },
-      "climate": {
-        "type": "Humid continental",
-        "avgSnowfallInches": 61,
-        "avgRainfallInches": 47,
-        "sunnyDays": 200
-      },
-      "economy": {
-        "avgGasPrice": 3.09,
-        "costOfLiving": "113"
-      }
-    },
-    {
-      "state": "Arizona",
-      "city": "Tuscon",
-      "population": 1043433,
-      "governor": {
-        "party": "Democrat"
-      },
-      "taxes": {
-        "salesTax": 8.7,
-        "incomeTax": 2.5
-      },
-      "marijuana": {
-        "status": "Recreational"
-      },
-      "lgbtq": {
-        "rank": null
-      },
-      "firearms": {
-        "giffordScore": "F",
-        "gunFriendliness": "Excellent (Very 2A Friendly)",
-        "laws": "Constitutional Carry",
-        "permitRequired": false
-      },
-      "climate": {
-        "type": "Hot desert",
-        "avgSnowfallInches": 0,
-        "avgRainfallInches": 11,
-        "sunnyDays": 284
-      },
-      "economy": {
-        "avgGasPrice": 3.23,
-        "costOfLiving": "103"
-      }
-    },
-    {
-      "state": "Utah",
-      "city": "Salt Lake City",
-      "population": 1257936,
-      "governor": {
-        "party": "Republican"
-      },
-      "taxes": {
-        "salesTax": 8.45,
-        "incomeTax": 4.55
-      },
-      "marijuana": {
-        "status": "Medical"
-      },
-      "lgbtq": {
-        "rank": 20
-      },
-      "firearms": {
-        "giffordScore": "F",
-        "gunFriendliness": "Excellent (Very 2A Friendly)",
-        "laws": "Constitutional Carry",
-        "permitRequired": false
-      },
-      "climate": {
-        "type": "Humid continental",
-        "avgSnowfallInches": 56,
-        "avgRainfallInches": 11,
-        "sunnyDays": 255
-      },
-      "economy": {
-        "avgGasPrice": 3.35,
-        "costOfLiving": "108"
-      }
-    },
-    {
-      "state": "Arizona",
-      "city": "Phoenix",
-      "population": 4948203,
-      "governor": {
-        "party": "Democrat"
-      },
-      "taxes": {
-        "salesTax": 9.1,
-        "incomeTax": 2.5
-      },
-      "marijuana": {
-        "status": "Recreational"
-      },
-      "lgbtq": {
-        "rank": 102
-      },
-      "firearms": {
-        "giffordScore": "F",
-        "gunFriendliness": "Excellent (Very 2A Friendly)",
-        "laws": "Constitutional Carry",
-        "permitRequired": false
-      },
-      "climate": {
-        "type": "Hot desert",
-        "avgSnowfallInches": 0,
-        "avgRainfallInches": 7,
-        "sunnyDays": 296
-      },
-      "economy": {
-        "avgGasPrice": 3.8,
-        "costOfLiving": "107"
-      }
-    },
-    {
-      "state": "Alaska",
+      "state": "AK",
       "city": "Anchorage",
+      "county": "Alaska",
+      "stateParty": "R",
       "population": 398807,
-      "governor": {
-        "party": "Republican"
+      "density": 2718,
+      "politics": {
+        "governor": "R",
+        "mayor": "D",
+        "election2016": {
+          "winner": "Trump",
+          "percent": 51
+        },
+        "election2024": {
+          "winner": "Trump",
+          "percent": 54
+        },
+        "trend": "3% more Republican"
+      },
+      "vaFacilities": false,
+      "crime": {
+        "totalIndex": 5
+      },
+      "tech": {
+        "hubPresent": true
       },
       "taxes": {
         "salesTax": 1.82,
@@ -645,7 +47,9 @@
         "type": "Humid subtropical",
         "avgSnowfallInches": 79,
         "avgRainfallInches": 16,
-        "sunnyDays": 126
+        "sunnyDays": 126,
+        "avgLowWinter": 11,
+        "avgHighSummer": 66
       },
       "economy": {
         "avgGasPrice": 3.8,
@@ -656,45 +60,482 @@
       }
     },
     {
-      "state": "Nevada",
-      "city": "Las Vegas",
-      "population": 2400000,
-      "governor": {
-        "party": "Republican"
+      "state": "AL",
+      "city": "Mobile",
+      "county": "Mobile",
+      "stateParty": "R",
+      "population": 411640,
+      "density": 1341,
+      "politics": {
+        "governor": "R",
+        "mayor": "R",
+        "election2016": {
+          "winner": "Trump",
+          "percent": 55
+        },
+        "election2024": {
+          "winner": "Trump",
+          "percent": 57
+        },
+        "trend": "2% more Republican"
+      },
+      "vaFacilities": true,
+      "crime": {
+        "totalIndex": 7
+      },
+      "tech": {
+        "hubPresent": true
       },
       "taxes": {
-        "salesTax": 8.38,
-        "incomeTax": 0
+        "salesTax": 10,
+        "incomeTax": 5
+      },
+      "marijuana": {
+        "status": "Decriminalized"
+      },
+      "lgbtq": {
+        "rank": 180
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid subtropical",
+        "avgSnowfallInches": 0,
+        "avgRainfallInches": 66,
+        "sunnyDays": 220,
+        "avgLowWinter": 41,
+        "avgHighSummer": 91
+      },
+      "economy": {
+        "avgGasPrice": 2.75,
+        "costOfLiving": "93"
+      }
+    },
+    {
+      "state": "AL",
+      "city": "Huntsville",
+      "county": "Madison",
+      "stateParty": "R",
+      "population": 504712,
+      "density": 1532,
+      "politics": {
+        "governor": "R",
+        "mayor": "R",
+        "election2016": {
+          "winner": "Trump",
+          "percent": 55
+        },
+        "election2024": {
+          "winner": "Trump",
+          "percent": 54
+        },
+        "trend": "1% les Repuiblican"
+      },
+      "vaFacilities": false,
+      "crime": {
+        "totalIndex": 49
+      },
+      "tech": {
+        "hubPresent": true
+      },
+      "taxes": {
+        "salesTax": 9,
+        "incomeTax": 5
+      },
+      "marijuana": {
+        "status": "Decriminalized"
+      },
+      "lgbtq": {
+        "rank": 160
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid subtropical",
+        "avgSnowfallInches": 5,
+        "avgRainfallInches": 54,
+        "sunnyDays": 199,
+        "avgLowWinter": 33,
+        "avgHighSummer": 90
+      },
+      "economy": {
+        "avgGasPrice": 2.74,
+        "costOfLiving": "91"
+      }
+    },
+    {
+      "state": "AR",
+      "city": "Little Rock",
+      "county": "Pulaski",
+      "stateParty": "R",
+      "population": 545000,
+      "density": 1687,
+      "politics": {
+        "governor": "R",
+        "mayor": "D",
+        "election2016": {
+          "winner": "Clinton",
+          "percent": 56
+        },
+        "election2024": {
+          "winner": "Harris",
+          "percent": 60
+        },
+        "trend": "4% more Democratic"
+      },
+      "vaFacilities": false,
+      "crime": {
+        "totalIndex": 1
+      },
+      "tech": {
+        "hubPresent": true
+      },
+      "taxes": {
+        "salesTax": 9.5,
+        "incomeTax": 3.9
+      },
+      "marijuana": {
+        "status": "Illegal"
+      },
+      "lgbtq": {
+        "rank": 138
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid subtropical",
+        "avgSnowfallInches": 4,
+        "avgRainfallInches": 50,
+        "sunnyDays": 219,
+        "avgLowWinter": 31,
+        "avgHighSummer": 92
+      },
+      "economy": {
+        "avgGasPrice": 2.7,
+        "costOfLiving": "94"
+      }
+    },
+    {
+      "state": "AZ",
+      "city": "Phoenix",
+      "county": "Maricopa",
+      "stateParty": "R",
+      "population": 4948203,
+      "density": 3126,
+      "politics": {
+        "governor": "D",
+        "mayor": "D",
+        "election2016": {
+          "winner": "Trump",
+          "percent": 48
+        },
+        "election2024": {
+          "winner": "Trump",
+          "percent": 51
+        },
+        "trend": "3% more Republican"
+      },
+      "vaFacilities": false,
+      "crime": {
+        "totalIndex": 7
+      },
+      "tech": {
+        "hubPresent": true
+      },
+      "taxes": {
+        "salesTax": 9.1,
+        "incomeTax": 2.5
       },
       "marijuana": {
         "status": "Recreational"
       },
       "lgbtq": {
-        "rank": 17
+        "rank": 102
       },
       "firearms": {
-        "giffordScore": "B-",
-        "gunFriendliness": "Fair (Some Restrictions)",
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Hot desert",
+        "avgSnowfallInches": 0,
+        "avgRainfallInches": 7,
+        "sunnyDays": 296,
+        "avgLowWinter": 45,
+        "avgHighSummer": 107
+      },
+      "economy": {
+        "avgGasPrice": 3.8,
+        "costOfLiving": "107"
+      }
+    },
+    {
+      "state": "AZ",
+      "city": "Tuscon",
+      "county": "Pima",
+      "stateParty": "R",
+      "population": 1043433,
+      "density": 2251,
+      "politics": {
+        "governor": "D",
+        "mayor": "D",
+        "election2016": {
+          "winner": "Clinton",
+          "percent": 53
+        },
+        "election2024": {
+          "winner": "Harris",
+          "percent": 57
+        },
+        "trend": "4% more Democratic"
+      },
+      "vaFacilities": false,
+      "crime": {
+        "totalIndex": 6
+      },
+      "tech": {
+        "hubPresent": true
+      },
+      "taxes": {
+        "salesTax": 8.7,
+        "incomeTax": 2.5
+      },
+      "marijuana": {
+        "status": "Recreational"
+      },
+      "lgbtq": {
+        "rank": null
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Hot desert",
+        "avgSnowfallInches": 0,
+        "avgRainfallInches": 11,
+        "sunnyDays": 284,
+        "avgLowWinter": 41,
+        "avgHighSummer": 101
+      },
+      "economy": {
+        "avgGasPrice": 3.23,
+        "costOfLiving": "103"
+      }
+    },
+    {
+      "state": "CA",
+      "city": "Yuba City",
+      "county": "Sutter",
+      "stateParty": "D",
+      "population": 70117,
+      "density": 4680,
+      "politics": {
+        "governor": "D",
+        "mayor": "M",
+        "election2016": {
+          "winner": "Trump",
+          "percent": 54
+        },
+        "election2024": {
+          "winner": "Trump",
+          "percent": 64
+        },
+        "trend": "10% more Republican"
+      },
+      "vaFacilities": true,
+      "crime": {
+        "totalIndex": 12
+      },
+      "tech": {
+        "hubPresent": false
+      },
+      "taxes": {
+        "salesTax": 7.25,
+        "incomeTax": 9.3
+      },
+      "marijuana": {
+        "status": "Recreational"
+      },
+      "lgbtq": {
+        "rank": null
+      },
+      "firearms": {
+        "giffordScore": "A",
+        "gunFriendliness": "Restrictive (Less 2A Friendly)",
+        "laws": "May Issue",
+        "permitRequired": true
+      },
+      "climate": {
+        "type": "Hot-summer Mediterranean",
+        "avgSnowfallInches": 0,
+        "avgRainfallInches": 20,
+        "sunnyDays": 260,
+        "avgLowWinter": 38,
+        "avgHighSummer": 96
+      },
+      "economy": {
+        "avgGasPrice": 4.33,
+        "costOfLiving": "114"
+      }
+    },
+    {
+      "state": "FL",
+      "city": "Pensacola",
+      "county": "Escambia",
+      "stateParty": "R",
+      "population": 509905,
+      "density": 2395,
+      "politics": {
+        "governor": "R",
+        "mayor": "M",
+        "election2016": {
+          "winner": "Trump",
+          "percent": 58
+        },
+        "election2024": {
+          "winner": "Trump",
+          "percent": 59
+        },
+        "trend": "1% more Republican"
+      },
+      "vaFacilities": true,
+      "crime": {
+        "totalIndex": 35
+      },
+      "tech": {
+        "hubPresent": false
+      },
+      "taxes": {
+        "salesTax": 7.5,
+        "incomeTax": 0
+      },
+      "marijuana": {
+        "status": "Medical"
+      },
+      "lgbtq": {
+        "rank": null
+      },
+      "firearms": {
+        "giffordScore": "C-",
+        "gunFriendliness": "Moderate",
         "laws": "Shall Issue",
         "permitRequired": true
       },
       "climate": {
-        "type": "Arid desert",
+        "type": "Humid subtropical",
         "avgSnowfallInches": 0,
-        "avgRainfallInches": 5,
-        "sunnyDays": 292
+        "avgRainfallInches": 65,
+        "sunnyDays": 228,
+        "avgLowWinter": 44,
+        "avgHighSummer": 92
       },
       "economy": {
-        "avgGasPrice": 3.94,
-        "costOfLiving": "102"
+        "avgGasPrice": 2.85,
+        "costOfLiving": "96"
+      },
+      "veteranBenefits": {
+        "description": "$5k deduction for >10% disability"
       }
     },
     {
-      "state": "Hawaii",
+      "state": "GA",
+      "city": "Atlanta",
+      "county": "Fulton",
+      "stateParty": "R",
+      "population": 6307261,
+      "density": 3685,
+      "politics": {
+        "governor": "R",
+        "mayor": "D",
+        "election2016": {
+          "winner": "Clinton",
+          "percent": 68
+        },
+        "election2024": {
+          "winner": "Harris",
+          "percent": 72
+        },
+        "trend": "4% more Democratic"
+      },
+      "vaFacilities": false,
+      "crime": {
+        "totalIndex": 3
+      },
+      "tech": {
+        "hubPresent": true
+      },
+      "taxes": {
+        "salesTax": 8.9,
+        "incomeTax": 5.39
+      },
+      "marijuana": {
+        "status": "Decriminalized"
+      },
+      "lgbtq": {
+        "rank": 10
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid subtropical",
+        "avgSnowfallInches": 2,
+        "avgRainfallInches": 50,
+        "sunnyDays": 217,
+        "avgLowWinter": 36,
+        "avgHighSummer": 90
+      },
+      "economy": {
+        "avgGasPrice": 2.92,
+        "costOfLiving": "96"
+      }
+    },
+    {
+      "state": "HI",
       "city": "Honolulu",
+      "county": "Honolulu",
+      "stateParty": "D",
       "population": 998747,
-      "governor": {
-        "party": "Democrat"
+      "density": 5813,
+      "politics": {
+        "governor": "D",
+        "mayor": "M",
+        "election2016": {
+          "winner": "Clinton",
+          "percent": 62
+        },
+        "election2024": {
+          "winner": "Harris",
+          "percent": 60
+        },
+        "trend": "2% less Democratic"
+      },
+      "vaFacilities": false,
+      "crime": {
+        "totalIndex": 11
+      },
+      "tech": {
+        "hubPresent": false
       },
       "taxes": {
         "salesTax": 4.5,
@@ -716,11 +557,856 @@
         "type": "Hot semi-arid",
         "avgSnowfallInches": 0,
         "avgRainfallInches": 16,
-        "sunnyDays": 271
+        "sunnyDays": 271,
+        "avgLowWinter": 67,
+        "avgHighSummer": 89
       },
       "economy": {
         "avgGasPrice": 4.42,
         "costOfLiving": "186"
+      }
+    },
+    {
+      "state": "IA",
+      "city": "Des Moines",
+      "county": "Polk",
+      "stateParty": "R",
+      "population": 579000,
+      "density": 2428,
+      "politics": {
+        "governor": "R",
+        "mayor": "D",
+        "election2016": {
+          "winner": "Clinton",
+          "percent": 52
+        },
+        "election2024": {
+          "winner": "Harris",
+          "percent": 55
+        },
+        "trend": "3% more Democratic"
+      },
+      "vaFacilities": true,
+      "crime": {
+        "totalIndex": 5
+      },
+      "tech": {
+        "hubPresent": false
+      },
+      "taxes": {
+        "salesTax": 7,
+        "incomeTax": 5
+      },
+      "marijuana": {
+        "status": "Medical"
+      },
+      "lgbtq": {
+        "rank": 126
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid continental",
+        "avgSnowfallInches": 37,
+        "avgRainfallInches": 36,
+        "sunnyDays": 202,
+        "avgLowWinter": 14,
+        "avgHighSummer": 86
+      },
+      "economy": {
+        "avgGasPrice": 2.89,
+        "costOfLiving": "85"
+      }
+    },
+    {
+      "state": "KY",
+      "city": "Louisville",
+      "county": "Jefferson",
+      "stateParty": "R",
+      "population": 1365557,
+      "density": 2351,
+      "politics": {
+        "governor": "R",
+        "mayor": "D",
+        "election2016": {
+          "winner": "Clinton",
+          "percent": 54
+        },
+        "election2024": {
+          "winner": "Harris",
+          "percent": 57
+        },
+        "trend": "3% more Democratic"
+      },
+      "vaFacilities": false,
+      "crime": {
+        "totalIndex": 3
+      },
+      "tech": {
+        "hubPresent": false
+      },
+      "taxes": {
+        "salesTax": 6,
+        "incomeTax": 3.5
+      },
+      "marijuana": {
+        "status": "Medical"
+      },
+      "lgbtq": {
+        "rank": 72
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid subtropical",
+        "avgSnowfallInches": 17,
+        "avgRainfallInches": 48,
+        "sunnyDays": 195,
+        "avgLowWinter": 28,
+        "avgHighSummer": 89
+      },
+      "economy": {
+        "avgGasPrice": 2.83,
+        "costOfLiving": "93"
+      }
+    },
+    {
+      "state": "MA",
+      "city": "Boston",
+      "county": "Suffolk",
+      "stateParty": "D",
+      "population": 4941632,
+      "density": 2646,
+      "politics": {
+        "governor": "D",
+        "mayor": "D",
+        "election2016": {
+          "winner": "Clinton",
+          "percent": 78
+        },
+        "election2024": {
+          "winner": "Harris",
+          "percent": 77
+        },
+        "trend": "1% less Democratic"
+      },
+      "vaFacilities": true,
+      "crime": {
+        "totalIndex": 12
+      },
+      "tech": {
+        "hubPresent": true
+      },
+      "taxes": {
+        "salesTax": 6.25,
+        "incomeTax": 5
+      },
+      "marijuana": {
+        "status": "Recreational"
+      },
+      "lgbtq": {
+        "rank": 5
+      },
+      "firearms": {
+        "giffordScore": "A",
+        "gunFriendliness": "Restrictive (Less 2A Friendly)",
+        "laws": "May Issue",
+        "permitRequired": true
+      },
+      "climate": {
+        "type": "Hot-summer humid continental",
+        "avgSnowfallInches": 49,
+        "avgRainfallInches": 44,
+        "sunnyDays": 201,
+        "avgLowWinter": 23,
+        "avgHighSummer": 82
+      },
+      "economy": {
+        "avgGasPrice": 3.05,
+        "costOfLiving": "146"
+      }
+    },
+    {
+      "state": "ME",
+      "city": "Portland",
+      "county": "Cumberland",
+      "stateParty": "D",
+      "population": 556893,
+      "density": 1657,
+      "politics": {
+        "governor": "D",
+        "mayor": "D",
+        "election2016": {
+          "winner": "Clinton",
+          "percent": 60
+        },
+        "election2024": {
+          "winner": "Harris",
+          "percent": 66
+        },
+        "trend": "6% more Democratic"
+      },
+      "vaFacilities": false,
+      "crime": {
+        "totalIndex": 21
+      },
+      "tech": {
+        "hubPresent": true
+      },
+      "taxes": {
+        "salesTax": 5.5,
+        "incomeTax": 7.15
+      },
+      "marijuana": {
+        "status": "Recreational"
+      },
+      "lgbtq": {
+        "rank": null
+      },
+      "firearms": {
+        "giffordScore": "C+",
+        "gunFriendliness": "Moderate",
+        "laws": "Shall Issue",
+        "permitRequired": true
+      },
+      "climate": {
+        "type": "Humid continental",
+        "avgSnowfallInches": 61,
+        "avgRainfallInches": 47,
+        "sunnyDays": 200,
+        "avgLowWinter": 16,
+        "avgHighSummer": 80
+      },
+      "economy": {
+        "avgGasPrice": 3.09,
+        "costOfLiving": "113"
+      }
+    },
+    {
+      "state": "NH",
+      "city": "Manchester",
+      "county": "Hillsborough",
+      "stateParty": "D",
+      "population": 422937,
+      "density": 1838,
+      "politics": {
+        "governor": "R",
+        "mayor": "R",
+        "election2016": {
+          "winner": "Trump",
+          "percent": 47
+        },
+        "election2024": {
+          "winner": "Trump",
+          "percent": 51
+        },
+        "trend": "4% more Republican"
+      },
+      "vaFacilities": true,
+      "crime": {
+        "totalIndex": 19
+      },
+      "tech": {
+        "hubPresent": false
+      },
+      "taxes": {
+        "salesTax": 0,
+        "incomeTax": 0
+      },
+      "marijuana": {
+        "status": "Decriminalized"
+      },
+      "lgbtq": {
+        "rank": null
+      },
+      "firearms": {
+        "giffordScore": "C-",
+        "gunFriendliness": "Moderate",
+        "laws": "Shall Issue",
+        "permitRequired": true
+      },
+      "climate": {
+        "type": "Humid continental",
+        "avgSnowfallInches": 60,
+        "avgRainfallInches": 42,
+        "sunnyDays": 199,
+        "avgLowWinter": 15,
+        "avgHighSummer": 84
+      },
+      "economy": {
+        "avgGasPrice": 3.02,
+        "costOfLiving": "112"
+      }
+    },
+    {
+      "state": "NM",
+      "city": "Albuquerque",
+      "county": "Bernalillo",
+      "stateParty": "D",
+      "population": 915927,
+      "density": 3014,
+      "politics": {
+        "governor": "D",
+        "mayor": "D",
+        "election2016": {
+          "winner": "Clinton",
+          "percent": 52
+        },
+        "election2024": {
+          "winner": "Harris",
+          "percent": 59
+        },
+        "trend": "7% more Democratic"
+      },
+      "vaFacilities": false,
+      "crime": {
+        "totalIndex": 1
+      },
+      "tech": {
+        "hubPresent": true
+      },
+      "taxes": {
+        "salesTax": 7.63,
+        "incomeTax": 4.9
+      },
+      "marijuana": {
+        "status": "Recreational"
+      },
+      "lgbtq": {
+        "rank": 28
+      },
+      "firearms": {
+        "giffordScore": "B-",
+        "gunFriendliness": "Fair (Some Restrictions)",
+        "laws": "Shall Issue",
+        "permitRequired": true
+      },
+      "climate": {
+        "type": "Cold semi-arid",
+        "avgSnowfallInches": 9,
+        "avgRainfallInches": 9,
+        "sunnyDays": 278,
+        "avgLowWinter": 26,
+        "avgHighSummer": 91
+      },
+      "economy": {
+        "avgGasPrice": 2.85,
+        "costOfLiving": "95"
+      }
+    },
+    {
+      "state": "NV",
+      "city": "Las Vegas",
+      "county": "Clark",
+      "stateParty": "R",
+      "population": 2400000,
+      "density": 4525,
+      "politics": {
+        "governor": "R",
+        "mayor": "D",
+        "election2016": {
+          "winner": "Clinton",
+          "percent": 52
+        },
+        "election2024": {
+          "winner": "Harris",
+          "percent": 50
+        },
+        "trend": "2% less Democratic"
+      },
+      "vaFacilities": true,
+      "crime": {
+        "totalIndex": 6
+      },
+      "tech": {
+        "hubPresent": true
+      },
+      "taxes": {
+        "salesTax": 8.38,
+        "incomeTax": 0
+      },
+      "marijuana": {
+        "status": "Recreational"
+      },
+      "lgbtq": {
+        "rank": 17
+      },
+      "firearms": {
+        "giffordScore": "B-",
+        "gunFriendliness": "Fair (Some Restrictions)",
+        "laws": "Shall Issue",
+        "permitRequired": true
+      },
+      "climate": {
+        "type": "Arid desert",
+        "avgSnowfallInches": 0,
+        "avgRainfallInches": 5,
+        "sunnyDays": 292,
+        "avgLowWinter": 40,
+        "avgHighSummer": 105
+      },
+      "economy": {
+        "avgGasPrice": 3.94,
+        "costOfLiving": "102"
+      }
+    },
+    {
+      "state": "SD",
+      "city": "Sioux Falls",
+      "county": "Minnehaha",
+      "stateParty": "R",
+      "population": 308266,
+      "density": 2279,
+      "politics": {
+        "governor": "R",
+        "mayor": "R",
+        "election2016": {
+          "winner": "Trump",
+          "percent": 54
+        },
+        "election2024": {
+          "winner": "Trump",
+          "percent": 55
+        },
+        "trend": "1% more Republican"
+      },
+      "vaFacilities": true,
+      "crime": {
+        "totalIndex": 10
+      },
+      "tech": {
+        "hubPresent": false
+      },
+      "taxes": {
+        "salesTax": 4.2,
+        "incomeTax": 0
+      },
+      "marijuana": {
+        "status": "Medical"
+      },
+      "lgbtq": {
+        "rank": 153
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid continental",
+        "avgSnowfallInches": 45,
+        "avgRainfallInches": 28,
+        "sunnyDays": 211,
+        "avgLowWinter": 8,
+        "avgHighSummer": 84
+      },
+      "economy": {
+        "avgGasPrice": 2.91,
+        "costOfLiving": "91"
+      }
+    },
+    {
+      "state": "TN",
+      "city": "Nashville",
+      "county": "Davidson",
+      "stateParty": "R",
+      "population": 2072283,
+      "density": 1420,
+      "politics": {
+        "governor": "R",
+        "mayor": "D",
+        "election2016": {
+          "winner": "Clinton",
+          "percent": 60
+        },
+        "election2024": {
+          "winner": "Harris",
+          "percent": 63
+        },
+        "trend": "3% more Democratic"
+      },
+      "vaFacilities": false,
+      "crime": {
+        "totalIndex": 2
+      },
+      "tech": {
+        "hubPresent": true
+      },
+      "taxes": {
+        "salesTax": 9.75,
+        "incomeTax": 0
+      },
+      "marijuana": {
+        "status": "Illegal"
+      },
+      "lgbtq": {
+        "rank": 73
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid subtropical",
+        "avgSnowfallInches": 8,
+        "avgRainfallInches": 48,
+        "sunnyDays": 208,
+        "avgLowWinter": 30,
+        "avgHighSummer": 91
+      },
+      "economy": {
+        "avgGasPrice": 2.78,
+        "costOfLiving": "98"
+      }
+    },
+    {
+      "state": "TX",
+      "city": "El Paso",
+      "county": "El Paso",
+      "stateParty": "R",
+      "population": 678760,
+      "density": 2676,
+      "politics": {
+        "governor": "R",
+        "mayor": "M",
+        "election2016": {
+          "winner": "Clinton",
+          "percent": 69
+        },
+        "election2024": {
+          "winner": "Harris",
+          "percent": 57
+        },
+        "trend": "12% less Democratic"
+      },
+      "vaFacilities": true,
+      "crime": {
+        "totalIndex": 20
+      },
+      "tech": {
+        "hubPresent": false
+      },
+      "taxes": {
+        "salesTax": 8.25,
+        "incomeTax": 0
+      },
+      "marijuana": {
+        "status": "Medical"
+      },
+      "lgbtq": {
+        "rank": 146
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Hot desert",
+        "avgSnowfallInches": 4,
+        "avgRainfallInches": 9,
+        "sunnyDays": 302,
+        "avgLowWinter": 34,
+        "avgHighSummer": 97
+      },
+      "economy": {
+        "avgGasPrice": 2.96,
+        "costOfLiving": "88"
+      }
+    },
+    {
+      "state": "TX",
+      "city": "Houston",
+      "county": "Harris",
+      "stateParty": "R",
+      "population": 7122240,
+      "density": 3613,
+      "politics": {
+        "governor": "R",
+        "mayor": "D",
+        "election2016": {
+          "winner": "Clinton",
+          "percent": 54
+        },
+        "election2024": {
+          "winner": "Harris",
+          "percent": 52
+        },
+        "trend": "2% less Democratic"
+      },
+      "vaFacilities": false,
+      "crime": {
+        "totalIndex": 2
+      },
+      "tech": {
+        "hubPresent": true
+      },
+      "taxes": {
+        "salesTax": 8.25,
+        "incomeTax": 0
+      },
+      "marijuana": {
+        "status": "Medical"
+      },
+      "lgbtq": {
+        "rank": 103
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid subtropical",
+        "avgSnowfallInches": 15,
+        "avgRainfallInches": 47,
+        "sunnyDays": 204,
+        "avgLowWinter": 44,
+        "avgHighSummer": 95
+      },
+      "economy": {
+        "avgGasPrice": 2.74,
+        "costOfLiving": "94"
+      },
+      "veteranBenefits": {
+        "description": "Partial property tax reduction"
+      }
+    },
+    {
+      "state": "UT",
+      "city": "Salt Lake City",
+      "county": "Salt Lake",
+      "stateParty": "R",
+      "population": 1257936,
+      "density": 3923,
+      "politics": {
+        "governor": "R",
+        "mayor": "D",
+        "election2016": {
+          "winner": "Clinton",
+          "percent": 42
+        },
+        "election2024": {
+          "winner": "Harris",
+          "percent": 54
+        },
+        "trend": "12% more Democratic"
+      },
+      "vaFacilities": false,
+      "crime": {
+        "totalIndex": 1
+      },
+      "tech": {
+        "hubPresent": true
+      },
+      "taxes": {
+        "salesTax": 8.45,
+        "incomeTax": 4.55
+      },
+      "marijuana": {
+        "status": "Medical"
+      },
+      "lgbtq": {
+        "rank": 20
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Humid continental",
+        "avgSnowfallInches": 56,
+        "avgRainfallInches": 11,
+        "sunnyDays": 255,
+        "avgLowWinter": 24,
+        "avgHighSummer": 94
+      },
+      "economy": {
+        "avgGasPrice": 3.35,
+        "costOfLiving": "108"
+      }
+    },
+    {
+      "state": "WI",
+      "city": "Milwaukee",
+      "county": "Milwaukee",
+      "stateParty": "R",
+      "population": 1574731,
+      "density": 2818,
+      "politics": {
+        "governor": "D",
+        "mayor": "D",
+        "election2016": {
+          "winner": "Clinton",
+          "percent": 66
+        },
+        "election2024": {
+          "winner": "Harris",
+          "percent": 68
+        },
+        "trend": "2% more Democratic"
+      },
+      "vaFacilities": false,
+      "crime": {
+        "totalIndex": 4
+      },
+      "tech": {
+        "hubPresent": false
+      },
+      "taxes": {
+        "salesTax": 5.7,
+        "incomeTax": 5.3
+      },
+      "marijuana": {
+        "status": "Medical"
+      },
+      "lgbtq": {
+        "rank": 43
+      },
+      "firearms": {
+        "giffordScore": "C",
+        "gunFriendliness": "Moderate",
+        "laws": "Shall Issue",
+        "permitRequired": true
+      },
+      "climate": {
+        "type": "Humid continental",
+        "avgSnowfallInches": 48,
+        "avgRainfallInches": 35,
+        "sunnyDays": 190,
+        "avgLowWinter": 17,
+        "avgHighSummer": 82
+      },
+      "economy": {
+        "avgGasPrice": 2.82,
+        "costOfLiving": "101"
+      }
+    },
+    {
+      "state": "WY",
+      "city": "Cheyenne",
+      "county": "Laramie",
+      "stateParty": "R",
+      "population": 65704,
+      "density": 1991,
+      "politics": {
+        "governor": "R",
+        "mayor": "M",
+        "election2016": {
+          "winner": "Trump",
+          "percent": 61
+        },
+        "election2024": {
+          "winner": "Trump",
+          "percent": 65
+        },
+        "trend": "4% more Republican"
+      },
+      "vaFacilities": false,
+      "crime": {
+        "totalIndex": 5
+      },
+      "tech": {
+        "hubPresent": false
+      },
+      "taxes": {
+        "salesTax": 5.6,
+        "incomeTax": 0
+      },
+      "marijuana": {
+        "status": "Medical"
+      },
+      "lgbtq": {
+        "rank": null
+      },
+      "firearms": {
+        "giffordScore": "F",
+        "gunFriendliness": "Excellent (Very 2A Friendly)",
+        "laws": "Constitutional Carry",
+        "permitRequired": false
+      },
+      "climate": {
+        "type": "Cold continental / alpine",
+        "avgSnowfallInches": 65,
+        "avgRainfallInches": 15,
+        "sunnyDays": 233,
+        "avgLowWinter": 18,
+        "avgHighSummer": 84
+      },
+      "economy": {
+        "avgGasPrice": 3.09,
+        "costOfLiving": "99"
+      }
+    },
+    {
+      "state": "NE",
+      "city": "Omaha",
+      "county": "Douglas",
+      "stateParty": "R",
+      "population": 486051,
+      "density": 3026,
+      "politics": {
+        "governor": "R",
+        "mayor": "D",
+        "election2016": {
+          "winner": "Clinton",
+          "percent": 47
+        },
+        "election2024": {
+          "winner": "Harris",
+          "percent": 54
+        },
+        "trend": "7% more Democratic"
+      },
+      "vaFacilities": true,
+      "crime": {
+        "totalIndex": 4
+      },
+      "tech": {
+        "hubPresent": true
+      },
+      "taxes": {
+        "salesTax": 5.2,
+        "incomeTax": 7.5
+      },
+      "marijuana": {
+        "status": "Medical"
+      },
+      "lgbtq": {
+        "rank": 96
+      },
+      "firearms": {
+        "giffordScore": "C-",
+        "gunFriendliness": "Moderate",
+        "laws": "Shall Issue",
+        "permitRequired": true
+      },
+      "climate": {
+        "type": "Hot-summer humid continental",
+        "avgSnowfallInches": 27,
+        "avgRainfallInches": 32,
+        "sunnyDays": 212,
+        "avgLowWinter": 15,
+        "avgHighSummer": 88
+      },
+      "economy": {
+        "avgGasPrice": 2.62,
+        "costOfLiving": "92"
       }
     }
   ]

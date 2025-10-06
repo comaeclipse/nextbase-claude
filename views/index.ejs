@@ -99,14 +99,23 @@
                 <tr>
                     <th data-column="city">City</th>
                     <th data-column="state">State</th>
+                    <th data-column="county">County</th>
+                    <th data-column="stateParty">State Party</th>
+                    <th data-column="electionTrend">Election Trend</th>
                     <th data-column="population">Population</th>
+                    <th data-column="density">Density</th>
                     <th data-column="governor">Governor</th>
                     <th data-column="salesTax">Sales Tax</th>
                     <th data-column="incomeTax">Income Tax</th>
                     <th data-column="costOfLiving">Cost of Living</th>
+                    <th data-column="vaFacilities">VA Clinic</th>
+                    <th data-column="crimeIndex">Crime Index</th>
                     <th data-column="climate">Climate</th>
+                    <th data-column="winterLow">Winter Low</th>
+                    <th data-column="summerHigh">Summer High</th>
                     <th data-column="firearms">Firearms</th>
                     <th data-column="marijuana">Marijuana</th>
+                    <th data-column="techHub">Tech Hub</th>
                     <th data-column="lgbtq">LGBTQ Rank</th>
                     <th data-column="gasPrice">Gas Price</th>
                     <th data-column="rainfall">Rainfall</th>
@@ -671,9 +680,25 @@ function sortCities(cities, column) {
                 valA = a.state || '';
                 valB = b.state || '';
                 break;
+            case 'county':
+                valA = a.county || '';
+                valB = b.county || '';
+                break;
+            case 'stateParty':
+                valA = a.stateParty || '';
+                valB = b.stateParty || '';
+                break;
+            case 'electionTrend':
+                valA = a.politics?.trend || '';
+                valB = b.politics?.trend || '';
+                break;
             case 'population':
                 valA = a.population || 0;
                 valB = b.population || 0;
+                break;
+            case 'density':
+                valA = a.density || 0;
+                valB = b.density || 0;
                 break;
             case 'governor':
                 valA = a.governor?.party || '';
@@ -691,9 +716,25 @@ function sortCities(cities, column) {
                 valA = parseFloat(a.economy?.costOfLiving) || 0;
                 valB = parseFloat(b.economy?.costOfLiving) || 0;
                 break;
+            case 'vaFacilities':
+                valA = a.vaFacilities ? 1 : 0;
+                valB = b.vaFacilities ? 1 : 0;
+                break;
+            case 'crimeIndex':
+                valA = a.crime?.totalIndex || 999;
+                valB = b.crime?.totalIndex || 999;
+                break;
             case 'climate':
                 valA = a.climate?.type || '';
                 valB = b.climate?.type || '';
+                break;
+            case 'winterLow':
+                valA = a.climate?.avgLowWinter || -999;
+                valB = b.climate?.avgLowWinter || -999;
+                break;
+            case 'summerHigh':
+                valA = a.climate?.avgHighSummer || 0;
+                valB = b.climate?.avgHighSummer || 0;
                 break;
             case 'firearms':
                 valA = a.firearms?.laws || '';
@@ -702,6 +743,10 @@ function sortCities(cities, column) {
             case 'marijuana':
                 valA = a.marijuana?.status || '';
                 valB = b.marijuana?.status || '';
+                break;
+            case 'techHub':
+                valA = a.tech?.hubPresent ? 1 : 0;
+                valB = b.tech?.hubPresent ? 1 : 0;
                 break;
             case 'lgbtq':
                 valA = a.lgbtq?.rank || 999;
@@ -743,25 +788,44 @@ function sortCities(cities, column) {
 function renderCitiesTable(cities) {
     const tbody = document.querySelector('#citiesTable tbody');
 
-    tbody.innerHTML = cities.map(city => \`
+    tbody.innerHTML = cities.map(city => {
+        // State party badge with color
+        let statePartyBadge = 'N/A';
+        if (city.stateParty === 'R') {
+            statePartyBadge = '<span class="table-badge" style="background-color: #dc2626; color: white; border-color: #dc2626;">Red</span>';
+        } else if (city.stateParty === 'D') {
+            statePartyBadge = '<span class="table-badge" style="background-color: #2563eb; color: white; border-color: #2563eb;">Blue</span>';
+        }
+
+        return \`
         <tr>
             <td><strong>\${city.city}</strong></td>
             <td>\${city.state}</td>
+            <td>\${city.county || 'N/A'}</td>
+            <td>\${statePartyBadge}</td>
+            <td>\${city.politics?.trend || 'N/A'}</td>
             <td>\${city.population ? city.population.toLocaleString() : 'N/A'}</td>
+            <td>\${city.density ? city.density.toLocaleString() : 'N/A'}</td>
             <td><span class="table-badge">\${city.governor?.party || 'Unknown'}</span></td>
             <td>\${city.taxes?.salesTax || 0}%</td>
             <td>\${city.taxes?.incomeTax === 0 ? '<span class="table-badge highlight">No Tax</span>' : (city.taxes?.incomeTax || 0) + '%'}</td>
             <td>\${city.economy?.costOfLiving || 'N/A'}</td>
+            <td>\${city.vaFacilities ? '<span class="table-badge highlight">Yes</span>' : 'No'}</td>
+            <td>\${city.crime?.totalIndex || 'N/A'}</td>
             <td>\${city.climate?.type || 'N/A'}</td>
+            <td>\${city.climate?.avgLowWinter ? city.climate.avgLowWinter + '°' : 'N/A'}</td>
+            <td>\${city.climate?.avgHighSummer ? city.climate.avgHighSummer + '°' : 'N/A'}</td>
             <td>\${city.firearms?.laws || 'N/A'}</td>
             <td>\${city.marijuana?.status || 'N/A'}</td>
+            <td>\${city.tech?.hubPresent ? 'Yes' : 'No'}</td>
             <td>\${city.lgbtq?.rank ? '#' + city.lgbtq.rank : 'N/A'}</td>
             <td>$\${city.economy?.avgGasPrice || 'N/A'}</td>
             <td>\${city.climate?.avgRainfallInches || 0}"</td>
             <td>\${city.climate?.avgSnowfallInches || 0}"</td>
             <td>\${city.veteranBenefits ? '<span class="table-badge highlight">Yes</span>' : 'No'}</td>
         </tr>
-    \`).join('');
+        \`;
+    }).join('');
 }
 
 // Render cities based on current view
