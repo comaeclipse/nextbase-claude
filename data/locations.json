@@ -41,7 +41,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid subtropical",
@@ -100,7 +103,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid subtropical",
@@ -156,7 +162,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid subtropical",
@@ -213,7 +222,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid subtropical",
@@ -269,7 +281,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Hot desert",
@@ -325,7 +340,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Hot desert",
@@ -381,7 +399,10 @@
         "giffordScore": "A",
         "gunFriendliness": "Very Restrictive",
         "laws": "May issue",
-        "permitRequired": true
+        "permitRequired": true,
+        "magazineLimit": "limits magazines over 10 rounds",
+        "ghostGunBan": true,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Hot-summer Mediterranean",
@@ -437,7 +458,10 @@
         "giffordScore": "A-",
         "gunFriendliness": "Very Restrictive",
         "laws": "May issue",
-        "permitRequired": true
+        "permitRequired": true,
+        "magazineLimit": "restricts magazines over 15 rounds",
+        "ghostGunBan": true,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Monsoon-influenced hot-summer humid continental",
@@ -493,7 +517,10 @@
         "giffordScore": "C-",
         "gunFriendliness": "Moderate",
         "laws": "Shall issue",
-        "permitRequired": true
+        "permitRequired": true,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid subtropical",
@@ -553,7 +580,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid subtropical",
@@ -609,7 +639,10 @@
         "giffordScore": "A-",
         "gunFriendliness": "Very Restrictive",
         "laws": "May issue",
-        "permitRequired": true
+        "permitRequired": true,
+        "magazineLimit": "limits handgun magazines over 10 rounds",
+        "ghostGunBan": true,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Hot semi-arid",
@@ -665,7 +698,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid continental",
@@ -722,7 +758,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Cold semi-arid",
@@ -779,7 +818,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Cold semi-arid",
@@ -835,7 +877,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid subtropical",
@@ -891,7 +936,10 @@
         "giffordScore": "A",
         "gunFriendliness": "Very Restrictive",
         "laws": "May issue",
-        "permitRequired": true
+        "permitRequired": true,
+        "magazineLimit": "bans magazines over 10 rounds",
+        "ghostGunBan": true,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Hot-summer humid continental",
@@ -947,7 +995,10 @@
         "giffordScore": "C+",
         "gunFriendliness": "Moderate",
         "laws": "Shall issue",
-        "permitRequired": true
+        "permitRequired": true,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid continental",
@@ -1003,7 +1054,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid subtropical",
@@ -1059,7 +1113,10 @@
         "giffordScore": "C-",
         "gunFriendliness": "Moderate",
         "laws": "Shall issue",
-        "permitRequired": true
+        "permitRequired": true,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid subtropical",
@@ -1116,7 +1173,10 @@
         "giffordScore": "C-",
         "gunFriendliness": "Moderate",
         "laws": "Shall issue",
-        "permitRequired": true
+        "permitRequired": true,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid subtropical",
@@ -1173,7 +1233,10 @@
         "giffordScore": "C-",
         "gunFriendliness": "Moderate",
         "laws": "Shall issue",
-        "permitRequired": true
+        "permitRequired": true,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Hot-summer humid continental",
@@ -1230,7 +1293,10 @@
         "giffordScore": "C-",
         "gunFriendliness": "Moderate",
         "laws": "Shall issue",
-        "permitRequired": true
+        "permitRequired": true,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid continental",
@@ -1286,7 +1352,10 @@
         "giffordScore": "B-",
         "gunFriendliness": "Restrictive",
         "laws": "May issue",
-        "permitRequired": true
+        "permitRequired": true,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Cold semi-arid",
@@ -1342,7 +1411,10 @@
         "giffordScore": "B-",
         "gunFriendliness": "Restrictive",
         "laws": "May issue",
-        "permitRequired": true
+        "permitRequired": true,
+        "magazineLimit": null,
+        "ghostGunBan": true,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Arid desert",
@@ -1398,7 +1470,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid subtropical",
@@ -1454,7 +1529,10 @@
         "giffordScore": "A-",
         "gunFriendliness": "Very Restrictive",
         "laws": "May issue",
-        "permitRequired": true
+        "permitRequired": true,
+        "magazineLimit": "bans magazines over 10 rounds",
+        "ghostGunBan": true,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Warm-summer Mediterranean",
@@ -1510,7 +1588,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid subtropical",
@@ -1567,7 +1648,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid subtropical",
@@ -1623,7 +1707,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid continental",
@@ -1679,7 +1766,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid subtropical",
@@ -1735,7 +1825,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid subtropical",
@@ -1794,7 +1887,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Hot desert",
@@ -1850,7 +1946,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid continental",
@@ -1906,7 +2005,10 @@
         "giffordScore": "C",
         "gunFriendliness": "Moderate",
         "laws": "Shall issue",
-        "permitRequired": true
+        "permitRequired": true,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Humid continental",
@@ -1962,7 +2064,10 @@
         "giffordScore": "F",
         "gunFriendliness": "Excellent (Very 2A Friendly)",
         "laws": "Constitutional Carry",
-        "permitRequired": false
+        "permitRequired": false,
+        "magazineLimit": null,
+        "ghostGunBan": false,
+        "assaultWeaponBan": false
       },
       "climate": {
         "type": "Cold continental / alpine",

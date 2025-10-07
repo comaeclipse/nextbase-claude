@@ -1,16 +1,39 @@
 const fs = require('fs');
 const path = require('path');
 
-// Read the CSV file
+// Read the CSV files
 const csvPath = 'C:\\Users\\Meeter\\Downloads\\Locations.csv';
+const gunlawsPath = 'C:\\Users\\Meeter\\Downloads\\Gunlaws.csv';
 const csvContent = fs.readFileSync(csvPath, 'utf8');
+const gunlawsContent = fs.readFileSync(gunlawsPath, 'utf8');
 
-// Parse CSV
+// Parse Locations CSV
 const lines = csvContent.split('\n').filter(line => line.trim());
 const headers = lines[0].split(',');
 
 console.log('CSV Headers:', headers);
 console.log('Total rows (excluding header):', lines.length - 1);
+
+// Parse Gun Laws CSV and create a lookup map
+const gunlawsLines = gunlawsContent.split('\n').filter(line => line.trim());
+const gunlawsHeaders = gunlawsLines[0].split(',');
+const gunlawsMap = {};
+
+for (let i = 1; i < gunlawsLines.length; i++) {
+  const line = gunlawsLines[i];
+  const parts = line.split(',');
+  const state = parts[0];
+
+  if (state && state.length === 2) {
+    gunlawsMap[state] = {
+      magazineLimit: parts[1] || null,
+      ghostGunBan: parts[2] === 'Y',
+      assaultWeaponBan: parts[3] === 'Y'
+    };
+  }
+}
+
+console.log('Gun laws loaded for', Object.keys(gunlawsMap).length, 'states');
 
 // Parse each row
 const locations = [];
@@ -78,7 +101,8 @@ for (let i = 1; i < lines.length; i++) {
       giffordScore: values[31],
       gunFriendliness: getGunFriendliness(values[31]),
       laws: getFirearmsLaws(values[3], values[31]),
-      permitRequired: getPermitRequired(values[31])
+      permitRequired: getPermitRequired(values[31]),
+      ...(gunlawsMap[values[0]] || {})
     },
     climate: {
       type: values[29],
