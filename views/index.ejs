@@ -353,7 +353,7 @@
     white-space: nowrap;
 }
 
-.bubble-choice:not(.selected):hover {
+.bubble-choice:not(.selected):not(.no-hover):hover {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
     color: white;
@@ -1113,6 +1113,20 @@ document.querySelectorAll('.bubble-choice').forEach(bubble => {
     bubble.addEventListener('click', () => {
         // Toggle selected class on clicked bubble
         bubble.classList.toggle('selected');
+
+        // Add no-hover class to prevent immediate hover effect when deselecting
+        bubble.classList.add('no-hover');
+
+        // Remove no-hover class after mouse leaves or after short delay
+        var removeNoHover = function() {
+            bubble.classList.remove('no-hover');
+            bubble.removeEventListener('mouseleave', removeNoHover);
+        };
+
+        bubble.addEventListener('mouseleave', removeNoHover, { once: true });
+        setTimeout(function() {
+            bubble.classList.remove('no-hover');
+        }, 300);
 
         // Apply filters based on all selected bubbles
         applyBubbleFilters();
