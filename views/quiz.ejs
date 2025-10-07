@@ -1,0 +1,666 @@
+<%- include('layout', { body:
+`<div class="quiz-container">
+    <div class="quiz-header">
+        <h1>Find Your Perfect Retirement City</h1>
+        <p>Answer a few questions to discover cities that match your lifestyle preferences.</p>
+    </div>
+
+    <form class="quiz-form" id="quizForm" action="/quiz/results" method="POST">
+        <div class="quiz-progress">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text">Question <span id="currentQuestion">1</span> of <span id="totalQuestions">10</span></div>
+        </div>
+
+        <!-- Question 1: Climate -->
+        <div class="question-card active" data-question="1">
+            <div class="question-icon">
+                <i class="fas fa-sun"></i>
+            </div>
+            <h2 class="question-title">How important is warm weather year-round?</h2>
+            <p class="question-subtitle">Do you prefer consistent warmth, or are you okay with seasonal changes?</p>
+            <div class="rating-options">
+                <input type="radio" name="climate" value="1" id="climate-1" required>
+                <label for="climate-1" class="rating-btn">
+                    <span class="rating-label">Not Important</span>
+                </label>
+                <input type="radio" name="climate" value="2" id="climate-2">
+                <label for="climate-2" class="rating-btn">
+                    <span class="rating-label">Slightly Important</span>
+                </label>
+                <input type="radio" name="climate" value="3" id="climate-3">
+                <label for="climate-3" class="rating-btn">
+                    <span class="rating-label">Moderately Important</span>
+                </label>
+                <input type="radio" name="climate" value="4" id="climate-4">
+                <label for="climate-4" class="rating-btn">
+                    <span class="rating-label">Very Important</span>
+                </label>
+                <input type="radio" name="climate" value="5" id="climate-5">
+                <label for="climate-5" class="rating-btn">
+                    <span class="rating-label">Essential</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 2: Gun Laws -->
+        <div class="question-card" data-question="2">
+            <div class="question-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h2 class="question-title">How important are gun-friendly laws?</h2>
+            <p class="question-subtitle">Looking for constitutional carry or other 2A-friendly policies?</p>
+            <div class="rating-options">
+                <input type="radio" name="firearms" value="1" id="firearms-1" required>
+                <label for="firearms-1" class="rating-btn">
+                    <span class="rating-label">Not Important</span>
+                </label>
+                <input type="radio" name="firearms" value="2" id="firearms-2">
+                <label for="firearms-2" class="rating-btn">
+                    <span class="rating-label">Slightly Important</span>
+                </label>
+                <input type="radio" name="firearms" value="3" id="firearms-3">
+                <label for="firearms-3" class="rating-btn">
+                    <span class="rating-label">Moderately Important</span>
+                </label>
+                <input type="radio" name="firearms" value="4" id="firearms-4">
+                <label for="firearms-4" class="rating-btn">
+                    <span class="rating-label">Very Important</span>
+                </label>
+                <input type="radio" name="firearms" value="5" id="firearms-5">
+                <label for="firearms-5" class="rating-btn">
+                    <span class="rating-label">Essential</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 3: Marijuana -->
+        <div class="question-card" data-question="3">
+            <div class="question-icon">
+                <i class="fas fa-leaf"></i>
+            </div>
+            <h2 class="question-title">How important is marijuana legality?</h2>
+            <p class="question-subtitle">Prefer recreational legal, medical only, or doesn't matter?</p>
+            <div class="rating-options">
+                <input type="radio" name="marijuana" value="1" id="marijuana-1" required>
+                <label for="marijuana-1" class="rating-btn">
+                    <span class="rating-label">Not Important</span>
+                </label>
+                <input type="radio" name="marijuana" value="2" id="marijuana-2">
+                <label for="marijuana-2" class="rating-btn">
+                    <span class="rating-label">Slightly Important</span>
+                </label>
+                <input type="radio" name="marijuana" value="3" id="marijuana-3">
+                <label for="marijuana-3" class="rating-btn">
+                    <span class="rating-label">Moderately Important</span>
+                </label>
+                <input type="radio" name="marijuana" value="4" id="marijuana-4">
+                <label for="marijuana-4" class="rating-btn">
+                    <span class="rating-label">Very Important</span>
+                </label>
+                <input type="radio" name="marijuana" value="5" id="marijuana-5">
+                <label for="marijuana-5" class="rating-btn">
+                    <span class="rating-label">Essential</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 4: LGBTQ Friendliness -->
+        <div class="question-card" data-question="4">
+            <div class="question-icon">
+                <i class="fas fa-rainbow"></i>
+            </div>
+            <h2 class="question-title">How important is LGBTQ+ friendliness?</h2>
+            <p class="question-subtitle">Looking for inclusive and welcoming communities?</p>
+            <div class="rating-options">
+                <input type="radio" name="lgbtq" value="1" id="lgbtq-1" required>
+                <label for="lgbtq-1" class="rating-btn">
+                    <span class="rating-label">Not Important</span>
+                </label>
+                <input type="radio" name="lgbtq" value="2" id="lgbtq-2">
+                <label for="lgbtq-2" class="rating-btn">
+                    <span class="rating-label">Slightly Important</span>
+                </label>
+                <input type="radio" name="lgbtq" value="3" id="lgbtq-3">
+                <label for="lgbtq-3" class="rating-btn">
+                    <span class="rating-label">Moderately Important</span>
+                </label>
+                <input type="radio" name="lgbtq" value="4" id="lgbtq-4">
+                <label for="lgbtq-4" class="rating-btn">
+                    <span class="rating-label">Very Important</span>
+                </label>
+                <input type="radio" name="lgbtq" value="5" id="lgbtq-5">
+                <label for="lgbtq-5" class="rating-btn">
+                    <span class="rating-label">Essential</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 5: Cost of Living -->
+        <div class="question-card" data-question="5">
+            <div class="question-icon">
+                <i class="fas fa-dollar-sign"></i>
+            </div>
+            <h2 class="question-title">How important is affordable cost of living?</h2>
+            <p class="question-subtitle">Want to stretch your retirement dollars further?</p>
+            <div class="rating-options">
+                <input type="radio" name="costOfLiving" value="1" id="cost-1" required>
+                <label for="cost-1" class="rating-btn">
+                    <span class="rating-label">Not Important</span>
+                </label>
+                <input type="radio" name="costOfLiving" value="2" id="cost-2">
+                <label for="cost-2" class="rating-btn">
+                    <span class="rating-label">Slightly Important</span>
+                </label>
+                <input type="radio" name="costOfLiving" value="3" id="cost-3">
+                <label for="cost-3" class="rating-btn">
+                    <span class="rating-label">Moderately Important</span>
+                </label>
+                <input type="radio" name="costOfLiving" value="4" id="cost-4">
+                <label for="cost-4" class="rating-btn">
+                    <span class="rating-label">Very Important</span>
+                </label>
+                <input type="radio" name="costOfLiving" value="5" id="cost-5">
+                <label for="cost-5" class="rating-btn">
+                    <span class="rating-label">Essential</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 6: Taxes -->
+        <div class="question-card" data-question="6">
+            <div class="question-icon">
+                <i class="fas fa-percent"></i>
+            </div>
+            <h2 class="question-title">How important are low state taxes?</h2>
+            <p class="question-subtitle">Prefer states with no income tax or lower overall tax burden?</p>
+            <div class="rating-options">
+                <input type="radio" name="taxes" value="1" id="taxes-1" required>
+                <label for="taxes-1" class="rating-btn">
+                    <span class="rating-label">Not Important</span>
+                </label>
+                <input type="radio" name="taxes" value="2" id="taxes-2">
+                <label for="taxes-2" class="rating-btn">
+                    <span class="rating-label">Slightly Important</span>
+                </label>
+                <input type="radio" name="taxes" value="3" id="taxes-3">
+                <label for="taxes-3" class="rating-btn">
+                    <span class="rating-label">Moderately Important</span>
+                </label>
+                <input type="radio" name="taxes" value="4" id="taxes-4">
+                <label for="taxes-4" class="rating-btn">
+                    <span class="rating-label">Very Important</span>
+                </label>
+                <input type="radio" name="taxes" value="5" id="taxes-5">
+                <label for="taxes-5" class="rating-btn">
+                    <span class="rating-label">Essential</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 7: Lifestyle Pace -->
+        <div class="question-card" data-question="7">
+            <div class="question-icon">
+                <i class="fas fa-home"></i>
+            </div>
+            <h2 class="question-title">What type of lifestyle do you prefer?</h2>
+            <p class="question-subtitle">Choose between fast-paced urban living and relaxed small-town life.</p>
+            <div class="rating-options lifestyle-options">
+                <input type="radio" name="lifestyle" value="urban" id="lifestyle-1" required>
+                <label for="lifestyle-1" class="rating-btn lifestyle-btn">
+                    <i class="fas fa-city"></i>
+                    <span class="rating-label">Urban/Metro</span>
+                    <span class="rating-desc">Bustling city life</span>
+                </label>
+                <input type="radio" name="lifestyle" value="suburban" id="lifestyle-2">
+                <label for="lifestyle-2" class="rating-btn lifestyle-btn">
+                    <i class="fas fa-house-user"></i>
+                    <span class="rating-label">Suburban</span>
+                    <span class="rating-desc">Best of both worlds</span>
+                </label>
+                <input type="radio" name="lifestyle" value="rural" id="lifestyle-3">
+                <label for="lifestyle-3" class="rating-btn lifestyle-btn">
+                    <i class="fas fa-tree"></i>
+                    <span class="rating-label">Slow Living</span>
+                    <span class="rating-desc">Quiet small-town pace</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 8: VA Healthcare -->
+        <div class="question-card" data-question="8">
+            <div class="question-icon">
+                <i class="fas fa-hospital"></i>
+            </div>
+            <h2 class="question-title">How important are nearby VA facilities?</h2>
+            <p class="question-subtitle">Need easy access to VA healthcare and services?</p>
+            <div class="rating-options">
+                <input type="radio" name="vaFacilities" value="1" id="va-1" required>
+                <label for="va-1" class="rating-btn">
+                    <span class="rating-label">Not Important</span>
+                </label>
+                <input type="radio" name="vaFacilities" value="2" id="va-2">
+                <label for="va-2" class="rating-btn">
+                    <span class="rating-label">Slightly Important</span>
+                </label>
+                <input type="radio" name="vaFacilities" value="3" id="va-3">
+                <label for="va-3" class="rating-btn">
+                    <span class="rating-label">Moderately Important</span>
+                </label>
+                <input type="radio" name="vaFacilities" value="4" id="va-4">
+                <label for="va-4" class="rating-btn">
+                    <span class="rating-label">Very Important</span>
+                </label>
+                <input type="radio" name="vaFacilities" value="5" id="va-5">
+                <label for="va-5" class="rating-btn">
+                    <span class="rating-label">Essential</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 9: Safety -->
+        <div class="question-card" data-question="9">
+            <div class="question-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h2 class="question-title">How important is low crime and safety?</h2>
+            <p class="question-subtitle">Want to feel secure in your community?</p>
+            <div class="rating-options">
+                <input type="radio" name="safety" value="1" id="safety-1" required>
+                <label for="safety-1" class="rating-btn">
+                    <span class="rating-label">Not Important</span>
+                </label>
+                <input type="radio" name="safety" value="2" id="safety-2">
+                <label for="safety-2" class="rating-btn">
+                    <span class="rating-label">Slightly Important</span>
+                </label>
+                <input type="radio" name="safety" value="3" id="safety-3">
+                <label for="safety-3" class="rating-btn">
+                    <span class="rating-label">Moderately Important</span>
+                </label>
+                <input type="radio" name="safety" value="4" id="safety-4">
+                <label for="safety-4" class="rating-btn">
+                    <span class="rating-label">Very Important</span>
+                </label>
+                <input type="radio" name="safety" value="5" id="safety-5">
+                <label for="safety-5" class="rating-btn">
+                    <span class="rating-label">Essential</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 10: Gas Prices -->
+        <div class="question-card" data-question="10">
+            <div class="question-icon">
+                <i class="fas fa-gas-pump"></i>
+            </div>
+            <h2 class="question-title">How important are affordable gas prices?</h2>
+            <p class="question-subtitle">Want to keep your transportation costs down?</p>
+            <div class="rating-options">
+                <input type="radio" name="gasPrices" value="1" id="gas-1" required>
+                <label for="gas-1" class="rating-btn">
+                    <span class="rating-label">Not Important</span>
+                </label>
+                <input type="radio" name="gasPrices" value="2" id="gas-2">
+                <label for="gas-2" class="rating-btn">
+                    <span class="rating-label">Slightly Important</span>
+                </label>
+                <input type="radio" name="gasPrices" value="3" id="gas-3">
+                <label for="gas-3" class="rating-btn">
+                    <span class="rating-label">Moderately Important</span>
+                </label>
+                <input type="radio" name="gasPrices" value="4" id="gas-4">
+                <label for="gas-4" class="rating-btn">
+                    <span class="rating-label">Very Important</span>
+                </label>
+                <input type="radio" name="gasPrices" value="5" id="gas-5">
+                <label for="gas-5" class="rating-btn">
+                    <span class="rating-label">Essential</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="quiz-navigation">
+            <button type="button" class="nav-btn prev-btn" id="prevBtn" disabled>
+                <i class="fas fa-arrow-left"></i>
+                Previous
+            </button>
+            <button type="button" class="nav-btn next-btn" id="nextBtn">
+                Next
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button type="submit" class="nav-btn submit-btn" id="submitBtn" style="display: none;">
+                See My Matches
+                <i class="fas fa-check"></i>
+            </button>
+        </div>
+    </form>
+</div>
+
+<style>
+.quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+.quiz-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.quiz-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.quiz-header p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+}
+
+.quiz-progress {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: var(--spacing-sm);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    width: 10%;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.quiz-form {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+    box-shadow: 0 4px 12px var(--shadow);
+    border: 2px solid var(--border-color);
+}
+
+.question-card {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.question-card.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.question-icon {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.question-icon i {
+    font-size: 3rem;
+    color: var(--primary-color);
+}
+
+.question-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.question-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.rating-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xl);
+}
+
+.rating-options input[type="radio"] {
+    display: none;
+}
+
+.rating-btn {
+    padding: var(--spacing-lg);
+    background-color: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.rating-btn:hover {
+    background-color: var(--bg-color);
+    border-color: var(--primary-color);
+    transform: translateX(4px);
+}
+
+.rating-options input[type="radio"]:checked + .rating-btn {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.rating-label {
+    font-size: 1rem;
+    font-weight: 500;
+    display: block;
+}
+
+.lifestyle-options {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.lifestyle-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xl);
+}
+
+.lifestyle-btn i {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.lifestyle-btn .rating-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.rating-options input[type="radio"]:checked + .lifestyle-btn .rating-desc {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.quiz-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--border-color);
+}
+
+.nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: var(--bg-secondary);
+    color: var(--text-color);
+}
+
+.nav-btn:hover:not(:disabled) {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    border: none;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+}
+
+@media (max-width: 768px) {
+    .quiz-container {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .quiz-header h1 {
+        font-size: 2rem;
+    }
+
+    .quiz-form {
+        padding: var(--spacing-xl);
+    }
+
+    .question-title {
+        font-size: 1.5rem;
+    }
+
+    .lifestyle-options {
+        flex-direction: column;
+    }
+
+    .quiz-navigation {
+        flex-direction: column;
+    }
+
+    .prev-btn {
+        order: 2;
+    }
+
+    .next-btn, .submit-btn {
+        order: 1;
+    }
+}
+</style>
+
+<script>
+let currentQuestion = 1;
+const totalQuestions = 10;
+
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const submitBtn = document.getElementById('submitBtn');
+const progressFill = document.getElementById('progressFill');
+const currentQuestionSpan = document.getElementById('currentQuestion');
+
+function updateProgress() {
+    const progress = (currentQuestion / totalQuestions) * 100;
+    progressFill.style.width = progress + '%';
+    currentQuestionSpan.textContent = currentQuestion;
+}
+
+function showQuestion(questionNum) {
+    document.querySelectorAll('.question-card').forEach(card => {
+        card.classList.remove('active');
+    });
+
+    const card = document.querySelector('.question-card[data-question="' + questionNum + '"]');
+    if (card) {
+        card.classList.add('active');
+    }
+
+    currentQuestion = questionNum;
+    updateProgress();
+
+    prevBtn.disabled = currentQuestion === 1;
+
+    if (currentQuestion === totalQuestions) {
+        nextBtn.style.display = 'none';
+        submitBtn.style.display = 'inline-flex';
+    } else {
+        nextBtn.style.display = 'inline-flex';
+        submitBtn.style.display = 'none';
+    }
+}
+
+prevBtn.addEventListener('click', function() {
+    if (currentQuestion > 1) {
+        showQuestion(currentQuestion - 1);
+    }
+});
+
+nextBtn.addEventListener('click', function() {
+    const currentCard = document.querySelector('.question-card[data-question="' + currentQuestion + '"]');
+    const inputs = currentCard.querySelectorAll('input[type="radio"]');
+    const isAnswered = Array.from(inputs).some(input => input.checked);
+
+    if (!isAnswered) {
+        alert('Please select an option before continuing.');
+        return;
+    }
+
+    if (currentQuestion < totalQuestions) {
+        showQuestion(currentQuestion + 1);
+    }
+});
+
+document.querySelectorAll('.rating-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        setTimeout(function() {
+            if (currentQuestion < totalQuestions) {
+                nextBtn.click();
+            }
+        }, 300);
+    });
+});
+
+showQuestion(1);
+</script>` }) %>
