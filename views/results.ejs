@@ -10,112 +10,99 @@
     </div>
 
     <div class="results-grid">
-        <% if (locations && locations.length > 0) { %>
-            <% locations.forEach(location => { %>
-                <%
-                    const cityUrl = '/' + (location.state || '').toLowerCase() + '/' + (location.city || '').toLowerCase().replace(/\s+/g, '');
-                    const displayName = location.name || (location.city + ', ' + location.state);
-                %>
-                <div class="location-card">
-                    <div class="location-header">
-                        <h3><%= displayName %></h3>
-                        <div class="match-score">
-                            <span class="score"><%= location.matchScore || 0 %>%</span>
-                            <span class="label">Match</span>
-                        </div>
+        ${locations && locations.length > 0 ? locations.map(location => {
+            const cityUrl = '/' + (location.state || '').toLowerCase() + '/' + (location.city || '').toLowerCase().replace(/\s+/g, '');
+            const displayName = location.name || (location.city + ', ' + location.state);
+
+            return `<div class="location-card">
+                <div class="location-header">
+                    <h3>${displayName}</h3>
+                    <div class="match-score">
+                        <span class="score">${location.matchScore || 0}%</span>
+                        <span class="label">Match</span>
                     </div>
-                    <div class="location-details">
-                        <% if (location.taxes && location.taxes.incomeTax === 0) { %>
-                            <div class="detail-item">
-                                <i class="fas fa-dollar-sign"></i>
-                                <span>No state income tax</span>
-                            </div>
-                        <% } else if (!location.state_income_tax) { %>
-                            <div class="detail-item">
-                                <i class="fas fa-dollar-sign"></i>
-                                <span>No state income tax</span>
-                            </div>
-                        <% } %>
-                        <% if (location.climate && location.climate.type) { %>
-                            <div class="detail-item">
-                                <i class="fas fa-thermometer-half"></i>
-                                <span><%= location.climate.type %> climate</span>
-                            </div>
-                        <% } else if (location.climate_type) { %>
-                            <div class="detail-item">
-                                <i class="fas fa-thermometer-half"></i>
-                                <span><%= location.climate_type.replace('-', ' ') %> climate</span>
-                            </div>
-                        <% } %>
-                        <% if (location.veteranBenefits || location.veteran_tax_benefits) { %>
-                            <div class="detail-item">
-                                <i class="fas fa-star"></i>
-                                <span>Veteran benefits available</span>
-                            </div>
-                        <% } %>
-                        <% if (location.vaFacilities || location.va_facilities_nearby) { %>
-                            <div class="detail-item">
-                                <i class="fas fa-hospital"></i>
-                                <span>VA facilities nearby</span>
-                            </div>
-                        <% } %>
-                        <% if (location.firearms && (location.firearms.laws === 'Constitutional Carry' || location.firearms.laws === 'Constitutional carry')) { %>
-                            <div class="detail-item">
-                                <i class="fas fa-shield-alt"></i>
-                                <span>Constitutional carry</span>
-                            </div>
-                        <% } else if (location.constitutional_carry) { %>
-                            <div class="detail-item">
-                                <i class="fas fa-shield-alt"></i>
-                                <span>Constitutional carry</span>
-                            </div>
-                        <% } %>
-                        <% if (location.marijuana && location.marijuana.status) { %>
-                            <div class="detail-item">
-                                <i class="fas fa-leaf"></i>
-                                <span><%= location.marijuana.status %> marijuana</span>
-                            </div>
-                        <% } %>
-                    </div>
-                    <div class="location-stats">
-                        <% if (location.economy && location.economy.costOfLiving) { %>
-                            <div class="stat">
-                                <span class="stat-label">Cost of Living (<%= location.economy.costOfLiving %>)</span>
-                                <div class="stat-bar">
-                                    <div class="stat-fill" style="width: <%= Math.max(0, Math.min(100, (150 - parseFloat(location.economy.costOfLiving)) * 2)) %>%"></div>
-                                </div>
-                            </div>
-                        <% } else if (location.cost_of_living_index) { %>
-                            <div class="stat">
-                                <span class="stat-label">Cost of Living (<%= location.cost_of_living_index %>)</span>
-                                <div class="stat-bar">
-                                    <div class="stat-fill" style="width: <%= Math.max(0, Math.min(100, (150 - location.cost_of_living_index) * 2)) %>%"></div>
-                                </div>
-                            </div>
-                        <% } %>
-                        <% if (location.crime && location.crime.totalIndex) { %>
-                            <div class="stat">
-                                <span class="stat-label">Safety Score</span>
-                                <div class="stat-bar">
-                                    <div class="stat-fill" style="width: <%= Math.max(0, Math.min(100, 100 - (location.crime.totalIndex * 10))) %>%"></div>
-                                </div>
-                            </div>
-                        <% } else if (location.healthcare_quality_score) { %>
-                            <div class="stat">
-                                <span class="stat-label">Healthcare Quality</span>
-                                <div class="stat-bar">
-                                    <div class="stat-fill" style="width: <%= location.healthcare_quality_score %>%"></div>
-                                </div>
-                            </div>
-                        <% } %>
-                    </div>
-                    <a href="<%= cityUrl %>" class="learn-more-btn">
-                        <span>Learn More</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
                 </div>
-            <% }); %>
-        <% } else { %>
+                <div class="location-details">
+                    ${(location.taxes && location.taxes.incomeTax === 0) || !location.state_income_tax ? `
+                        <div class="detail-item">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span>No state income tax</span>
+                        </div>
+                    ` : ''}
+                    ${location.climate && location.climate.type ? `
+                        <div class="detail-item">
+                            <i class="fas fa-thermometer-half"></i>
+                            <span>${location.climate.type} climate</span>
+                        </div>
+                    ` : location.climate_type ? `
+                        <div class="detail-item">
+                            <i class="fas fa-thermometer-half"></i>
+                            <span>${location.climate_type.replace('-', ' ')} climate</span>
+                        </div>
+                    ` : ''}
+                    ${location.veteranBenefits || location.veteran_tax_benefits ? `
+                        <div class="detail-item">
+                            <i class="fas fa-star"></i>
+                            <span>Veteran benefits available</span>
+                        </div>
+                    ` : ''}
+                    ${location.vaFacilities || location.va_facilities_nearby ? `
+                        <div class="detail-item">
+                            <i class="fas fa-hospital"></i>
+                            <span>VA facilities nearby</span>
+                        </div>
+                    ` : ''}
+                    ${(location.firearms && (location.firearms.laws === 'Constitutional Carry' || location.firearms.laws === 'Constitutional carry')) || location.constitutional_carry ? `
+                        <div class="detail-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Constitutional carry</span>
+                        </div>
+                    ` : ''}
+                    ${location.marijuana && location.marijuana.status ? `
+                        <div class="detail-item">
+                            <i class="fas fa-leaf"></i>
+                            <span>${location.marijuana.status} marijuana</span>
+                        </div>
+                    ` : ''}
+                </div>
+                <div class="location-stats">
+                    ${location.economy && location.economy.costOfLiving ? `
+                        <div class="stat">
+                            <span class="stat-label">Cost of Living (${location.economy.costOfLiving})</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill" style="width: ${Math.max(0, Math.min(100, (150 - parseFloat(location.economy.costOfLiving)) * 2))}%"></div>
+                            </div>
+                        </div>
+                    ` : location.cost_of_living_index ? `
+                        <div class="stat">
+                            <span class="stat-label">Cost of Living (${location.cost_of_living_index})</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill" style="width: ${Math.max(0, Math.min(100, (150 - location.cost_of_living_index) * 2))}%"></div>
+                            </div>
+                        </div>
+                    ` : ''}
+                    ${location.crime && location.crime.totalIndex ? `
+                        <div class="stat">
+                            <span class="stat-label">Safety Score</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill" style="width: ${Math.max(0, Math.min(100, 100 - (location.crime.totalIndex * 10)))}%"></div>
+                            </div>
+                        </div>
+                    ` : location.healthcare_quality_score ? `
+                        <div class="stat">
+                            <span class="stat-label">Healthcare Quality</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill" style="width: ${location.healthcare_quality_score}%"></div>
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>
+                <a href="${cityUrl}" class="learn-more-btn">
+                    <span>Learn More</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>`;
+        }).join('') : `
             <div class="no-results">
                 <i class="fas fa-search"></i>
                 <h3>No locations found</h3>
@@ -125,33 +112,23 @@
                     <i class="fas fa-edit"></i>
                 </a>
             </div>
-        <% } %>
+        `}
     </div>
 
     <div class="criteria-summary">
         <h2>Your Search Criteria</h2>
         <div class="criteria-tags">
-            <% if (typeof criteria !== 'undefined' && criteria.regions) { %>
-                <% if (Array.isArray(criteria.regions)) { %>
-                    <% criteria.regions.forEach(region => { %>
-                        <span class="criteria-tag"><%= region %></span>
-                    <% }); %>
-                <% } else { %>
-                    <span class="criteria-tag"><%= criteria.regions %></span>
-                <% } %>
-            <% } %>
-            <% if (typeof criteria !== 'undefined' && criteria.climate) { %>
-                <span class="criteria-tag"><%= criteria.climate %> climate</span>
-            <% } %>
-            <% if (typeof criteria !== 'undefined' && criteria.taxes) { %>
-                <% if (Array.isArray(criteria.taxes)) { %>
-                    <% criteria.taxes.forEach(tax => { %>
-                        <span class="criteria-tag"><%= tax %></span>
-                    <% }); %>
-                <% } else { %>
-                    <span class="criteria-tag"><%= criteria.taxes %></span>
-                <% } %>
-            <% } %>
+            ${typeof criteria !== 'undefined' && criteria.regions ? (
+                Array.isArray(criteria.regions)
+                    ? criteria.regions.map(region => `<span class="criteria-tag">${region}</span>`).join('')
+                    : `<span class="criteria-tag">${criteria.regions}</span>`
+            ) : ''}
+            ${typeof criteria !== 'undefined' && criteria.climate ? `<span class="criteria-tag">${criteria.climate} climate</span>` : ''}
+            ${typeof criteria !== 'undefined' && criteria.taxes ? (
+                Array.isArray(criteria.taxes)
+                    ? criteria.taxes.map(tax => `<span class="criteria-tag">${tax}</span>`).join('')
+                    : `<span class="criteria-tag">${criteria.taxes}</span>`
+            ) : ''}
         </div>
     </div>
 </div>
