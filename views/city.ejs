@@ -168,6 +168,18 @@
                     <span class="detail-label">Permit Required</span>
                     <span class="detail-value">${location.firearms?.permitRequired === false ? 'No' : location.firearms?.permitRequired === true ? 'Yes' : 'N/A'}</span>
                 </div>
+                <div class="detail-item">
+                    <span class="detail-label">Magazine Limit</span>
+                    <span class="detail-value">${location.firearms?.magazineLimit || 'None'}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Ghost Gun Ban</span>
+                    <span class="detail-value">${location.firearms?.ghostGunBan ? 'Yes' : 'No'}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Assault Weapon Ban</span>
+                    <span class="detail-value">${location.firearms?.assaultWeaponBan ? 'Yes' : 'No'}</span>
+                </div>
             </div>
         </section>
 
