@@ -37,6 +37,19 @@ app.get('/quiz', (req, res) => {
   res.render('quiz', { title: 'Retirement City Quiz - VetRetire' });
 });
 
+app.get('/map', (req, res) => {
+  try {
+    const data = database.getData();
+    res.render('map', {
+      title: 'Retirement City Map - VetRetire',
+      locations: data.locations || []
+    });
+  } catch (error) {
+    console.error('Error loading map:', error);
+    res.status(500).send('Error loading map');
+  }
+});
+
 app.post('/quiz/results', (req, res) => {
   try {
     const responses = req.body;

@@ -60,6 +60,10 @@
       },
       "veteranBenefits": {
         "description": "Disability rating 50%/more = $150k exemption"
+      },
+      "coordinates": {
+        "lat": 61.2163129,
+        "lng": -149.894852
       }
     },
     {
@@ -119,6 +123,10 @@
       "economy": {
         "avgGasPrice": 2.74,
         "costOfLiving": "91"
+      },
+      "coordinates": {
+        "lat": 34.729847,
+        "lng": -86.5859011
       }
     },
     {
@@ -179,7 +187,11 @@
         "avgGasPrice": 2.75,
         "costOfLiving": "93"
       },
-      "description": "A historic Gulf Coast city with Southern charm, lively culture, affordable living, and easy access to beaches and outdoor recreation."
+      "description": "A historic Gulf Coast city with Southern charm, lively culture, affordable living, and easy access to beaches and outdoor recreation.",
+      "coordinates": {
+        "lat": 30.6913462,
+        "lng": -88.0437509
+      }
     },
     {
       "state": "AR",
@@ -238,6 +250,10 @@
       "economy": {
         "avgGasPrice": 2.7,
         "costOfLiving": "94"
+      },
+      "coordinates": {
+        "lat": 34.7465071,
+        "lng": -92.2896267
       }
     },
     {
@@ -297,6 +313,10 @@
       "economy": {
         "avgGasPrice": 3.23,
         "costOfLiving": "103"
+      },
+      "coordinates": {
+        "lat": 32.1975767,
+        "lng": -111.0808306
       }
     },
     {
@@ -356,6 +376,10 @@
       "economy": {
         "avgGasPrice": 3.8,
         "costOfLiving": "107"
+      },
+      "coordinates": {
+        "lat": 33.4484367,
+        "lng": -112.074141
       }
     },
     {
@@ -415,6 +439,10 @@
       "economy": {
         "avgGasPrice": 4.33,
         "costOfLiving": "114"
+      },
+      "coordinates": {
+        "lat": 39.1404477,
+        "lng": -121.6169108
       }
     },
     {
@@ -474,6 +502,10 @@
       "economy": {
         "avgGasPrice": 2.85,
         "costOfLiving": "102"
+      },
+      "coordinates": {
+        "lat": 38.8339578,
+        "lng": -104.825348
       }
     },
     {
@@ -537,6 +569,10 @@
       "description": "A relaxed coastal city with white-sand beaches, military presence, historic charm, and a laid-back yet vibrant Southern lifestyle.",
       "veteranBenefits": {
         "description": "$5k deduction for >10% disability"
+      },
+      "coordinates": {
+        "lat": 30.421309,
+        "lng": -87.2169149
       }
     },
     {
@@ -596,6 +632,10 @@
       "economy": {
         "avgGasPrice": 2.92,
         "costOfLiving": "96"
+      },
+      "coordinates": {
+        "lat": 33.7544657,
+        "lng": -84.3898151
       }
     },
     {
@@ -655,6 +695,10 @@
       "economy": {
         "avgGasPrice": 4.42,
         "costOfLiving": "186"
+      },
+      "coordinates": {
+        "lat": 21.304547,
+        "lng": -157.855676
       }
     },
     {
@@ -715,7 +759,11 @@
         "avgGasPrice": 2.89,
         "costOfLiving": "85"
       },
-      "description": "Blending Midwest friendliness with a thriving job market, Des Moines offers an affordable, clean, and steadily growing urban lifestyle."
+      "description": "Blending Midwest friendliness with a thriving job market, Des Moines offers an affordable, clean, and steadily growing urban lifestyle.",
+      "coordinates": {
+        "lat": 41.5868654,
+        "lng": -93.6249494
+      }
     },
     {
       "state": "ID",
@@ -775,7 +823,11 @@
         "avgGasPrice": 3.41,
         "costOfLiving": "120"
       },
-      "description": "A quiet, small-town community with a rural feel, affordable living, and close proximity to Boise’s jobs, shopping, and outdoor recreation."
+      "description": "A quiet, small-town community with a rural feel, affordable living, and close proximity to Boise’s jobs, shopping, and outdoor recreation.",
+      "coordinates": {
+        "lat": 43.4918307,
+        "lng": -116.420122
+      }
     },
     {
       "state": "ID",
@@ -834,6 +886,10 @@
       "economy": {
         "avgGasPrice": 3.49,
         "costOfLiving": "102"
+      },
+      "coordinates": {
+        "lat": 43.6166163,
+        "lng": -116.200886
       }
     },
     {
@@ -893,6 +949,10 @@
       "economy": {
         "avgGasPrice": 2.83,
         "costOfLiving": "93"
+      },
+      "coordinates": {
+        "lat": 38.2542376,
+        "lng": -85.759407
       }
     },
     {
@@ -952,6 +1012,10 @@
       "economy": {
         "avgGasPrice": 3.05,
         "costOfLiving": "146"
+      },
+      "coordinates": {
+        "lat": 42.3554334,
+        "lng": -71.060511
       }
     },
     {
@@ -1011,6 +1075,10 @@
       "economy": {
         "avgGasPrice": 3.09,
         "costOfLiving": "113"
+      },
+      "coordinates": {
+        "lat": 43.6573605,
+        "lng": -70.2586618
       }
     },
     {
@@ -1070,6 +1138,10 @@
       "economy": {
         "avgGasPrice": 2.67,
         "costOfLiving": "90"
+      },
+      "coordinates": {
+        "lat": 32.2998686,
+        "lng": -90.1830408
       }
     },
     {
@@ -1130,7 +1202,11 @@
         "avgGasPrice": 2.92,
         "costOfLiving": "100"
       },
-      "description": "A growing suburban community with a family focus, friendly atmosphere, parks, and easy access to Charlotte for work and entertainment."
+      "description": "A growing suburban community with a family focus, friendly atmosphere, parks, and easy access to Charlotte for work and entertainment.",
+      "coordinates": {
+        "lat": 35.0768141,
+        "lng": -80.6692352
+      }
     },
     {
       "state": "NC",
@@ -1190,7 +1266,11 @@
         "avgGasPrice": 2.89,
         "costOfLiving": "97"
       },
-      "description": "Known for its tech scene and research hub, Raleigh offers a modern, educated community with southern charm and high quality of life."
+      "description": "Known for its tech scene and research hub, Raleigh offers a modern, educated community with southern charm and high quality of life.",
+      "coordinates": {
+        "lat": 35.7803977,
+        "lng": -78.6390989
+      }
     },
     {
       "state": "NE",
@@ -1250,7 +1330,11 @@
         "avgGasPrice": 2.62,
         "costOfLiving": "92"
       },
-      "description": "A vibrant Midwest city offering affordable living, strong job opportunities, rich culture, and a welcoming blend of urban and suburban life."
+      "description": "A vibrant Midwest city offering affordable living, strong job opportunities, rich culture, and a welcoming blend of urban and suburban life.",
+      "coordinates": {
+        "lat": 41.2587459,
+        "lng": -95.9383758
+      }
     },
     {
       "state": "NH",
@@ -1309,6 +1393,10 @@
       "economy": {
         "avgGasPrice": 3.02,
         "costOfLiving": "112"
+      },
+      "coordinates": {
+        "lat": 42.9956397,
+        "lng": -71.4547891
       }
     },
     {
@@ -1368,6 +1456,10 @@
       "economy": {
         "avgGasPrice": 2.85,
         "costOfLiving": "95"
+      },
+      "coordinates": {
+        "lat": 35.0841034,
+        "lng": -106.650985
       }
     },
     {
@@ -1427,6 +1519,10 @@
       "economy": {
         "avgGasPrice": 3.94,
         "costOfLiving": "102"
+      },
+      "coordinates": {
+        "lat": 36.1674263,
+        "lng": -115.1484131
       }
     },
     {
@@ -1486,6 +1582,10 @@
       "economy": {
         "avgGasPrice": 2.46,
         "costOfLiving": "93"
+      },
+      "coordinates": {
+        "lat": 36.1563122,
+        "lng": -95.9927516
       }
     },
     {
@@ -1545,6 +1645,10 @@
       "economy": {
         "avgGasPrice": 4.3,
         "costOfLiving": "117"
+      },
+      "coordinates": {
+        "lat": 45.5202471,
+        "lng": -122.674194
       }
     },
     {
@@ -1605,7 +1709,11 @@
         "avgGasPrice": 2.8,
         "costOfLiving": "91"
       },
-      "description": "Offers a quiet, family-oriented suburban lifestyle with a small-town feel, strong community ties, and easy access to nearby Columbia’s city conveniences."
+      "description": "Offers a quiet, family-oriented suburban lifestyle with a small-town feel, strong community ties, and easy access to nearby Columbia’s city conveniences.",
+      "coordinates": {
+        "lat": 34.0884688,
+        "lng": -81.1802101
+      }
     },
     {
       "state": "SC",
@@ -1664,6 +1772,10 @@
       "economy": {
         "avgGasPrice": 2.89,
         "costOfLiving": "93"
+      },
+      "coordinates": {
+        "lat": 34.851354,
+        "lng": -82.3984882
       }
     },
     {
@@ -1723,6 +1835,10 @@
       "economy": {
         "avgGasPrice": 2.91,
         "costOfLiving": "91"
+      },
+      "coordinates": {
+        "lat": 43.5476008,
+        "lng": -96.7293629
       }
     },
     {
@@ -1782,6 +1898,10 @@
       "economy": {
         "avgGasPrice": 2.78,
         "costOfLiving": "98"
+      },
+      "coordinates": {
+        "lat": 36.1622767,
+        "lng": -86.7742984
       }
     },
     {
@@ -1844,6 +1964,10 @@
       },
       "veteranBenefits": {
         "description": "Partial property tax reduction"
+      },
+      "coordinates": {
+        "lat": 29.7589382,
+        "lng": -95.3676974
       }
     },
     {
@@ -1903,6 +2027,10 @@
       "economy": {
         "avgGasPrice": 2.96,
         "costOfLiving": "88"
+      },
+      "coordinates": {
+        "lat": 31.7601164,
+        "lng": -106.4870404
       }
     },
     {
@@ -1962,6 +2090,10 @@
       "economy": {
         "avgGasPrice": 3.35,
         "costOfLiving": "108"
+      },
+      "coordinates": {
+        "lat": 40.7596198,
+        "lng": -111.886797
       }
     },
     {
@@ -2021,6 +2153,10 @@
       "economy": {
         "avgGasPrice": 2.82,
         "costOfLiving": "101"
+      },
+      "coordinates": {
+        "lat": 43.0386475,
+        "lng": -87.9090751
       }
     },
     {
@@ -2080,6 +2216,10 @@
       "economy": {
         "avgGasPrice": 3.09,
         "costOfLiving": "99"
+      },
+      "coordinates": {
+        "lat": 41.139981,
+        "lng": -104.820246
       }
     }
   ]

@@ -1,0 +1,302 @@
+<%- include('layout', { body:
+`<div class="map-container">
+    <div class="map-header">
+        <h1>Retirement City Map</h1>
+        <p>Explore all ${locations.length} cities in our database</p>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="map-legend">
+        <div class="legend-item">
+            <div class="legend-marker"></div>
+            <span>Retirement Cities</span>
+        </div>
+        <div class="legend-info">
+            <span>Click any marker to view city details</span>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+(function() {
+    // Cities data
+    var cities = ${JSON.stringify(locations)};
+
+    // Initialize map - centered on continental US
+    var map = L.map('map', {
+        center: [39.8283, -98.5795],
+        zoom: 4,
+        minZoom: 3,
+        maxZoom: 18
+    });
+
+    // Function to update tile layer based on theme
+    function updateMapTiles() {
+        var theme = document.documentElement.getAttribute('data-theme');
+        var tileLayer;
+
+        if (theme === 'dark') {
+            // Dark mode tiles
+            tileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 20
+            });
+        } else {
+            // Light mode tiles
+            tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                maxZoom: 19
+            });
+        }
+
+        // Remove existing tile layers
+        map.eachLayer(function(layer) {
+            if (layer instanceof L.TileLayer) {
+                map.removeLayer(layer);
+            }
+        });
+
+        // Add new tile layer
+        tileLayer.addTo(map);
+    }
+
+    // Initial tile layer
+    updateMapTiles();
+
+    // Watch for theme changes
+    var themeObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'data-theme') {
+                updateMapTiles();
+            }
+        });
+    });
+
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-theme']
+    });
+
+    // Custom marker icon
+    var customIcon = L.divIcon({
+        className: 'custom-marker',
+        html: '<div class="marker-pin"></div>',
+        iconSize: [30, 42],
+        iconAnchor: [15, 42],
+        popupAnchor: [0, -42]
+    });
+
+    // Add markers for each city
+    cities.forEach(function(city) {
+        if (city.coordinates && city.coordinates.lat && city.coordinates.lng) {
+            var marker = L.marker([city.coordinates.lat, city.coordinates.lng], {
+                icon: customIcon
+            });
+
+            var cityUrl = '/' + city.state.toLowerCase() + '/' + city.city.toLowerCase().replace(/\\s+/g, '');
+
+            var popupContent =
+                '<div class="marker-popup">' +
+                    '<h3>' + city.city + ', ' + city.state + '</h3>' +
+                    '<div class="popup-details">' +
+                        (city.population ? '<p><i class="fas fa-users"></i> ' + city.population.toLocaleString() + '</p>' : '') +
+                        (city.economy && city.economy.costOfLiving ? '<p><i class="fas fa-dollar-sign"></i> COL: ' + city.economy.costOfLiving + '</p>' : '') +
+                        (city.climate && city.climate.type ? '<p><i class="fas fa-thermometer-half"></i> ' + city.climate.type + '</p>' : '') +
+                    '</div>' +
+                    '<a href="' + cityUrl + '" class="popup-link">View Details <i class="fas fa-arrow-right"></i></a>' +
+                '</div>';
+
+            marker.bindPopup(popupContent);
+            marker.addTo(map);
+        }
+    });
+
+    // Fit bounds to show all markers
+    var group = new L.featureGroup();
+    cities.forEach(function(city) {
+        if (city.coordinates && city.coordinates.lat && city.coordinates.lng) {
+            L.marker([city.coordinates.lat, city.coordinates.lng]).addTo(group);
+        }
+    });
+
+    if (group.getBounds().isValid()) {
+        map.fitBounds(group.getBounds(), { padding: [50, 50] });
+    }
+})();
+</script>
+
+<style>
+.map-container {
+    max-width: 100%;
+    padding: var(--spacing-xl);
+    min-height: calc(100vh - 200px);
+}
+
+.map-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.map-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.map-header p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+}
+
+#map {
+    height: 600px;
+    width: 100%;
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow);
+    margin-bottom: var(--spacing-lg);
+}
+
+.map-legend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-md);
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.legend-marker {
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+}
+
+.legend-info {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+/* Custom marker styles */
+.custom-marker {
+    background: transparent;
+    border: none;
+}
+
+.marker-pin {
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary-color);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    position: relative;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: var(--transition);
+}
+
+.marker-pin:hover {
+    background-color: var(--accent-color);
+    transform: rotate(-45deg) scale(1.2);
+}
+
+/* Popup styles */
+.leaflet-popup-content-wrapper {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 0;
+}
+
+.leaflet-popup-tip {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-top: none;
+    border-right: none;
+}
+
+.marker-popup {
+    padding: var(--spacing-md);
+    min-width: 200px;
+}
+
+.marker-popup h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.popup-details {
+    margin-bottom: var(--spacing-md);
+}
+
+.popup-details p {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: var(--spacing-xs) 0;
+}
+
+.popup-details i {
+    color: var(--primary-color);
+    width: 16px;
+}
+
+.popup-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background-color: var(--primary-color);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.popup-link:hover {
+    background-color: var(--primary-hover);
+}
+
+@media (max-width: 768px) {
+    .map-container {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .map-header h1 {
+        font-size: 2rem;
+    }
+
+    #map {
+        height: 400px;
+    }
+
+    .map-legend {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+}
+</style>` }) %>
