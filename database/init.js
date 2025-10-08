@@ -16,38 +16,53 @@ class VeteranDB {
     }
 
     this.db = null;
+    this.jsonData = null;
+    this.useJsonFallback = false;
   }
 
   connect() {
     return new Promise((resolve, reject) => {
       try {
-        // In serverless, copy database to /tmp if it doesn't exist there
-        if (this.dbPath !== this.sourcePath && !fs.existsSync(this.dbPath)) {
-          if (fs.existsSync(this.sourcePath)) {
-            fs.copyFileSync(this.sourcePath, this.dbPath);
-            console.log('Copied database to /tmp for serverless environment');
+        // Try SQLite first
+        try {
+          // In serverless, copy database to /tmp if it doesn't exist there
+          if (this.dbPath !== this.sourcePath && !fs.existsSync(this.dbPath)) {
+            if (fs.existsSync(this.sourcePath)) {
+              fs.copyFileSync(this.sourcePath, this.dbPath);
+              console.log('Copied database to /tmp for serverless environment');
+            } else {
+              throw new Error('Source database file not found');
+            }
+          }
+
+          this.db = new Database(this.dbPath);
+          this.db.pragma('journal_mode = WAL');
+          
+          // Verify the database has the required tables
+          const tables = this.db.prepare("SELECT name FROM sqlite_master WHERE type='table'").all();
+          console.log('Available tables:', tables.map(t => t.name));
+          
+          if (!tables.some(t => t.name === 'locations')) {
+            throw new Error('Locations table not found');
+          }
+          
+          console.log('Connected to SQLite database successfully');
+          resolve();
+          return;
+        } catch (sqliteError) {
+          console.warn('SQLite connection failed, falling back to JSON data:', sqliteError.message);
+          
+          // Fallback to JSON data
+          const jsonPath = path.join(__dirname, '..', 'data', 'locations.json');
+          if (fs.existsSync(jsonPath)) {
+            this.jsonData = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+            this.useJsonFallback = true;
+            console.log('Using JSON data fallback with', this.jsonData.locations.length, 'locations');
+            resolve();
           } else {
-            console.error('Source database file not found:', this.sourcePath);
-            reject(new Error('Source database file not found'));
-            return;
+            reject(new Error('Neither SQLite database nor JSON data file found'));
           }
         }
-
-        this.db = new Database(this.dbPath);
-        this.db.pragma('journal_mode = WAL');
-        
-        // Verify the database has the required tables
-        const tables = this.db.prepare("SELECT name FROM sqlite_master WHERE type='table'").all();
-        console.log('Available tables:', tables.map(t => t.name));
-        
-        if (!tables.some(t => t.name === 'locations')) {
-          console.error('Locations table not found in database');
-          reject(new Error('Locations table not found'));
-          return;
-        }
-        
-        console.log('Connected to SQLite database successfully');
-        resolve();
       } catch (err) {
         console.error('Error connecting to database:', err.message);
         reject(err);
@@ -57,6 +72,10 @@ class VeteranDB {
 
   // Get all locations with their tags (for compatibility with existing code)
   getLocations() {
+    if (this.useJsonFallback) {
+      return this.jsonData.locations || [];
+    }
+    
     if (!this.db) {
       throw new Error('Database not connected');
     }
@@ -71,6 +90,13 @@ class VeteranDB {
 
   // Get single location by state and city
   getLocationByStateCity(state, city) {
+    if (this.useJsonFallback) {
+      return this.jsonData.locations.find(loc =>
+        loc.state.toLowerCase() === state.toLowerCase() &&
+        loc.city.toLowerCase().replace(/\s+/g, '') === city.toLowerCase().replace(/\s+/g, '')
+      ) || null;
+    }
+    
     if (!this.db) {
       throw new Error('Database not connected');
     }
