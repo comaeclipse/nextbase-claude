@@ -127,6 +127,11 @@
     if (group.getBounds().isValid()) {
         map.fitBounds(group.getBounds(), { padding: [50, 50] });
     }
+
+    // Fix map rendering issue - invalidate size to recalculate container dimensions
+    setTimeout(function() {
+        map.invalidateSize();
+    }, 100);
 })();
 </script>
 
