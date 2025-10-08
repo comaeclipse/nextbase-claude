@@ -26,12 +26,27 @@ class VeteranDB {
           if (fs.existsSync(this.sourcePath)) {
             fs.copyFileSync(this.sourcePath, this.dbPath);
             console.log('Copied database to /tmp for serverless environment');
+          } else {
+            console.error('Source database file not found:', this.sourcePath);
+            reject(new Error('Source database file not found'));
+            return;
           }
         }
 
         this.db = new Database(this.dbPath);
         this.db.pragma('journal_mode = WAL');
-        console.log('Connected to SQLite database');
+        
+        // Verify the database has the required tables
+        const tables = this.db.prepare("SELECT name FROM sqlite_master WHERE type='table'").all();
+        console.log('Available tables:', tables.map(t => t.name));
+        
+        if (!tables.some(t => t.name === 'locations')) {
+          console.error('Locations table not found in database');
+          reject(new Error('Locations table not found'));
+          return;
+        }
+        
+        console.log('Connected to SQLite database successfully');
         resolve();
       } catch (err) {
         console.error('Error connecting to database:', err.message);

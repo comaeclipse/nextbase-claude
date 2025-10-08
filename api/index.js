@@ -22,11 +22,23 @@ let dbInitialized = false;
 app.use(async (req, res, next) => {
   if (!dbInitialized) {
     try {
+      console.log('Initializing database connection...');
+      console.log('Environment:', process.env.VERCEL ? 'Vercel' : 'Local');
       await database.connect();
       dbInitialized = true;
+      console.log('Database initialized successfully');
     } catch (err) {
       console.error('Failed to connect to database:', err);
-      return res.status(500).send('Database connection failed');
+      console.error('Error details:', {
+        message: err.message,
+        stack: err.stack,
+        dbPath: database.dbPath,
+        sourcePath: database.sourcePath
+      });
+      return res.status(500).json({ 
+        error: 'Database connection failed',
+        details: err.message 
+      });
     }
   }
   next();
@@ -39,7 +51,15 @@ app.get('/api/locations', (req, res) => {
     res.json(data);
   } catch (error) {
     console.error('Error fetching locations:', error);
-    res.status(500).json({ error: 'Failed to fetch locations' });
+    console.error('API error details:', {
+      message: error.message,
+      stack: error.stack,
+      dbConnected: !!database.db
+    });
+    res.status(500).json({ 
+      error: 'Failed to fetch locations',
+      details: error.message 
+    });
   }
 });
 
@@ -65,7 +85,15 @@ app.get('/map', (req, res) => {
     });
   } catch (error) {
     console.error('Error loading map:', error);
-    res.status(500).send('Error loading map');
+    console.error('Map error details:', {
+      message: error.message,
+      stack: error.stack,
+      dbConnected: !!database.db
+    });
+    res.status(500).json({ 
+      error: 'Error loading map',
+      details: error.message 
+    });
   }
 });
 
