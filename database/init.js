@@ -1,15 +1,34 @@
 const Database = require('better-sqlite3');
 const path = require('path');
+const fs = require('fs');
 
 class VeteranDB {
   constructor() {
-    this.dbPath = path.join(__dirname, '..', 'data', 'locations.db');
+    // Use /tmp for serverless environments, local data dir otherwise
+    const isServerless = process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME;
+
+    if (isServerless) {
+      this.dbPath = '/tmp/locations.db';
+      this.sourcePath = path.join(__dirname, '..', 'data', 'locations.db');
+    } else {
+      this.dbPath = path.join(__dirname, '..', 'data', 'locations.db');
+      this.sourcePath = this.dbPath;
+    }
+
     this.db = null;
   }
 
   connect() {
     return new Promise((resolve, reject) => {
       try {
+        // In serverless, copy database to /tmp if it doesn't exist there
+        if (this.dbPath !== this.sourcePath && !fs.existsSync(this.dbPath)) {
+          if (fs.existsSync(this.sourcePath)) {
+            fs.copyFileSync(this.sourcePath, this.dbPath);
+            console.log('Copied database to /tmp for serverless environment');
+          }
+        }
+
         this.db = new Database(this.dbPath);
         this.db.pragma('journal_mode = WAL');
         console.log('Connected to SQLite database');
