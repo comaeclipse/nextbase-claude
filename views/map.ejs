@@ -8,9 +8,20 @@
     <div id="map"></div>
 
     <div class="map-legend">
-        <div class="legend-item">
-            <div class="legend-marker"></div>
-            <span>Retirement Cities</span>
+        <div class="legend-title">Firearms Law Grade</div>
+        <div class="legend-items">
+            <div class="legend-item">
+                <div class="legend-marker legend-marker-teal"></div>
+                <span>A-B (Strongest)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-marker legend-marker-amber"></div>
+                <span>C (Moderate)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-marker legend-marker-rose"></div>
+                <span>D-F (Weakest)</span>
+            </div>
         </div>
         <div class="legend-info">
             <span>Click any marker to view city details</span>
@@ -31,71 +42,40 @@
         center: [39.8283, -98.5795],
         zoom: 4,
         minZoom: 3,
-        maxZoom: 18
+        maxZoom: 12
     });
 
-    // Function to update tile layer based on theme
-    function updateMapTiles() {
-        var theme = document.documentElement.getAttribute('data-theme');
-        var tileLayer;
-
-        if (theme === 'dark') {
-            // Dark mode tiles
-            tileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-                subdomains: 'abcd',
-                maxZoom: 20
-            });
-        } else {
-            // Light mode tiles
-            tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                maxZoom: 19
-            });
+    // Function to get color based on firearms grade
+    function gradeToColor(grade) {
+        if (!grade) return { stroke: '#be123c', fill: 'rgba(244,114,182,0.65)' };
+        var normalized = grade.trim().charAt(0).toUpperCase();
+        if (normalized === 'A' || normalized === 'B') {
+            return { stroke: '#0f766e', fill: 'rgba(20,184,166,0.75)' };
         }
-
-        // Remove existing tile layers
-        map.eachLayer(function(layer) {
-            if (layer instanceof L.TileLayer) {
-                map.removeLayer(layer);
-            }
-        });
-
-        // Add new tile layer
-        tileLayer.addTo(map);
+        if (normalized === 'C') {
+            return { stroke: '#b45309', fill: 'rgba(251,191,36,0.7)' };
+        }
+        return { stroke: '#be123c', fill: 'rgba(244,114,182,0.65)' };
     }
 
-    // Initial tile layer
-    updateMapTiles();
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19
+    }).addTo(map);
 
-    // Watch for theme changes
-    var themeObserver = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            if (mutation.attributeName === 'data-theme') {
-                updateMapTiles();
-            }
-        });
-    });
-
-    themeObserver.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ['data-theme']
-    });
-
-    // Custom marker icon
-    var customIcon = L.divIcon({
-        className: 'custom-marker',
-        html: '<div class="marker-pin"></div>',
-        iconSize: [30, 42],
-        iconAnchor: [15, 42],
-        popupAnchor: [0, -42]
-    });
-
-    // Add markers for each city
+    // Add circle markers for each city
     cities.forEach(function(city) {
         if (city.coordinates && city.coordinates.lat && city.coordinates.lng) {
-            var marker = L.marker([city.coordinates.lat, city.coordinates.lng], {
-                icon: customIcon
+            var grade = city.firearms && city.firearms.grade ? city.firearms.grade : '';
+            var colors = gradeToColor(grade);
+
+            var circleMarker = L.circleMarker([city.coordinates.lat, city.coordinates.lng], {
+                radius: 6.5,
+                color: colors.stroke,
+                fillColor: colors.fill,
+                weight: 1.5,
+                fillOpacity: 1
             });
 
             var cityUrl = '/' + city.state.toLowerCase() + '/' + city.city.toLowerCase().replace(/\\s+/g, '');
@@ -105,27 +85,29 @@
                     '<h3>' + city.city + ', ' + city.state + '</h3>' +
                     '<div class="popup-details">' +
                         (city.population ? '<p><i class="fas fa-users"></i> ' + city.population.toLocaleString() + '</p>' : '') +
+                        (city.firearms && city.firearms.grade ? '<p><i class="fas fa-gavel"></i> Firearms Grade: ' + city.firearms.grade + '</p>' : '') +
                         (city.economy && city.economy.costOfLiving ? '<p><i class="fas fa-dollar-sign"></i> COL: ' + city.economy.costOfLiving + '</p>' : '') +
-                        (city.climate && city.climate.type ? '<p><i class="fas fa-thermometer-half"></i> ' + city.climate.type + '</p>' : '') +
                     '</div>' +
                     '<a href="' + cityUrl + '" class="popup-link">View Details <i class="fas fa-arrow-right"></i></a>' +
                 '</div>';
 
-            marker.bindPopup(popupContent);
-            marker.addTo(map);
+            circleMarker.bindPopup(popupContent);
+            circleMarker.addTo(map);
         }
     });
 
     // Fit bounds to show all markers
-    var group = new L.featureGroup();
-    cities.forEach(function(city) {
-        if (city.coordinates && city.coordinates.lat && city.coordinates.lng) {
-            L.marker([city.coordinates.lat, city.coordinates.lng]).addTo(group);
-        }
-    });
+    if (cities.length > 0) {
+        var bounds = [];
+        cities.forEach(function(city) {
+            if (city.coordinates && city.coordinates.lat && city.coordinates.lng) {
+                bounds.push([city.coordinates.lat, city.coordinates.lng]);
+            }
+        });
 
-    if (group.getBounds().isValid()) {
-        map.fitBounds(group.getBounds(), { padding: [50, 50] });
+        if (bounds.length > 0) {
+            map.fitBounds(bounds, { padding: [40, 40] });
+        }
     }
 
     // Fix map rendering issue - invalidate size to recalculate container dimensions
@@ -169,16 +151,29 @@
 }
 
 .map-legend {
+    padding: var(--spacing-md) var(--spacing-lg);
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.legend-title {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+    text-align: center;
+}
+
+.legend-items {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: var(--spacing-xl);
-    padding: var(--spacing-md);
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    max-width: 600px;
-    margin: 0 auto;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+    flex-wrap: wrap;
 }
 
 .legend-item {
@@ -187,40 +182,39 @@
     gap: var(--spacing-sm);
 }
 
+.legend-item span {
+    font-size: 0.813rem;
+    color: var(--text-secondary);
+}
+
 .legend-marker {
-    width: 20px;
-    height: 20px;
-    background-color: var(--primary-color);
-    border-radius: 50% 50% 50% 0;
-    transform: rotate(-45deg);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid;
+}
+
+.legend-marker-teal {
+    background-color: rgba(20,184,166,0.75);
+    border-color: #0f766e;
+}
+
+.legend-marker-amber {
+    background-color: rgba(251,191,36,0.7);
+    border-color: #b45309;
+}
+
+.legend-marker-rose {
+    background-color: rgba(244,114,182,0.65);
+    border-color: #be123c;
 }
 
 .legend-info {
     color: var(--text-secondary);
-    font-size: 0.875rem;
-}
-
-/* Custom marker styles */
-.custom-marker {
-    background: transparent;
-    border: none;
-}
-
-.marker-pin {
-    width: 30px;
-    height: 30px;
-    background-color: var(--primary-color);
-    border-radius: 50% 50% 50% 0;
-    transform: rotate(-45deg);
-    position: relative;
-    border: 3px solid white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    transition: var(--transition);
-}
-
-.marker-pin:hover {
-    background-color: var(--accent-color);
-    transform: rotate(-45deg) scale(1.2);
+    font-size: 0.75rem;
+    text-align: center;
+    padding-top: var(--spacing-xs);
+    border-top: 1px solid var(--border-color);
 }
 
 /* Popup styles */
@@ -300,8 +294,11 @@
     }
 
     .map-legend {
-        flex-direction: column;
-        gap: var(--spacing-sm);
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .legend-items {
+        gap: var(--spacing-md);
     }
 }
 </style>` }) %>
