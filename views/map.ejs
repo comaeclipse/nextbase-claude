@@ -40,7 +40,7 @@
     // Initialize map - centered on continental US
     var map = L.map('map', {
         center: [39.8283, -98.5795],
-        zoom: 4,
+        zoom: 3.5,
         minZoom: 3,
         maxZoom: 12
     });
@@ -96,7 +96,7 @@
         }
     });
 
-    // Fit bounds to show all markers
+    // Optionally fit bounds to show all markers, but keep USA visible
     if (cities.length > 0) {
         var bounds = [];
         cities.forEach(function(city) {
@@ -106,7 +106,7 @@
         });
 
         if (bounds.length > 0) {
-            map.fitBounds(bounds, { padding: [40, 40] });
+            map.fitBounds(bounds, { padding: [40, 40], maxZoom: 4 });
         }
     }
 
