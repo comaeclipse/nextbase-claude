@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3010;
 
 // Initialize database
-const database = require('./database/init');
+const database = require('./database/prisma-init');
 const Location = require('./models/Location');
 
 // Middleware
@@ -37,9 +37,9 @@ app.get('/quiz', (req, res) => {
   res.render('quiz', { title: 'Retirement City Quiz - VetRetire' });
 });
 
-app.get('/map', (req, res) => {
+app.get('/map', async (req, res) => {
   try {
-    const data = database.getData();
+    const data = await database.getData();
     res.render('map', {
       title: 'Retirement City Map - VetRetire',
       locations: data.locations || []
@@ -50,10 +50,10 @@ app.get('/map', (req, res) => {
   }
 });
 
-app.post('/quiz/results', (req, res) => {
+app.post('/quiz/results', async (req, res) => {
   try {
     const responses = req.body;
-    const data = database.getData();
+    const data = await database.getData();
     const locations = data.locations || [];
 
     // Calculate match scores for each location
@@ -241,9 +241,9 @@ app.post('/results', async (req, res) => {
 });
 
 // API endpoint for locations data
-app.get('/api/locations', (req, res) => {
+app.get('/api/locations', async (req, res) => {
   try {
-    const data = database.getData();
+    const data = await database.getData();
     res.json(data);
   } catch (error) {
     console.error('Error fetching locations:', error);
@@ -252,10 +252,10 @@ app.get('/api/locations', (req, res) => {
 });
 
 // City detail page route
-app.get('/:state/:city', (req, res) => {
+app.get('/:state/:city', async (req, res) => {
   try {
     const { state, city } = req.params;
-    const data = database.getData();
+    const data = await database.getData();
 
     // Find the location matching the state and city (case-insensitive)
     const location = data.locations.find(loc =>

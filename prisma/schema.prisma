@@ -1,0 +1,103 @@
+// Veteran Retirement Finder Prisma Schema
+// Migrated from SQLite to PostgreSQL
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Location {
+  id          Int      @id @default(autoincrement())
+  state       String
+  city        String
+  county      String?
+  stateParty  String?  @map("state_party")
+
+  // Population & Density
+  population  Int?
+  density     Int?
+
+  // Economy & Cost
+  costOfLiving Int?    @map("cost_of_living")
+  avgGasPrice  Float?  @map("avg_gas_price")
+
+  // Taxes
+  salesTax     Float?  @map("sales_tax")
+  incomeTax    Float?  @map("income_tax")
+
+  // Crime & Safety
+  crimeIndex   Int?    @map("crime_index")
+
+  // Climate
+  climateType  String? @map("climate_type")
+  sunnyDays    Int?    @map("sunny_days")
+  avgHighSummer Int?   @map("avg_high_summer")
+  avgLowWinter  Int?   @map("avg_low_winter")
+  avgRainfall   Int?   @map("avg_rainfall")
+  avgSnowfall   Int?   @map("avg_snowfall")
+  humiditySummer Int?  @map("humidity_summer")
+
+  // VA & Healthcare
+  vaFacilities Boolean @default(false) @map("va_facilities")
+  nearestVA    String? @map("nearest_va")
+  distanceToVA String? @map("distance_to_va")
+
+  // Community Features
+  techHub      Boolean @default(false) @map("tech_hub")
+  militaryHub  Boolean @default(false) @map("military_hub")
+
+  // Marijuana Status
+  marijuanaStatus String? @map("marijuana_status")
+
+  // LGBTQ Ranking (lower is better)
+  lgbtqRank    Int?    @map("lgbtq_rank")
+
+  // Coordinates
+  lat          Float?
+  lng          Float?
+
+  // Description
+  description  String?
+
+  // JSON column for everything else (politics, firearms details, veteran benefits, etc.)
+  extraData    Json?   @map("extra_data")
+
+  // Timestamps
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  locationTags LocationTag[]
+
+  @@unique([state, city])
+  @@map("locations")
+}
+
+model Tag {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  category    String
+  description String?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  // Relations
+  locationTags LocationTag[]
+
+  @@map("tags")
+}
+
+model LocationTag {
+  locationId Int @map("location_id")
+  tagId      Int @map("tag_id")
+
+  // Relations
+  location Location @relation(fields: [locationId], references: [id], onDelete: Cascade)
+  tag      Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([locationId, tagId])
+  @@map("location_tags")
+}

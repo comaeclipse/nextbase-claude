@@ -1,4 +1,4 @@
-const database = require('../database/init');
+const database = require('../database/prisma-init');
 
 class Location {
   constructor(data = {}) {
@@ -7,7 +7,7 @@ class Location {
   }
 
   static async findAll(limit = null, offset = 0) {
-    const locations = database.getLocations();
+    const locations = await database.getLocations();
 
     if (limit) {
       return locations.slice(offset, offset + limit).map(loc => new Location(loc));
@@ -17,13 +17,13 @@ class Location {
   }
 
   static async findById(id) {
-    const locations = database.getLocations();
+    const locations = await database.getLocations();
     const location = locations.find(loc => loc.id === parseInt(id));
     return location ? new Location(location) : null;
   }
 
   static async findByStateCity(state, city) {
-    const location = database.getLocationByStateCity(state, city);
+    const location = await database.getLocationByStateCity(state, city);
     return location ? new Location(location) : null;
   }
 
@@ -100,12 +100,12 @@ class Location {
     }
 
     // Use database search
-    const locations = database.searchLocations(filters);
+    const locations = await database.searchLocations(filters);
     return locations.map(loc => new Location(loc));
   }
 
   static async getStats() {
-    const locations = database.getLocations();
+    const locations = await database.getLocations();
 
     const states = new Set(locations.map(loc => loc.state)).size;
 
@@ -193,9 +193,9 @@ class Location {
   }
 
   // Get tags for this location
-  getTags() {
+  async getTags() {
     if (!this.id) return [];
-    return database.getLocationTags(this.id);
+    return await database.getLocationTags(this.id);
   }
 }
 
