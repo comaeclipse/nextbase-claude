@@ -11,5 +11,8 @@
       "src": "/(.*)",
       "dest": "/api/index.js"
     }
-  ]
+  ],
+  "env": {
+    "DATABASE_URL": "postgresql://neondb_owner:npg_CngPtVTZvo74@ep-royal-hill-adts1vam-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require"
+  }
 }

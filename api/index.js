@@ -5,7 +5,7 @@ const path = require('path');
 const app = express();
 
 // Initialize database
-const database = require('../database/init');
+const database = require('../database/prisma-init');
 const Location = require('../models/Location');
 
 // Middleware
@@ -31,9 +31,7 @@ app.use(async (req, res, next) => {
       console.error('Failed to connect to database:', err);
       console.error('Error details:', {
         message: err.message,
-        stack: err.stack,
-        dbPath: database.dbPath,
-        sourcePath: database.sourcePath
+        stack: err.stack
       });
       return res.status(500).json({ 
         error: 'Database connection failed',
@@ -45,17 +43,12 @@ app.use(async (req, res, next) => {
 });
 
 // API endpoint for locations data
-app.get('/api/locations', (req, res) => {
+app.get('/api/locations', async (req, res) => {
   try {
-    const data = database.getData();
+    const data = await database.getData();
     res.json(data);
   } catch (error) {
     console.error('Error fetching locations:', error);
-    console.error('API error details:', {
-      message: error.message,
-      stack: error.stack,
-      dbConnected: !!database.db
-    });
     res.status(500).json({ 
       error: 'Failed to fetch locations',
       details: error.message 
@@ -76,20 +69,15 @@ app.get('/quiz', (req, res) => {
   res.render('quiz', { title: 'Retirement City Quiz - VetRetire' });
 });
 
-app.get('/map', (req, res) => {
+app.get('/map', async (req, res) => {
   try {
-    const data = database.getData();
+    const data = await database.getData();
     res.render('map', {
       title: 'Retirement City Map - VetRetire',
       locations: data.locations || []
     });
   } catch (error) {
     console.error('Error loading map:', error);
-    console.error('Map error details:', {
-      message: error.message,
-      stack: error.stack,
-      dbConnected: !!database.db
-    });
     res.status(500).json({ 
       error: 'Error loading map',
       details: error.message 
@@ -97,10 +85,10 @@ app.get('/map', (req, res) => {
   }
 });
 
-app.post('/quiz/results', (req, res) => {
+app.post('/quiz/results', async (req, res) => {
   try {
     const responses = req.body;
-    const data = database.getData();
+    const data = await database.getData();
     const locations = data.locations || [];
 
     // Calculate match scores for each location
@@ -288,10 +276,10 @@ app.post('/results', async (req, res) => {
 });
 
 // City detail page route
-app.get('/:state/:city', (req, res) => {
+app.get('/:state/:city', async (req, res) => {
   try {
     const { state, city } = req.params;
-    const data = database.getData();
+    const data = await database.getData();
 
     // Find the location matching the state and city (case-insensitive)
     const location = data.locations.find(loc =>
