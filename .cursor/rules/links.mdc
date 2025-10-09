@@ -1,0 +1,15 @@
+---
+title: NextBase-Claude Context
+alwaysApply: true
+---
+
+**Project:** NextBase-Claude  
+**Deployment:** Vercel  
+**Vercel Project ID:** `prj_NKoHfOelIq1p7RtbeEwYkWaxED3Q`  
+
+**Rules:**
+- Stack: Next.js (TypeScript) + Express + NeonDB/Postgres  
+- Always assume Vercel deployment context  
+- Use edge functions when suitable  
+
+vercel_project_id: prj_NKoHfOelIq1p7RtbeEwYkWaxED3Q

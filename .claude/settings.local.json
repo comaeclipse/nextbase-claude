@@ -12,7 +12,12 @@
       "Read(//c/Users/Meeter/Downloads/**)",
       "Bash(git reset:*)",
       "Bash(cat:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "WebSearch",
+      "Read(//c/Users/Meeter/NextBase-codex/veterans-retirement/**)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(git rm:*)"
     ],
     "deny": [],
     "ask": []
