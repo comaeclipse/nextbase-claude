@@ -565,7 +565,7 @@ body {
   text-decoration: none;
 }
 
-.bubble-choice:hover {
+.bubble-choice:not(.selected):hover {
   background-color: var(--primary-color);
   border-color: var(--primary-color);
   color: white;
@@ -575,6 +575,23 @@ body {
 
 .bubble-choice:active {
   transform: translateY(0);
+}
+
+.bubble-choice.selected {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+/* Filter Results Text */
+.filter-results-text {
+  text-align: center;
+  padding: var(--spacing-lg) var(--spacing-lg) 0;
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 /* Cities Container */
@@ -643,10 +660,41 @@ body {
   padding: var(--spacing-lg);
 }
 
+.city-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.badge.highlight {
+  background-color: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
+}
+
+.badge i {
+  font-size: 0.875rem;
+}
+
 .city-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
 }
 
 .stat,
@@ -686,6 +734,29 @@ body {
   font-size: 1rem;
   font-weight: 600;
   color: var(--text-color);
+}
+
+.learn-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  width: 100%;
+  padding: var(--spacing-md);
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.learn-more:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  color: white;
 }
 
 /* Loading State */
@@ -775,6 +846,23 @@ body {
 
 .cities-table a:hover {
   text-decoration: underline;
+}
+
+.table-badge {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.table-badge.highlight {
+  background-color: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
 }
 
 /* Responsive Design */
