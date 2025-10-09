@@ -134,6 +134,17 @@ body {
   font-size: 1rem;
 }
 
+.nav-link.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
 .theme-toggle {
   background: none;
   border: 2px solid var(--border-color);
