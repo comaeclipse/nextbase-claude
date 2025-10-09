@@ -5,11 +5,21 @@ alwaysApply: true
 
 **Project:** NextBase-Claude  
 **Deployment:** Vercel  
-**Vercel Project ID:** `prj_NKoHfOelIq1p7RtbeEwYkWaxED3Q`  
+**GitHub Repository:** `comaeclipse/nextbase-claude`
+
+**⚠️ CRITICAL DEPLOYMENT CONFIG - DO NOT MODIFY:**
+- **CORRECT Vercel Project ID:** `prj_NKoHfOelIq1p7RtbeEwYkWaxED3Q`
+- **CORRECT Project Name:** `nextbase-claude`
+- **WRONG Project (NEVER USE):** `prj_sAkvxSt9gIlnPE4EjF42nmPUvCUk`
+- **Production URL:** https://nextbase-claude.vercel.app
 
 **Rules:**
-- Stack: Next.js (TypeScript) + Express + NeonDB/Postgres  
+- Stack: Next.js 14 (TypeScript) + Prisma + NeonDB/Postgres  
 - Always assume Vercel deployment context  
 - Use edge functions when suitable  
+- ALWAYS verify .vercel/project.json before deploying
+- NEVER deploy to old "nextbase" project
 
 vercel_project_id: prj_NKoHfOelIq1p7RtbeEwYkWaxED3Q
+github_repo: comaeclipse/nextbase-claude
+production_url: https://nextbase-claude.vercel.app
