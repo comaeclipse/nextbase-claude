@@ -104,7 +104,9 @@ class Database {
         costOfLiving: loc.costOfLiving ? loc.costOfLiving.toString() : null,
       },
       description: loc.description,
-      veteranBenefits: extraData.veteranBenefits || {},
+      veteranBenefits: extraData.veteranBenefits && extraData.veteranBenefits.description 
+        ? extraData.veteranBenefits 
+        : null,
       coordinates: {
         lat: loc.lat,
         lng: loc.lng,
